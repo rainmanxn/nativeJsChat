@@ -1,0 +1,33 @@
+{
+  "name": "mf.messenger.praktikum.yandex",
+  "version": "1.0.0",
+  "description": "messenger app for yandex praktikum",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rainmanxn/mf.messenger.praktikum.yandex.git"
+  },
+  "keywords": [
+    "messenger",
+    "js"
+  ],
+  "author": "Oleg Ryazantsev (os138904@yandex.ru)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rainmanxn/mf.messenger.praktikum.yandex/issues"
+  },
+  "homepage": "https://github.com/rainmanxn/mf.messenger.praktikum.yandex#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.2.1"
+  }
+}
