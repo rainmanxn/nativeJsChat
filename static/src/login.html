@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="../styles.css" />
   <meta charset="UTF-8">
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -11,18 +11,23 @@
 <body>
   <div class="login-block">
     <div class="login-header">ВХОД</div>
-    <form>
+    <form id="submit">
       <div class="login-input">
         <div class="field-name">Логин</div>
-        <input type="text" class="input-text">
+        <label>
+          <input type="text" class="input-text" id="userName">
+        </label>
       </div>
       <div class="login-input">
         <div class="field-name">Пароль</div>
-        <input type="password" class="input-text">
+        <label>
+          <input type="password" class="input-text" id="password">
+        </label>
       </div>
-      <button type="submit" class="submit-button">АВТОРИЗОВАТЬСЯ</button>
+      <button type="submit" class="submit-button submit-button__login">АВТОРИЗОВАТЬСЯ</button>
     </form>
-    <a href="#" class="login-href">Нет аккаунта?</a>
+    <a href="./register.html" class="login-href">Нет аккаунта?</a>
   </div>
+  <script src="scripts/login.js"></script>
 </body>
 </html>
