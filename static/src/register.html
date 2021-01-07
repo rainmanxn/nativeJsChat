@@ -9,57 +9,60 @@
   <title>Register page</title>
 </head>
 <body>
-<div class="register-block">
-  <div class="login-header">РЕГИСТРАЦИЯ</div>
-  <form id="submit">
-    <div class="login-input">
-      <div class="field-name">Почта</div>
-      <label>
-        <input type="email" class="input-text" id="email">
-      </label>
+<main>
+  <div class="login-container">
+    <div class="register-block">
+      <div class="login-header">РЕГИСТРАЦИЯ</div>
+      <form id="submit">
+        <div class="login-input">
+          <div class="field-name">Почта</div>
+          <label>
+            <input type="email" class="input-text" id="email">
+          </label>
+        </div>
+        <div class="login-input">
+          <div class="field-name">Логин</div>
+          <label>
+            <input type="text" class="input-text" id="userName">
+          </label>
+        </div>
+        <div class="login-input">
+          <div class="field-name">Имя</div>
+          <label>
+            <input type="text" class="input-text" id="firstName">
+          </label>
+        </div>
+        <div class="login-input">
+          <div class="field-name">Фамилия</div>
+          <label>
+            <input type="text" class="input-text" id="lastName">
+          </label>
+        </div>
+        <div class="login-input">
+          <div class="field-name">Телефон</div>
+          <label>
+            <input type="tel" class="input-text" id="phone">
+          </label>
+        </div>
+        <div class="login-input">
+          <div class="field-name">Пароль</div>
+          <label>
+            <input type="password" class="input-text" id="password">
+          </label>
+        </div>
+        <div class="login-input">
+          <div class="field-name">Пароль (еще раз)</div>
+          <label>
+            <input type="password" class="input-text" id="passwordConfirm">
+          </label>
+        </div>
+        <div class="error-message" id="errorMessage">Пароли не совпадают</div>
+        <button type="submit" class="submit-button submit-button__register">АВТОРИЗОВАТЬСЯ</button>
+      </form>
+      <a href="./login.html" class="login-href">Войти</a>
     </div>
-    <div class="login-input">
-      <div class="field-name">Логин</div>
-      <label>
-        <input type="text" class="input-text" id="userName">
-      </label>
-    </div>
-
-    <div class="login-input">
-      <div class="field-name">Имя</div>
-      <label>
-        <input type="text" class="input-text" id="firstName">
-      </label>
-    </div>
-    <div class="login-input">
-      <div class="field-name">Фамилия</div>
-      <label>
-        <input type="text" class="input-text" id="lastName">
-      </label>
-    </div>
-    <div class="login-input">
-      <div class="field-name">Телефон</div>
-      <label>
-        <input type="tel" class="input-text" id="phone">
-      </label>
-    </div>
-    <div class="login-input">
-      <div class="field-name">Пароль</div>
-      <label>
-        <input type="password" class="input-text" id="password">
-      </label>
-    </div>
-    <div class="login-input">
-      <div class="field-name">Пароль (еще раз)</div>
-      <label>
-        <input type="password" class="input-text" id="passwordConfirm">
-      </label>
-    </div>
-    <div class="error-message" id="errorMessage">Пароли не совпадают</div>
-    <button type="submit" class="submit-button submit-button__register">АВТОРИЗОВАТЬСЯ</button>
-  </form>
-  <a href="./login.html" class="login-href">Войти</a>
-</div>
+  </div>
+</main>
 <script src="scripts/register.js"></script>
 </body>
 </html>

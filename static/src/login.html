@@ -9,25 +9,29 @@
   <title>Login page</title>
 </head>
 <body>
-  <div class="login-block">
-    <div class="login-header">ВХОД</div>
-    <form id="submit">
-      <div class="login-input">
-        <div class="field-name">Логин</div>
-        <label>
-          <input type="text" class="input-text" id="userName">
-        </label>
+  <main>
+    <div class="login-container">
+      <div class="login-block">
+        <div class="login-header">ВХОД</div>
+        <form id="submit">
+          <div class="login-input">
+            <div class="field-name">Логин</div>
+            <label>
+              <input type="text" class="input-text" id="userName">
+            </label>
+          </div>
+          <div class="login-input">
+            <div class="field-name">Пароль</div>
+            <label>
+              <input type="password" class="input-text" id="password">
+            </label>
+          </div>
+          <button type="submit" class="submit-button submit-button__login">АВТОРИЗОВАТЬСЯ</button>
+        </form>
+        <a href="./register.html" class="login-href">Нет аккаунта?</a>
       </div>
-      <div class="login-input">
-        <div class="field-name">Пароль</div>
-        <label>
-          <input type="password" class="input-text" id="password">
-        </label>
-      </div>
-      <button type="submit" class="submit-button submit-button__login">АВТОРИЗОВАТЬСЯ</button>
-    </form>
-    <a href="./register.html" class="login-href">Нет аккаунта?</a>
-  </div>
+    </div>
+  </main>
   <script src="scripts/login.js"></script>
 </body>
 </html>
