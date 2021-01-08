@@ -21,13 +21,13 @@
           <div class="profile-avatar-block">
             <div class="profile-avatar-line"></div>
             <div class="profile-avatar">
-              <img src="../img/icon-man.svg" class="profile-avatar-icon">
+              <img src="../img/icon-man.svg" class="profile-avatar-icon" alt="profile-avatar-icon">
             </div>
           </div>
           <div class="profile-user-name">
              Иван
           </div>
-          <div class="profile-info-block">
+          <form id="submit" class="profile-info-block">
             <div class="profile-info-item">
               <div class="profile-info-field-name">Почта</div>
               <label>
@@ -55,30 +55,34 @@
             <div class="profile-info-item">
               <div class="profile-info-field-name">Имя в чате</div>
               <label>
-                <input type="text" readonly class="profile-info-field-input" id="nickName" value="Иван">
+                <input type="text" readonly class="profile-info-field-input" id="displayName" value="Иван">
               </label>
             </div>
             <div class="profile-info-item">
-              <div class="profile-info-field-name">Почта</div>
+              <div class="profile-info-field-name">Телефон</div>
               <label>
                 <input type="tel" readonly class="profile-info-field-input" id="phone" value="+7 (909) 967 30 30">
               </label>
             </div>
-          </div>
-          <div class="profile-info-block">
-            <div class="profile-info-item">
-              <button class="profile-edit-item">Изменить данные</button>
+            <div class="profile-info-block">
+              <div id="editBlock">
+                <div class="profile-info-item">
+                  <button type="button" id="editButton" class="profile-edit-item">Изменить данные</button>
+                </div>
+                <div class="profile-info-item">
+                  <button type="button" class="profile-edit-item">Изменить пароль</button>
+                </div>
+                <div class="profile-info-item">
+                  <button type="button" class="profile-edit-item">Выйти</button>
+                </div>
+              </div>
+              <button type="submit" id="saveButton" class="submit-button profile-info-block__submit-button hide-field">СОХРАНИТЬ</button>
             </div>
-            <div class="profile-info-item">
-              <button class="profile-edit-item">Изменить пароль</button>
-            </div>
-            <div class="profile-info-item">
-              <button class="profile-edit-item">Выйти</button>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
   </main>
+  <script src="scripts/profile.js"></script>
 </body>
 </html>
