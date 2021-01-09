@@ -76,6 +76,43 @@
   background-clip: content-box, border-box;
 }
 
+.profile-avatar-hover {
+  opacity: 0;
+  width: 130px;
+  height: 130px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 65px;
+  border: double 2px transparent;
+}
+
+.profile-avatar-hover:hover {
+  visibility: visible;
+  cursor: pointer;
+  opacity: 80%;
+  background-image: linear-gradient(360deg, rgba(41, 41, 87, 0.8) 0%, rgba(41, 41, 87, 0.8) 100%), radial-gradient(circle at top left, rgba(118, 52, 150, 1), rgba(223, 53, 155, 1));
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  z-index: 100;
+}
+
+.profile-avatar-text {
+  width: 68px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: Inter, serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  text-align: center;
+  color: #BCBAD8;
+}
+
 .profile-avatar-icon {
   position: absolute;
   top: 50%;
@@ -149,14 +186,83 @@
   margin-bottom: 10px;
 }
 
-.hide-field {
-  /*display: none;*/
-  visibility: hidden;
-}
-
 .profile-info-block__submit-button {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.profile-info-block__edit-password {
+  position: absolute;
+  top: 200px;
+}
+
+.submit-button__edit-password {
+  position: absolute;
+  top: 250px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+  height: 257px;
+  position: fixed;
+  z-index: 100;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #292957;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.14);
+  border-radius: 12px;
+}
+
+.modal-header {
+  font-family: Inter, serif;
+  margin-top: 40px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.modal-link {
+  font-family: Inter, serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  text-align: center;
+  text-decoration-line: underline;
+  color: #BCBAD8;
+  margin-top: 53px;
+}
+
+.submit-button__modal-overlay {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 54px;
+}
+
+.hide-field {
+  visibility: hidden;
+}
+
+.remove-field {
+  display: none;
 }

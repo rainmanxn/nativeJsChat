@@ -10,6 +10,12 @@
 </head>
 <body>
   <main>
+    <div class="modal-overlay remove-field" id="modalOverlay"></div>
+    <div class="modal remove-field" id="modal">
+      <div class="modal-header">Загрузите файл</div>
+      <a href="#" class="modal-link">Выбрать файл на компьютере</a>
+      <button class="submit-button submit-button__modal-overlay">ПОМЕНЯТЬ</button>
+    </div>
     <div class="profile-container">
       <div class="profile-left-side">
         <div class="back-button">
@@ -18,9 +24,12 @@
       </div>
       <div class="profile-right-side">
         <div class="profile-block">
-          <div class="profile-avatar-block">
+          <div class="profile-avatar-block" id="profileAvatarBlock">
             <div class="profile-avatar-line"></div>
             <div class="profile-avatar">
+              <div class="profile-avatar-hover">
+                <div class="profile-avatar-text">Поменять аватар</div>
+              </div>
               <img src="../img/icon-man.svg" class="profile-avatar-icon" alt="profile-avatar-icon">
             </div>
           </div>
@@ -70,7 +79,7 @@
                   <button type="button" id="editButton" class="profile-edit-item">Изменить данные</button>
                 </div>
                 <div class="profile-info-item">
-                  <button type="button" class="profile-edit-item">Изменить пароль</button>
+                  <button type="button" id="editPasswordButton" class="profile-edit-item">Изменить пароль</button>
                 </div>
                 <div class="profile-info-item">
                   <button type="button" class="profile-edit-item">Выйти</button>
@@ -78,6 +87,27 @@
               </div>
               <button type="submit" id="saveButton" class="submit-button profile-info-block__submit-button hide-field">СОХРАНИТЬ</button>
             </div>
+          </form>
+          <form id="editPassword" class="profile-info-block profile-info-block__edit-password  hide-field">
+            <div class="profile-info-item">
+              <div class="profile-info-field-name">Старый пароль</div>
+              <label>
+                <input type="password" class="profile-info-field-input" id="oldPassword" value="1111">
+              </label>
+            </div>
+            <div class="profile-info-item">
+              <div class="profile-info-field-name">Новый пароль</div>
+              <label>
+                <input type="password" class="profile-info-field-input" id="newPassword" value="22222222">
+              </label>
+            </div>
+            <div class="profile-info-item">
+              <div class="profile-info-field-name">Повторите новый пароль</div>
+              <label>
+                <input type="password" class="profile-info-field-input" id="newPasswordConfirm" value="22222222">
+              </label>
+            </div>
+            <button type="submit" id="savePasswordButton" class="submit-button submit-button__edit-password">СОХРАНИТЬ</button>
           </form>
         </div>
       </div>
