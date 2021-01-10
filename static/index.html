@@ -1,14 +1,37 @@
 <!doctype html>
 <html lang="ru">
 <head>
+  <link rel="stylesheet" href="styles.css" />
   <meta charset="UTF-8">
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Messenger</title>
+  <title>Login page</title>
 </head>
 <body>
-  <h1>Hello app</h1>
-  <a href="src/login.html">Auth page</a>
+<main>
+  <div class="login-container">
+    <div class="login-block">
+      <div class="login-header">ВХОД</div>
+      <form id="submit">
+        <div class="login-input">
+          <div class="field-name">Логин</div>
+          <label>
+            <input type="text" class="input-text" id="userName">
+          </label>
+        </div>
+        <div class="login-input">
+          <div class="field-name">Пароль</div>
+          <label>
+            <input type="password" class="input-text" id="password">
+          </label>
+        </div>
+        <button type="submit" class="submit-button submit-button__login">АВТОРИЗОВАТЬСЯ</button>
+      </form>
+      <a href="src/register.html" class="login-href">Нет аккаунта?</a>
+    </div>
+  </div>
+</main>
+<script src="src/scripts/login.js"></script>
 </body>
 </html>

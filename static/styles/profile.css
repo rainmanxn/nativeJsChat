@@ -27,6 +27,7 @@
   left: 50%;
   transform: translate(-50%, -50%) rotate(-180deg);
   background: linear-gradient(89.86deg, #763496 2.79%, #DF359B 99.89%);
+  cursor: pointer;
 }
 .arrow {
   position: absolute;
@@ -220,7 +221,7 @@
   flex-direction: column;
   width: 340px;
   height: 257px;
-  position: fixed;
+  position: absolute;
   z-index: 100;
   left: 50%;
   top: 50%;

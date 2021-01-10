@@ -1,9 +1,28 @@
-let hasActiveItem = false;
-const mainRightBlock = document.querySelector('.main-right-block');
-// if (!hasActiveItem) {
-//   mainRightBlock.innerHTML = `<div class="main-right-block-empty-text">Выберите чат, чтобы отправить сообщение</div>`
-// }
+const mainChatMessages = document.querySelector('.main-chat-messages ');
+const mainRightBlockEmptyText = document.querySelector('.main-right-block-empty-text');
+const mainRightBlockContainer = document.querySelector('.main-right-block-container');
+let activeItemId = -1;
 
+const mockMessages = `
+  <li class="main-chat-messages-date">
+    19 июня
+  </li>
+  <li class="main-chat-messages-opponent-text">
+    Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то
+    момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все
+    знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все
+    еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
+    Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда
+    и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.
+    <div class="main-chat-messages-time">11:56</div>
+  </li>
+  <li class="main-chat-messages-user-text">
+    Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент
+    попросила Хассельблад адаптировать модель SWC для полетов на Луну.
+    <img src="../../img/2checks.svg" class="two-checks" alt="two-checks">
+    <div class="main-chat-messages-time">11:56</div>
+  </li>
+`
 const createItem = (name, message, time, newMessages, id) => {
   const item = document.createElement('li');
   item.classList.add('chat-item-container')
@@ -25,9 +44,15 @@ const createItem = (name, message, time, newMessages, id) => {
   `;
 
   item.addEventListener('click', () => {
-    hasActiveItem = true;
-    mainRightBlock.innerHTML = "";
-    console.log(hasActiveItem)
+    mainRightBlockEmptyText.classList.add('remove-modal');
+    mainRightBlockContainer.classList.remove('remove-modal');
+    if (activeItemId !== -1) {
+      const activeItem = document.getElementById(`${activeItemId}`);
+      activeItem.classList.remove('active-item')
+    }
+    activeItemId = id;
+    item.classList.add('active-item');
+    mainChatMessages.innerHTML = mockMessages;
   })
   const createCountItem = (count) => {
     const item = document.createElement('div');
@@ -92,5 +117,65 @@ inputSearch.addEventListener('input', event => {
   newData.forEach(({ name, message, time, newMessages}, i) => {
     list.appendChild(createItem(name, message, time, newMessages, i))
   })
-  console.log(newData)
+})
+
+const modalEditUser = document.querySelector('.modal-edit-user');
+const modalClip = document.querySelector('.modal-clip');
+const modalDeleteUser = document.querySelector('#modalDeleteUser');
+const modalAddUser = document.querySelector('#modalAddUser');
+const modalOverlay = document.querySelector('#modalOverlay');
+const threeDotsContainer = document.querySelector('.three-dots-container');
+const deleteUserButton = document.querySelector('#deleteUserButton');
+const threeDotsDeleteUser = document.querySelector('#threeDotsDeleteUser');
+const threeDotsAddUser = document.querySelector('#threeDotsAddUser');
+const modalDeleteUserConfirm = document.querySelector('#modalDeleteUserConfirm');
+const deleteUserButtonConfirm = document.querySelector('#deleteUserButtonConfirm');
+const deleteUserButtonCancel = document.querySelector('#deleteUserButtonCancel');
+const addUserButton = document.querySelector('#addUserButton');
+const clipButton = document.querySelector('#clipButton');
+
+threeDotsDeleteUser.addEventListener('click', () => {
+  modalDeleteUser.classList.toggle("remove-modal");
+  modalOverlay.classList.toggle("remove-field");
+})
+
+modalOverlay.addEventListener('click', () => {
+  modalOverlay.classList.toggle("remove-field");
+  modalDeleteUser.classList.add("remove-modal");
+  modalAddUser.classList.add("remove-modal");
+  modalDeleteUserConfirm.classList.add("remove-modal");
+})
+
+threeDotsContainer.addEventListener('click', () => {
+  modalEditUser.classList.toggle("remove-modal");
+  threeDotsContainer.classList.toggle("three-dots-container-add-background");
+});
+
+deleteUserButton.addEventListener('click', () => {
+  modalDeleteUser.classList.add("remove-modal");
+  modalDeleteUserConfirm.classList.toggle("remove-modal");
+})
+
+deleteUserButtonConfirm.addEventListener('click', () => {
+  modalOverlay.classList.toggle("remove-field");
+  modalDeleteUserConfirm.classList.toggle("remove-modal");
+})
+
+deleteUserButtonCancel.addEventListener('click', () => {
+  modalOverlay.classList.toggle("remove-field");
+  modalDeleteUserConfirm.classList.toggle("remove-modal");
+})
+
+threeDotsAddUser.addEventListener('click', () => {
+  modalOverlay.classList.toggle("remove-field");
+  modalAddUser.classList.toggle("remove-modal");
+})
+
+addUserButton.addEventListener('click', () => {
+  modalOverlay.classList.toggle("remove-field");
+  modalAddUser.classList.toggle("remove-modal");
+})
+
+clipButton.addEventListener('click', () => {
+  modalClip.classList.toggle("remove-modal");
 })

@@ -16,6 +16,7 @@ const profileInfoBlock = document.getElementById('editBlock');
 const profileAvatarBlock = document.getElementById('profileAvatarBlock');
 const modal = document.getElementById('modal');
 const modalOverlay = document.getElementById('modalOverlay');
+const backButton = document.querySelector('.back-button');
 
 let email = inputEmail.value;
 let login = inputUserName.value;
@@ -112,3 +113,7 @@ modalOverlay.addEventListener("click", function() {
   modal.classList.toggle("remove-field");
   modalOverlay.classList.toggle("remove-field");
 });
+
+backButton.addEventListener('click', () => {
+  history.back();
+})
