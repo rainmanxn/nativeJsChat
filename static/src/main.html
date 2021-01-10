@@ -11,14 +11,59 @@
 <body>
   <main class="main-container">
     <div class="main-left-block">
-      <div class="main-left-block-profile-link">
+      <a href="profile.html" class="main-left-block-profile-link">
         Профиль &gt;
-      </div>
+      </a>
       <input type="text" class="main-left-block-find" placeholder="Поиск">
       <ul id="list">
       </ul>
     </div>
-    <div class="main-right-block"></div>
+    <div class="main-right-block">
+      <nav class="main-right-block-header">
+        <div class="main-right-block-header-left-block">
+          <div class="left-block-avatar"></div>
+          <div class="left-block-name">Вадим</div>
+        </div>
+        <img src="../img/3dots.svg" alt="3-dots" class="three-dots">
+      </nav>
+      <div class="main-chat-container">
+        <ul class="main-chat-messages">
+          <li class="main-chat-messages-date">
+            19 июня
+          </li>
+          <li class="main-chat-messages-opponent-text">
+            Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то
+            момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все
+            знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все
+            еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
+            Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда
+            и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.
+            <div class="main-chat-messages-time">11:56</div>
+          </li>
+          <li class="main-chat-messages-user-text">
+            Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент
+            попросила Хассельблад адаптировать модель SWC для полетов на Луну.
+            <img src="../img/2checks.svg" class="two-checks" alt="two-checks">
+            <div class="main-chat-messages-time">11:56</div>
+          </li>
+        </ul>
+        <div class="main-chat-footer">
+          <button class="clip">
+            <img src="../img/clip.svg" alt="clip">
+          </button>
+          <input type="text" class="main-chat-footer-input" placeholder="Сообщение">
+          <button class="main-chat-footer-submit-button">
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-edit-user">
+      <div class="modal-edit-user-item">
+        <button class="clip">
+          <img src="../img/iconadd.svg" alt="">
+        </button>
+      </div>
+    </div>
   </main>
   <script src="scripts/main.js"></script>
 </body>

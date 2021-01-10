@@ -1,3 +1,9 @@
+let hasActiveItem = false;
+const mainRightBlock = document.querySelector('.main-right-block');
+// if (!hasActiveItem) {
+//   mainRightBlock.innerHTML = `<div class="main-right-block-empty-text">Выберите чат, чтобы отправить сообщение</div>`
+// }
+
 const createItem = (name, message, time, newMessages, id) => {
   const item = document.createElement('li');
   item.classList.add('chat-item-container')
@@ -17,6 +23,12 @@ const createItem = (name, message, time, newMessages, id) => {
       </div>
     </div>
   `;
+
+  item.addEventListener('click', () => {
+    hasActiveItem = true;
+    mainRightBlock.innerHTML = "";
+    console.log(hasActiveItem)
+  })
   const createCountItem = (count) => {
     const item = document.createElement('div');
     item.classList.add('ellipse-count-messages');
