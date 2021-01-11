@@ -262,13 +262,15 @@
 }
 
 .main-chat-footer {
-  width: 100%;
+  width: 95%;
   height: 54px;
   border-top: 1px solid;
   border-image: linear-gradient(to right, rgba(118, 52, 150, 1), rgba(223, 53, 155, 1)) 99% 3%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-left: auto;
+  margin-right: 21px  ;
 }
 
 .main-chat-footer-input {

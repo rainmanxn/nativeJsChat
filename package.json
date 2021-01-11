@@ -21,6 +21,9 @@
     "url": "https://github.com/rainmanxn/mf.messenger.praktikum.yandex/issues"
   },
   "homepage": "https://github.com/rainmanxn/mf.messenger.praktikum.yandex#readme",
+  "engines" : {
+    "node" : ">=12.0.0"
+  },
   "dependencies": {
     "express": "^4.17.1"
   },

@@ -27,44 +27,64 @@ let phone = inputPhone.value;
 let oldPassword = inputOldPassword.value;
 let newPassword = inputNewPassword.value;
 let newPasswordConfirm = inputNewPasswordConfirm.value;
+const userData = {
+  email,
+  login,
+  first_name,
+  second_name,
+  display_name,
+  phone
+};
+const userPasswords = {
+  oldPassword,
+  newPassword,
+  newPasswordConfirm,
+};
 
 inputEmail.addEventListener('input', () => {
   email = inputEmail.value;
+  userData.email = email;
 });
 
 inputUserName.addEventListener('input', () => {
   login = inputUserName.value;
+  userData.login = login;
 });
 
 inputFirstName.addEventListener('input', () => {
   first_name = inputFirstName.value;
+  userData.first_name = first_name;
 });
 
 inputLastName.addEventListener('input', () => {
   second_name = inputLastName.value;
+  userData.second_name = second_name;
 });
 
 inputPhone.addEventListener('input', () => {
   phone = inputPhone.value;
+  userData.phone = phone;
 });
 
 inputDisplayName.addEventListener('input', () => {
   display_name = inputDisplayName.value;
+  userData.display_name = display_name;
 })
 
-/////////////
 inputOldPassword.addEventListener('input', () => {
   oldPassword = inputOldPassword.value;
+  userPasswords.oldPassword = oldPassword;
 })
 
 inputNewPassword.addEventListener('input', () => {
   newPassword = inputNewPassword.value;
+  userPasswords.newPassword = newPassword;
 })
 
 inputNewPasswordConfirm.addEventListener('input', () => {
   newPasswordConfirm = inputNewPasswordConfirm.value;
+  userPasswords.newPasswordConfirm = newPasswordConfirm;
 })
-/////////////
 
 editButton.addEventListener('click', () => {
   profileInfoBlock.classList.add('hide-field');
@@ -87,8 +107,7 @@ submitForm.addEventListener('submit', (event) => {
   inputPhone.readOnly = true;
   inputDisplayName.readOnly = true;
   saveButton.classList.add('hide-field')
-  console.log(`email: ${email}, login: ${login}, first_name: ${first_name},
-  second_name: ${second_name}, display_name: ${display_name}, phone: ${phone}`)
+  console.log(userData)
 })
 
 editPasswordButton.addEventListener('click', (event) => {
@@ -101,7 +120,7 @@ savePasswordForm.addEventListener('submit', (event) => {
   event.preventDefault();
   savePasswordForm.classList.add('hide-field');
   submitForm.classList.remove('hide-field');
-  console.log(`oldPassword: ${oldPassword}, newPassword: ${newPassword}, newPasswordConfirm: ${newPasswordConfirm}`)
+  console.log(userPasswords)
 })
 
 profileAvatarBlock.addEventListener('click', (event) => {

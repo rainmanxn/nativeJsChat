@@ -23,6 +23,39 @@ const mockMessages = `
     <div class="main-chat-messages-time">11:56</div>
   </li>
 `
+const mockData = [
+  {
+    name: 'Андрей',
+    message: 'Изображение',
+    time: '10:49',
+    newMessages: 2
+  },
+  {
+    name: 'Киноклуб',
+    message: 'Вы: Стикер',
+    time: '10:49',
+    newMessages: 0
+  },
+  {
+    name: 'Илья',
+    message: 'Друзья, у меня для вас особенный выпуск новостей!...',
+    time: '10:49',
+    newMessages: 4
+  },
+  {
+    name: 'Вадим',
+    message: 'Круто',
+    time: '10:49',
+    newMessages: 0
+  },
+  {
+    name: 'тет-а-теты',
+    message: 'И Human Interface Guidelines и Material Design рекомендуют...',
+    time: '10:49',
+    newMessages: 0
+  },
+];
+
 const createItem = (name, message, time, newMessages, id) => {
   const item = document.createElement('li');
   item.classList.add('chat-item-container')
@@ -31,7 +64,7 @@ const createItem = (name, message, time, newMessages, id) => {
     <div class="chat-item-container-left-block">
       <div class="chat-item-container-left-block-avatar"></div>
       <div class="chat-item-container-left-block-info">
-        <div class="chat-item-container-left-block-info-name">${name}</div>
+        <h3 class="chat-item-container-left-block-info-name">${name}</h3>
         <div class="chat-item-container-left-block-info-text">${message}</div>
       </div>
     </div>
@@ -68,40 +101,7 @@ const createItem = (name, message, time, newMessages, id) => {
   return item;
 }
 
-const data = [
-  {
-    name: 'Андрей',
-    message: 'Изображение',
-    time: '10:49',
-    newMessages: 2
-  },
-  {
-    name: 'Киноклуб',
-    message: 'Вы: Стикер',
-    time: '10:49',
-    newMessages: 0
-  },
-  {
-    name: 'Илья',
-    message: 'Друзья, у меня для вас особенный выпуск новостей!...',
-    time: '10:49',
-    newMessages: 4
-  },
-  {
-    name: 'Вадим',
-    message: 'Круто',
-    time: '10:49',
-    newMessages: 0
-  },
-  {
-    name: 'тет-а-теты',
-    message: 'И Human Interface Guidelines и Material Design рекомендуют...',
-    time: '10:49',
-    newMessages: 0
-  },
-];
-
-let newData = data;
+let newData = mockData;
 
 const list = document.querySelector('#list')
 

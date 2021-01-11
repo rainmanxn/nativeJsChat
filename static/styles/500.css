@@ -1,0 +1,23 @@
+.main-500-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #292957;
+}
+
+.main-500-left-block-text {
+  font-family: Inter, serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.main-500-right-block-img {
+  width: 373px;
+  height: 427px;
+}
