@@ -13,53 +13,53 @@
   <div class="login-container">
     <div class="register-block">
       <h1 class="login-header">РЕГИСТРАЦИЯ</h1>
-      <form id="submit">
+      <form class="register-form" id="submit">
         <div class="login-input">
-          <div class="field-name">Почта</div>
+          <span class="field-name">Почта</span>
           <label>
-            <input type="email" class="input-text" id="email">
+            <input type="email" name="email" class="input-text">
           </label>
         </div>
         <div class="login-input">
-          <div class="field-name">Логин</div>
+          <span class="field-name">Логин</span>
           <label>
-            <input type="text" class="input-text" id="userName">
+            <input type="text" name="login" class="input-text">
           </label>
         </div>
         <div class="login-input">
-          <div class="field-name">Имя</div>
+          <span class="field-name">Имя</span>
           <label>
-            <input type="text" class="input-text" id="firstName">
+            <input type="text" name="first_name" class="input-text">
           </label>
         </div>
         <div class="login-input">
-          <div class="field-name">Фамилия</div>
+          <span class="field-name">Фамилия</span>
           <label>
-            <input type="text" class="input-text" id="lastName">
+            <input type="text" name="second_name" class="input-text">
           </label>
         </div>
         <div class="login-input">
-          <div class="field-name">Телефон</div>
+          <span class="field-name">Телефон</span>
           <label>
-            <input type="tel" class="input-text" id="phone">
+            <input type="tel" name="phone" class="input-text">
           </label>
         </div>
         <div class="login-input">
-          <div class="field-name">Пароль</div>
+          <span class="field-name">Пароль</span>
           <label>
-            <input type="password" class="input-text" id="password">
+            <input type="password" name="password" class="input-text">
           </label>
         </div>
         <div class="login-input">
-          <div class="field-name">Пароль (еще раз)</div>
+          <span class="field-name">Пароль (еще раз)</span>
           <label>
-            <input type="password" class="input-text" id="passwordConfirm">
+            <input type="password" name="password_confirm" class="input-text">
           </label>
         </div>
-        <div class="error-message" id="errorMessage">Пароли не совпадают</div>
+        <span class="error-message" id="errorMessage">Пароли не совпадают</span>
         <button type="submit" class="submit-button submit-button__register">АВТОРИЗОВАТЬСЯ</button>
       </form>
-      <a href="./login.html" class="login-href">Войти</a>
+      <a href="../index.html" class="login-href">Войти</a>
     </div>
   </div>
 </main>

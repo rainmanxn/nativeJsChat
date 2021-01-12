@@ -12,6 +12,10 @@
   align-items: center;
 }
 
+.register-form {
+  margin-left: 30px;
+}
+
 .submit-button__register {
   margin-top: 35px;
 }
