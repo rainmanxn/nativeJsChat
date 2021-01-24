@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="ru">
 <head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
   <link rel="stylesheet" href="styles.css" />
   <meta charset="UTF-8">
   <meta name="viewport"
@@ -9,29 +10,7 @@
   <title>Login page</title>
 </head>
 <body>
-<main>
-  <div class="login-container">
-    <div class="login-block">
-      <h1 class="login-header">ВХОД</h1>
-      <form id="submit">
-        <div class="login-input">
-          <span class="field-name">Логин</span>
-          <label>
-            <input type="text" class="input-text" id="userName">
-          </label>
-        </div>
-        <div class="login-input">
-          <span class="field-name">Пароль</span>
-          <label>
-            <input type="password" class="input-text" id="password">
-          </label>
-        </div>
-        <button type="submit" class="submit-button submit-button__login">АВТОРИЗОВАТЬСЯ</button>
-      </form>
-      <a href="src/register.html" class="login-href">Нет аккаунта?</a>
-    </div>
-  </div>
-</main>
-<script src="src/scripts/login.js"></script>
+  <main></main>
+  <script type="module" src="src/scripts/login.js"></script>
 </body>
 </html>

@@ -1,3 +1,57 @@
+import { createAuthTemplate } from './createTemplate.js';
+
+const mainTag = document.querySelector('main')
+
+const templateData = {
+  containerClass: 'register-block',
+  headerName: 'РЕГИСТРАЦИЯ',
+  submitButtonClass: 'submit-button submit-button__register',
+  submitButtonName: 'ЗАРЕГИСТРИРОВАТЬСЯ',
+  linkSrc: '../index.html',
+  linkText: 'Войти',
+  fields: [
+    {
+      fieldName: 'Почта',
+      inputType: 'email',
+      inputName: 'email'
+    },
+    {
+      fieldName: 'Логин',
+      inputType: 'text',
+      inputName: 'login'
+    },
+    {
+      fieldName: 'Имя',
+      inputType: 'text',
+      inputName: 'first_name'
+    },
+    {
+      fieldName: 'Фамилия',
+      inputType: 'text',
+      inputName: 'second_name'
+    },
+    {
+      fieldName: 'Телефон',
+      inputType: 'tel',
+      inputName: 'phone'
+    },
+    {
+      fieldName: 'Пароль',
+      inputType: 'password',
+      inputName: 'password'
+    },
+    {
+      fieldName: 'Пароль (еще раз)',
+      inputType: 'password',
+      inputName: 'password_confirm'
+    }
+  ],
+  errorClass: 'error-message'
+}
+
+mainTag.innerHTML = createAuthTemplate(templateData);
+
+
 const inputElements = Array.from(document.querySelectorAll('.input-text'))
 const data = inputElements
   .reduce((acc, el) => {
@@ -8,8 +62,8 @@ const data = inputElements
     return acc
   }, {})
 
-const submitButton = document.getElementById('submit');
-const errorMessage = document.getElementById('errorMessage');
+const submitButton = document.querySelector('.register-form');
+const errorMessage = document.querySelector('.error-message');
 
 submitButton && submitButton.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -22,6 +76,14 @@ submitButton && submitButton.addEventListener('submit', (event) => {
       }
     })
     errorMessage && errorMessage.classList.add('error-message__show');
+  } else {
+    inputElements.forEach((element) => {
+      const { name } = element;
+      if (name === 'password' || name === 'password_confirm') {
+        element.classList.remove('incorrect');
+      }
+    })
+    errorMessage && errorMessage.classList.remove('error-message__show');
   }
   console.log(data)
 })
