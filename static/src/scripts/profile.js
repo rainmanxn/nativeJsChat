@@ -1,16 +1,22 @@
-const inputEmail = document.getElementById('email');
-const inputUserName = document.getElementById('login');
-const inputFirstName = document.getElementById('firstName');
-const inputLastName = document.getElementById('lastName');
-const inputPhone = document.getElementById('phone');
-const inputDisplayName = document.getElementById('displayName');
+import { createModalAvatarTemplate, createAvatarBlockTemplate } from './createTemplate.js'
+
+const profileBlock = document.querySelector('.profile-block');
+const avatarModal = document.getElementById('avatarModal');
+const compiledModalTemplate = createModalAvatarTemplate();
+avatarModal.innerHTML = compiledModalTemplate
+
+const avatarData = {
+  srcImg: '../img/icon-man.svg',
+  userName: 'Иван'
+}
+const compiledAvatarBlockTemplate = createAvatarBlockTemplate(avatarData)
+profileBlock.innerHTML = compiledAvatarBlockTemplate;
+console.log(compiledAvatarBlockTemplate)
+
 const submitForm = document.getElementById('submit');
 const editButton = document.getElementById('editButton');
 const saveButton = document.getElementById('saveButton');
 const editPasswordButton = document.getElementById('editPasswordButton');
-const inputOldPassword = document.getElementById('oldPassword');
-const inputNewPassword = document.getElementById('newPassword');
-const inputNewPasswordConfirm = document.getElementById('newPasswordConfirm');
 const savePasswordForm = document.getElementById('editPassword');
 const profileInfoBlock = document.getElementById('editBlock');
 const profileAvatarBlock = document.getElementById('profileAvatarBlock');
@@ -18,115 +24,66 @@ const modal = document.getElementById('modal');
 const modalOverlay = document.getElementById('modalOverlay');
 const backButton = document.querySelector('.back-button');
 
-let email = inputEmail.value;
-let login = inputUserName.value;
-let first_name = inputFirstName.value;
-let second_name = inputLastName.value;
-let display_name = inputDisplayName.value;
-let phone = inputPhone.value;
-let oldPassword = inputOldPassword.value;
-let newPassword = inputNewPassword.value;
-let newPasswordConfirm = inputNewPasswordConfirm.value;
-const userData = {
-  email,
-  login,
-  first_name,
-  second_name,
-  display_name,
-  phone
-};
-const userPasswords = {
-  oldPassword,
-  newPassword,
-  newPasswordConfirm,
-};
-
-inputEmail.addEventListener('input', () => {
-  email = inputEmail.value;
-  userData.email = email;
-});
-
-inputUserName.addEventListener('input', () => {
-  login = inputUserName.value;
-  userData.login = login;
-});
-
-inputFirstName.addEventListener('input', () => {
-  first_name = inputFirstName.value;
-  userData.first_name = first_name;
-});
-
-inputLastName.addEventListener('input', () => {
-  second_name = inputLastName.value;
-  userData.second_name = second_name;
-});
-
-inputPhone.addEventListener('input', () => {
-  phone = inputPhone.value;
-  userData.phone = phone;
-});
-
-inputDisplayName.addEventListener('input', () => {
-  display_name = inputDisplayName.value;
-  userData.display_name = display_name;
-})
-
-inputOldPassword.addEventListener('input', () => {
-  oldPassword = inputOldPassword.value;
-  userPasswords.oldPassword = oldPassword;
-})
-
-inputNewPassword.addEventListener('input', () => {
-  newPassword = inputNewPassword.value;
-  userPasswords.newPassword = newPassword;
-})
-
-inputNewPasswordConfirm.addEventListener('input', () => {
-  newPasswordConfirm = inputNewPasswordConfirm.value;
-  userPasswords.newPasswordConfirm = newPasswordConfirm;
-})
+const inputElements = Array.from(document.querySelectorAll('.profile-info-field-input'));
+const data = inputElements
+  .reduce((acc, el) => {
+    if (el) {
+      const { name, value } = el;
+      acc[name] = value;
+      el.addEventListener('input', (event) => {
+        data[name] = event.target.value;
+      });
+    }
+    return acc
+  }, {});
 
 editButton.addEventListener('click', () => {
   profileInfoBlock.classList.add('hide-field');
-  inputEmail.readOnly = false;
-  inputUserName.readOnly = false;
-  inputFirstName.readOnly = false;
-  inputLastName.readOnly = false;
-  inputPhone.readOnly = false;
-  inputDisplayName.readOnly = false;
+  inputElements.forEach((el, i) => {
+    if (el.type !== 'password') {
+      el.readOnly = false
+    }
+  })
   saveButton.classList.remove('hide-field')
 });
 
 submitForm.addEventListener('submit', (event) => {
   event.preventDefault();
   profileInfoBlock.classList.remove('hide-field');
-  inputEmail.readOnly = true;
-  inputUserName.readOnly = true;
-  inputFirstName.readOnly = true;
-  inputLastName.readOnly = true;
-  inputPhone.readOnly = true;
-  inputDisplayName.readOnly = true;
+  const submitData = inputElements.reduce((acc, el) => {
+    if (el.type !== 'password') {
+      el.readOnly = true
+      const { name, value } = el;
+      acc[name] = value;
+    }
+    return acc
+  }, {})
   saveButton.classList.add('hide-field')
-  console.log(userData)
-})
+  console.log(submitData)
+});
 
 editPasswordButton.addEventListener('click', (event) => {
-  console.log('3213')
   savePasswordForm.classList.remove('hide-field');
   submitForm.classList.add('hide-field');
-})
+});
 
 savePasswordForm.addEventListener('submit', (event) => {
   event.preventDefault();
   savePasswordForm.classList.add('hide-field');
   submitForm.classList.remove('hide-field');
+  const userPasswords = inputElements.reduce((acc, { name, value, type }, i) => {
+    if (type === 'password') {
+      acc[name] = value;
+    }
+    return acc
+  }, {})
   console.log(userPasswords)
-})
+});
 
 profileAvatarBlock.addEventListener('click', (event) => {
   modal.classList.toggle("remove-field");
   modalOverlay.classList.toggle("remove-field");
-})
+});
 
 modalOverlay.addEventListener("click", function() {
   modal.classList.toggle("remove-field");

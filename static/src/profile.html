@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="ru">
 <head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
   <link rel="stylesheet" href="../styles.css" />
   <meta charset="UTF-8">
   <meta name="viewport"
@@ -11,11 +12,7 @@
 <body>
   <main>
     <div class="modal-overlay remove-field" id="modalOverlay"></div>
-    <div class="modal remove-field" id="modal">
-      <div class="modal-header">Загрузите файл</div>
-      <a href="#" class="modal-link">Выбрать файл на компьютере</a>
-      <button class="submit-button submit-button__modal-overlay">ПОМЕНЯТЬ</button>
-    </div>
+    <div id="avatarModal"></div>
     <div class="profile-container">
       <div class="profile-left-side">
         <div class="back-button">
@@ -24,53 +21,53 @@
       </div>
       <div class="profile-right-side">
         <div class="profile-block">
-          <div class="profile-avatar-block" id="profileAvatarBlock">
-            <div class="profile-avatar-line"></div>
-            <div class="profile-avatar">
-              <div class="profile-avatar-hover">
-                <div class="profile-avatar-text">Поменять аватар</div>
-              </div>
-              <img src="../img/icon-man.svg" class="profile-avatar-icon" alt="profile-avatar-icon">
-            </div>
-          </div>
-          <h2 class="profile-user-name">
-             Иван
-          </h2>
+<!--          <div class="profile-avatar-block" id="profileAvatarBlock">-->
+<!--            <div class="profile-avatar-line"></div>-->
+<!--            <div class="profile-avatar">-->
+<!--              <div class="profile-avatar-hover">-->
+<!--                <div class="profile-avatar-text">Поменять аватар</div>-->
+<!--              </div>-->
+<!--              <img src="../img/icon-man.svg" class="profile-avatar-icon" alt="profile-avatar-icon">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <h2 class="profile-user-name">-->
+<!--             Иван-->
+<!--          </h2>-->
           <form id="submit" class="profile-info-block">
             <div class="profile-info-item">
               <span class="profile-info-field-name">Почта</span>
               <label>
-                <input type="email" readonly class="profile-info-field-input" id="email" value="pochta@yandex.ru">
+                <input type="email" readonly class="profile-info-field-input" name="email" value="pochta@yandex.ru">
               </label>
             </div>
             <div class="profile-info-item">
               <span class="profile-info-field-name">Логин</span>
               <label>
-                <input type="text" readonly class="profile-info-field-input" id="login" value="ivanivanov">
+                <input type="text" readonly class="profile-info-field-input" name="login" value="ivanivanov">
               </label>
             </div>
             <div class="profile-info-item">
               <span class="profile-info-field-name">Имя</span>
               <label>
-                <input type="text" readonly class="profile-info-field-input" id="firstName" value="Иван">
+                <input type="text" readonly class="profile-info-field-input" name="firstName" value="Иван">
               </label>
             </div>
             <div class="profile-info-item">
               <span class="profile-info-field-name">Фамилия</span>
               <label>
-                <input type="text" readonly class="profile-info-field-input" id="lastName" value="Иванов">
+                <input type="text" readonly class="profile-info-field-input" name="lastName" value="Иванов">
               </label>
             </div>
             <div class="profile-info-item">
               <span class="profile-info-field-name">Имя в чате</span>
               <label>
-                <input type="text" readonly class="profile-info-field-input" id="displayName" value="Иван">
+                <input type="text" readonly class="profile-info-field-input" name="displayName" value="Иван">
               </label>
             </div>
             <div class="profile-info-item">
               <span class="profile-info-field-name">Телефон</span>
               <label>
-                <input type="tel" readonly class="profile-info-field-input" id="phone" value="+7 (909) 967 30 30">
+                <input type="tel" readonly class="profile-info-field-input" name="phone" value="+7 (909) 967 30 30">
               </label>
             </div>
             <div class="profile-info-block">
@@ -92,19 +89,19 @@
             <div class="profile-info-item">
               <div class="profile-info-field-name">Старый пароль</div>
               <label>
-                <input type="password" class="profile-info-field-input" id="oldPassword" value="1111">
+                <input type="password" class="profile-info-field-input" name="oldPassword" value="1111">
               </label>
             </div>
             <div class="profile-info-item">
               <div class="profile-info-field-name">Новый пароль</div>
               <label>
-                <input type="password" class="profile-info-field-input" id="newPassword" value="22222222">
+                <input type="password" class="profile-info-field-input" name="newPassword" value="22222222">
               </label>
             </div>
             <div class="profile-info-item">
               <div class="profile-info-field-name">Повторите новый пароль</div>
               <label>
-                <input type="password" class="profile-info-field-input" id="newPasswordConfirm" value="22222222">
+                <input type="password" class="profile-info-field-input" name="newPasswordConfirm" value="22222222">
               </label>
             </div>
             <button type="submit" id="savePasswordButton" class="submit-button submit-button__edit-password">СОХРАНИТЬ</button>
@@ -113,6 +110,6 @@
       </div>
     </div>
   </main>
-  <script src="scripts/profile.js"></script>
+  <script type="module" src="scripts/profile.js"></script>
 </body>
 </html>
