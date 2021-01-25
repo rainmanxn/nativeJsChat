@@ -22,7 +22,7 @@ export const createAuthTemplate = data => {
   </div>
 `
   return compile(template)(data)
-}
+};
 
 export const createModalAvatarTemplate = data => {
   const template = `
@@ -33,7 +33,7 @@ export const createModalAvatarTemplate = data => {
     </div>
   `
   return compile(template)(data)
-}
+};
 
 export const createAvatarBlockTemplate = data => {
   const template = `
@@ -51,7 +51,7 @@ export const createAvatarBlockTemplate = data => {
     </h2>
   `
   return compile(template)(data)
-}
+};
 
 export const createProfileInfoTemplate = data => {
   const template = `
@@ -77,7 +77,7 @@ export const createProfileInfoTemplate = data => {
     </form>
   `
   return compile(template)(data)
-}
+};
 
 export const createChangePasswordTemplate = data => {
   const template = `
@@ -94,16 +94,163 @@ export const createChangePasswordTemplate = data => {
     </form>
   `
   return compile(template)(data)
-}
+};
 
+export const createMainLeftBlockTemplate = data => {
+  const template = `
+    <a href="{{profileLink}}" class="main-left-block-profile-link">
+      Профиль &gt;
+    </a>
+    <input type="text" class="main-left-block-find" placeholder="Поиск">
+     <ul id="list">
+      {{#each chats}}
+        <li class="chat-item-container" id="{{itemId}}">
+          <div class="chat-item-container-left-block">
+            <div class="chat-item-container-left-block-avatar"></div>
+            <div class="chat-item-container-left-block-info">
+              <h3 class="chat-item-container-left-block-info-name">{{name}}</h3>
+              <div class="chat-item-container-left-block-info-text">{{message}}</div>
+            </div>
+          </div>
+          <div class="chat-item-container-right-block">
+            <div class="chat-item-container-right-block-top">
+              <div class="time">{{time}}</div>
+              <img src="../img/close.svg" class="close-button" alt="close-button">
+            </div>
+            <div class="ellipse-count-messages">
+              <div class="ellipse-count-messages-text">{{newMessages}}</div>
+            </div>
+          </div>
+        </li>
+      {{/each}}
+     </ul>
+  `
+  return compile(template)(data)
+};
 
-// `<div class="modal remove-modal" id="modalAddUser">
-//   <div class="modal-header">Добавить пользователя</div>
-//   <div class="login-input login-input__modal-header">
-//     <div class="field-name">Логин</div>
-//     <label>
-//       <input type="text" class="input-text" id="userNameAddUser">
-//     </label>
-//   </div>
-//   <button class="submit-button submit-button__modal-header" id="addUserButton">ДОБАВИТЬ</button>
-// </div>`
+export const createMessagesTemplate = data => {
+  const template = `
+    <li class="main-chat-messages-date">
+      19 июня
+    </li>
+    {{#each messages}}
+      {{#if opponentMessage}}
+        <li class="main-chat-messages-opponent-text">
+          {{opponentMessage}}
+          <div class="main-chat-messages-time">{{time}}</div>
+        </li>
+      {{else}}
+        <li class="main-chat-messages-user-text">
+          {{myMessage}}
+          <img src="../../img/2checks.svg" class="two-checks" alt="two-checks">
+          <div class="main-chat-messages-time">{{time}}</div>
+        </li>
+      {{/if}}
+    {{/each}}    
+  `
+  return compile(template)(data)
+};
+
+export const createAddRemoveModalsTemplate = data => {
+  const template = `
+    {{#each modals}}
+      <div class="modal remove-modal" id="{{modalId}}">
+        <div class="modal-header">{{modalText}}</div>
+        <div class="login-input login-input__modal-header">
+          <div class="field-name">{{fieldName}}</div>
+          <label>
+            <input type="text" class="input-text" id="{{inputId}}">
+          </label>
+        </div>
+        <button class="submit-button submit-button__modal-header" id="{{buttonId}}">{{buttonName}}</button>
+      </div>
+    {{/each}} 
+  `
+  return compile(template)(data)
+};
+
+export const createConfirmModalsTemplate = data => {
+  const template = `
+    <div class="modal remove-modal" id="modalDeleteUserConfirm">
+      <div class="modal-header">
+        Вы уверены, что хотите удалить пользователя {{name}}?
+      </div>
+      <div class="modal-buttons-container">
+        <button class="submit-button submit-button-confirm" id="deleteUserButtonConfirm">УДАЛИТЬ</button>
+        <button class="submit-button-cancel" id="deleteUserButtonCancel">ОТМЕНА</button>
+      </div>
+    </div>
+  `
+  return compile(template)(data)
+};
+
+export const createMainHeaderTemplate = data => {
+  const template = `
+    <nav class="main-right-block-header">
+      <div class="main-right-block-header-left-block">
+        <div class="left-block-avatar"></div>
+        <div class="left-block-name">{{name}}</div>
+      </div>
+      <div class="three-dots-container">
+        <img src="../img/3dots.svg" alt="3-dots" class="three-dots">
+      </div>
+    </nav>
+  `
+  return compile(template)(data)
+};
+
+export const createMainChatContainerTemplate = data => {
+  const template = `
+    <div class="main-chat-container">
+      <ul class="main-chat-messages"></ul>
+    </div>
+  `
+  return compile(template)(data)
+};
+
+export const createMainFooterTemplate  = data => {
+  const template = `
+    <div class="main-chat-footer">
+      <button class="clip" id="clipButton">
+        <img src="../img/clip.svg" alt="clip">
+      </button>
+      <input type="text" class="main-chat-footer-input" placeholder="Сообщение">
+      <button class="main-chat-footer-submit-button">
+      </button>
+    </div>
+  `
+  return compile(template)(data)
+};
+
+export const createThreeDotsModalTemplate  = data => {
+  const template = `
+    <div class="modal-edit-user remove-modal">
+      {{#each modals}}
+        <div class="modal-edit-user-item" id="{{modalId}}">
+          <button class="clip">
+            <img src="{{iconSrc}}" alt="">
+          </button>
+          <div class="modal-edit-user-item-text">{{buttonName}}</div>
+        </div>
+      {{/each}}
+    </div>
+  `
+  return compile(template)(data)
+};
+
+export const createClipModalTemplate = data => {
+  const template = `
+    <div class="modal-clip remove-modal">
+      {{#each modals}}
+        <div class="modal-edit-user-item" id="{{modalId}}">
+          <button class="clip">
+            <img src="{{iconSrc}}" alt="">
+          </button>
+          <div class="modal-edit-user-item-text">{{buttonName}}</div>
+        </div>
+      {{/each}}
+    </div>
+  `
+  return compile(template)(data)
+};
+
