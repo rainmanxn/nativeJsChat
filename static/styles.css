@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 @import "styles/reset.css";
 @import "src/components/Login/styles.css";
-@import "styles/register.css";
-@import "styles/profile.css";
-@import "styles/main.css";
-@import "styles/404.css";
-@import "styles/500.css";
+@import "src/components/Register/styles.css";
+@import "src/components/Profile/styles.css";
+@import "src/components/Main/styles.css";
+@import "src/components/404/styles.css";
+@import "src/components/500/styles.css";
