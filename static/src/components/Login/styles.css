@@ -1,0 +1,96 @@
+.login-container {
+  background-image: linear-gradient(66.16deg, rgba(34, 34, 72, 0.8) 40.46%, rgba(34, 34, 72, 0) 92.42%), url('../../../img/auth-background.jpg');
+  width: 100%;
+  height: 100vh;
+}
+
+.login-block {
+  width: 340px;
+  height: 450px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(29.56deg, rgba(33, 32, 63, 0.5) 2.24%, rgba(75, 85, 115, 0.5) 96.45%);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-header {
+  font-family: Inter, serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+  color: #FFFFFF;
+  margin-top: 50px;
+  margin-bottom: 24px;
+}
+
+.login-input {
+  width: 280px;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: 1px solid;
+  border-image: linear-gradient(to right, rgba(118, 52, 150, 1), rgba(223, 53, 155, 1)) 99% 3%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+
+.field-name {
+  font-family: Inter, serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 9px;
+  line-height: 9px;
+  color: #BCBAD8;
+  margin-bottom: 8px;
+}
+
+.input-text {
+  margin-bottom: 7px;
+  background: none;
+  border: none;
+  outline:none;
+  font-family: Inter, serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  color: #FFFFFF;
+}
+
+.submit-button {
+  width: 280px;
+  height: 37px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(89.86deg, #763496 2.79%, #DF359B 99.89%);
+  font-family: Inter, serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 13px;
+  text-align: center;
+  color: #FFFFFF;
+  outline: none;
+}
+
+.submit-button__login {
+  margin-top: 83px;
+}
+
+.login-href {
+  text-decoration:none;
+  font-family: Inter, serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 11px;
+  color: #FFFFFF;
+  margin-top: 14px;
+}

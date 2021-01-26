@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 @import "styles/reset.css";
-@import "styles/login.css";
+@import "src/components/Login/styles.css";
 @import "styles/register.css";
 @import "styles/profile.css";
 @import "styles/main.css";

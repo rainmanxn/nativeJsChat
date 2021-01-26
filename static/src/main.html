@@ -10,16 +10,107 @@
   <title>Chat</title>
 </head>
 <body>
-  <main class="main-container">
-    <div class="modal-overlay remove-field" id="modalOverlay"></div>
-    <div class="main-left-block"></div>
-
-    <div class="main-right-block">
-      <div class="main-right-block-empty-text">Выберите чат, чтобы отправить сообщение</div>
-      <div class="main-right-block-container remove-modal"></div>
-    </div>
-
-  </main>
-  <script type="module" src="scripts/main.js"></script>
+  <script type="module" src="components/Main/index.js"></script>
 </body>
 </html>
+
+<main class="main-container">
+  <div class="modal-overlay remove-field" id="modalOverlay"></div>
+  <div class="main-left-block">
+    <a href="profile.html" class="main-left-block-profile-link">
+      Профиль &gt;
+    </a>
+    <input type="text" class="main-left-block-find" placeholder="Поиск">
+    <ul id="list">
+    </ul>
+  </div>
+
+  <div class="main-right-block">
+    <div class="main-right-block-empty-text">Выберите чат, чтобы отправить сообщение</div>
+    <div class="main-right-block-container remove-modal">
+      <div class="modal remove-modal" id="modalDeleteUser">
+        <div class="modal-header">Удалить пользователя</div>
+        <div class="login-input login-input__modal-header">
+          <div class="field-name">Логин</div>
+          <label>
+            <input type="text" class="input-text" id="userName">
+          </label>
+        </div>
+        <button class="submit-button submit-button__modal-header" id="deleteUserButton">УДАЛИТЬ</button>
+      </div>
+      <div class="modal remove-modal" id="modalAddUser">
+        <div class="modal-header">Добавить пользователя</div>
+        <div class="login-input login-input__modal-header">
+          <div class="field-name">Логин</div>
+          <label>
+            <input type="text" class="input-text" id="userNameAddUser">
+          </label>
+        </div>
+        <button class="submit-button submit-button__modal-header" id="addUserButton">ДОБАВИТЬ</button>
+      </div>
+      <div class="modal remove-modal" id="modalDeleteUserConfirm">
+        <div class="modal-header">
+          Вы уверены, что хотите удалить пользователя ivanivanov?
+        </div>
+        <div class="modal-buttons-container">
+          <button class="submit-button submit-button-confirm" id="deleteUserButtonConfirm">УДАЛИТЬ</button>
+          <button class="submit-button-cancel" id="deleteUserButtonCancel">ОТМЕНА</button>
+        </div>
+      </div>
+      <nav class="main-right-block-header">
+        <div class="main-right-block-header-left-block">
+          <div class="left-block-avatar"></div>
+          <div class="left-block-name">Вадим</div>
+        </div>
+        <div class="three-dots-container">
+          <img src="../img/3dots.svg" alt="3-dots" class="three-dots">
+        </div>
+      </nav>
+      <div class="main-chat-container">
+        <ul class="main-chat-messages"></ul>
+      </div>
+      <div class="main-chat-footer">
+        <button class="clip" id="clipButton">
+          <img src="../img/clip.svg" alt="clip">
+        </button>
+        <input type="text" class="main-chat-footer-input" placeholder="Сообщение">
+        <button class="main-chat-footer-submit-button">
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-edit-user remove-modal">
+    <div class="modal-edit-user-item" id="threeDotsAddUser">
+      <button class="clip">
+        <img src="../img/iconadd.svg" alt="">
+      </button>
+      <div class="modal-edit-user-item-text">Добавить пользователя</div>
+    </div>
+    <div class="modal-edit-user-item" id="threeDotsDeleteUser">
+      <button class="clip">
+        <img src="../img/icon-delete.svg" alt="">
+      </button>
+      <div class="modal-edit-user-item-text">Удалить пользователя</div>
+    </div>
+  </div>
+  <div class="modal-clip remove-modal">
+    <div class="modal-edit-user-item" id="photoSend">
+      <button class="clip">
+        <img src="../img/photo-icon.svg" alt="">
+      </button>
+      <div class="modal-edit-user-item-text">Фото или Видео</div>
+    </div>
+    <div class="modal-edit-user-item" id="fileSend">
+      <button class="clip">
+        <img src="../img/file-icon.svg" alt="">
+      </button>
+      <div class="modal-edit-user-item-text">Файл</div>
+    </div>
+    <div class="modal-edit-user-item" id="locationSend">
+      <button class="clip">
+        <img src="../img/location-icon.svg" alt="">
+      </button>
+      <div class="modal-edit-user-item-text">Файл</div>
+    </div>
+  </div>
+</main>
