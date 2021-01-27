@@ -1,7 +1,7 @@
-const { compile } = window.Handlebars;
+// @ts-ignore
 import { template } from './template.js';
-
-const profileTemplate = compile(template);
+import templator from "../../utils/templator.js";
+import { InputElement } from '../../interfaces/index.js'
 
 const profileData = {
   srcImg: '../img/icon-man.svg',
@@ -80,7 +80,7 @@ const profileData = {
 }
 
 const mainTag = document.querySelector('body');
-mainTag.innerHTML = profileTemplate(profileData);
+mainTag.innerHTML = templator(template, profileData);
 
 
 
@@ -98,12 +98,13 @@ const backButton = document.querySelector('.back-button');
 
 const inputElements = Array.from(document.querySelectorAll('.profile-info-field-input'));
 const data = inputElements
-  .reduce((acc, el) => {
+  .reduce((acc: object, el: InputElement) => {
     if (el) {
       const { name, value } = el;
       acc[name] = value;
-      el.addEventListener('input', (event) => {
-        data[name] = event.target.value;
+      el.addEventListener('input', (event: KeyboardEvent) => {
+        const { value } = <HTMLInputElement>event.target;
+        data[name] = value;
       });
     }
     return acc
@@ -111,7 +112,7 @@ const data = inputElements
 
 editButton.addEventListener('click', () => {
   profileInfoBlock.classList.add('hide-field');
-  inputElements.forEach((el, i) => {
+  inputElements.forEach((el: InputElement) => {
     if (el.type !== 'password') {
       el.readOnly = false
     }
@@ -119,10 +120,10 @@ editButton.addEventListener('click', () => {
   saveButton.classList.remove('hide-field')
 });
 
-submitForm.addEventListener('submit', (event) => {
+submitForm.addEventListener('submit', (event: Event) => {
   event.preventDefault();
   profileInfoBlock.classList.remove('hide-field');
-  const submitData = inputElements.reduce((acc, el) => {
+  const submitData = inputElements.reduce((acc: object, el: InputElement) => {
     if (el.type !== 'password') {
       el.readOnly = true
       const { name, value } = el;
@@ -134,16 +135,16 @@ submitForm.addEventListener('submit', (event) => {
   console.log(submitData)
 });
 
-editPasswordButton.addEventListener('click', (event) => {
+editPasswordButton.addEventListener('click', () => {
   savePasswordForm.classList.remove('hide-field');
   submitForm.classList.add('hide-field');
 });
 
-savePasswordForm.addEventListener('submit', (event) => {
+savePasswordForm.addEventListener('submit', (event: Event) => {
   event.preventDefault();
   savePasswordForm.classList.add('hide-field');
   submitForm.classList.remove('hide-field');
-  const userPasswords = inputElements.reduce((acc, { name, value, type }, i) => {
+  const userPasswords = inputElements.reduce((acc: object, { name, value, type }: InputElement) => {
     if (type === 'password') {
       acc[name] = value;
     }
@@ -152,7 +153,7 @@ savePasswordForm.addEventListener('submit', (event) => {
   console.log(userPasswords)
 });
 
-profileAvatarBlock.addEventListener('click', (event) => {
+profileAvatarBlock.addEventListener('click', () => {
   modal.classList.toggle("remove-field");
   modalOverlay.classList.toggle("remove-field");
 });

@@ -32,7 +32,7 @@
   height: 32px;
   margin: 23px 0 14px auto;
   border: 1px solid #DF359B;
-  background: url('../img/union.svg') no-repeat scroll 10px 10px;
+  background: url('../../../img/union.svg') no-repeat scroll 10px 10px;
   padding-left:30px;
   border-radius: 5px;
   outline: none;
@@ -293,7 +293,7 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background-image: url('../img/submitbutton.svg');
+  background-image: url('../../../img/submitbutton.svg');
   outline: none;
   border: none;
 }

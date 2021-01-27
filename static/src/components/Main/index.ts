@@ -1,8 +1,5 @@
-const { compile } = window.Handlebars;
 import { template, messagesTemplate } from './template.js';
-
-const mainTemplate = compile(template);
-const createMessagesTemplate = compile(messagesTemplate);
+import templator from "../../utils/templator.js";
 
 const mainData = {
   profileLink: 'profile.html',
@@ -112,15 +109,14 @@ const messagesData = {
 }
 
 const mainTag = document.querySelector('body');
-mainTag.innerHTML = mainTemplate(mainData);
-const compiledMessagesTemplate = createMessagesTemplate(messagesData);
+mainTag.innerHTML = templator(template, mainData);
 
 
 
 const mainRightBlockContainer = document.querySelector('.main-right-block-container');
 const mainChatMessages = document.querySelector('.main-chat-messages ');
 const mainRightBlockEmptyText = document.querySelector('.main-right-block-empty-text');
-let activeItemId = -1;
+let activeItemId = '-1';
 
 const chatItems = document.querySelectorAll('.chat-item-container');
 [...chatItems].forEach(el => {
@@ -128,13 +124,13 @@ const chatItems = document.querySelectorAll('.chat-item-container');
     const id = el.id;
     mainRightBlockEmptyText.classList.add('remove-modal');
     mainRightBlockContainer.classList.remove('remove-modal');
-    if (activeItemId !== -1) {
+    if (activeItemId !== '-1') {
       const activeItem = document.getElementById(`${activeItemId}`);
       activeItem.classList.remove('active-item')
     }
     activeItemId = id;
     el.classList.add('active-item');
-    mainChatMessages.innerHTML = compiledMessagesTemplate;
+    mainChatMessages.innerHTML = templator(messagesTemplate, messagesData);
   })
 })
 

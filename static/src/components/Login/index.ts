@@ -1,8 +1,8 @@
-const { compile } = window.Handlebars;
 import { template } from './template.js';
+import templator from "../../utils/templator.js";
+import { InputElement, FormDataType } from '../../interfaces/index.js'
 
-const loginTemplate = compile(template);
-const data = {
+const data: object = {
   containerClass: 'login-block',
   headerName: 'ВХОД',
   submitButtonClass: 'submit-button submit-button__login',
@@ -23,25 +23,22 @@ const data = {
   errorClass: 'error-message'
 };
 
-const mainTag = document.querySelector('body');
-mainTag.innerHTML = loginTemplate(data);
+const mainTag: HTMLElement = document.querySelector('body');
+mainTag.innerHTML = templator(template, data);
 
-
-
-
-const inputElements = Array.from(document.querySelectorAll('.input-text'))
-const formData = inputElements
-  .reduce((acc, el) => {
+const inputElements: InputElement[] = Array.from(document.querySelectorAll('.input-text'))
+const formData: FormDataType = inputElements
+  .reduce((acc: object, el: InputElement) => {
     el && el.addEventListener('input', () => {
       const { name, value } = el;
       acc[name] = value;
     });
     return acc
   }, {})
-const submitButton = document.querySelector('form');
+const submitButton: HTMLElement = document.querySelector('form');
 
 
-submitButton && submitButton.addEventListener('submit', (event) => {
+submitButton && submitButton.addEventListener('submit', (event: Event) => {
   event.preventDefault();
   console.log(formData)
 })

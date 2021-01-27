@@ -1,8 +1,9 @@
-const { compile } = window.Handlebars;
+import mountTemplate from "../../utils/mountTemplate.js";
+import { InputElement, FormDataType } from '../../interfaces/index.js'
+// @ts-ignore
 import { template } from './template.js';
 
-const loginTemplate = compile(template);
-const data = {
+const data: object = {
   containerClass: 'register-block',
   headerName: 'РЕГИСТРАЦИЯ',
   submitButtonClass: 'submit-button submit-button__register',
@@ -49,17 +50,12 @@ const data = {
   errorClass: 'error-message'
 };
 
-const mainTag = document.querySelector('body');
-mainTag.innerHTML = loginTemplate(data);
+mountTemplate('body', template, data)
 
 
-
-
-
-
-const inputElements = Array.from(document.querySelectorAll('.input-text'))
-const formData = inputElements
-  .reduce((acc, el) => {
+const inputElements: InputElement[] = Array.from(document.querySelectorAll('.input-text'))
+const formData: FormDataType = inputElements
+  .reduce((acc: object, el: InputElement) => {
     el && el.addEventListener('input', () => {
       const { name, value } = el;
       acc[name] = value;
@@ -74,7 +70,7 @@ submitButton && submitButton.addEventListener('submit', (event) => {
   event.preventDefault();
   const { password, password_confirm } = formData;
   if (password !== password_confirm) {
-    inputElements.forEach((element) => {
+    inputElements.forEach((element: InputElement) => {
       const { name } = element;
       if (name === 'password' || name === 'password_confirm') {
         element.classList.add('incorrect');
@@ -82,7 +78,7 @@ submitButton && submitButton.addEventListener('submit', (event) => {
     })
     errorMessage && errorMessage.classList.add('error-message__show');
   } else {
-    inputElements.forEach((element) => {
+    inputElements.forEach((element: InputElement) => {
       const { name } = element;
       if (name === 'password' || name === 'password_confirm') {
         element.classList.remove('incorrect');
