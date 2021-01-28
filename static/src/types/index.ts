@@ -6,6 +6,6 @@ export interface Events {
 }
 
 export type TemplatePropsContext = {
-  tagName?: string;
-  [key: string]: string;
+  tagName: string;
+  [key: string]: unknown;
 };

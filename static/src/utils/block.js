@@ -1,6 +1,6 @@
 import EventBus from "./eventBus.js";
 class Block {
-    constructor(tagName = "div", props = {}) {
+    constructor(tagName = 'div', props) {
         this._element = null;
         this._meta = null;
         this.setProps = nextProps => {

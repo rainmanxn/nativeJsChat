@@ -1,5 +1,5 @@
 import EventBus from "./eventBus.js";
-import { Events } from "../types/index.js"
+import {Events, TemplatePropsContext} from "../types/index.js"
 
 class Block {
   static EVENTS: Events = {
@@ -13,9 +13,9 @@ class Block {
   _meta = null;
 
   eventBus: EventBus;
-  props: any;
+  props: TemplatePropsContext;
 
-  constructor(tagName: String = "div", props: any = {}) {
+  constructor(tagName: string = 'div', props?: TemplatePropsContext) {
     const eventBus = new EventBus();
     this._meta = {
       tagName,
