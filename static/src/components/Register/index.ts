@@ -1,15 +1,10 @@
-import mountTemplate from "../../utils/mountTemplate.js";
 import { InputElement, FormDataType } from '../../interfaces/index.js'
-// @ts-ignore
 import { template } from './template.js';
+import Block from "../../utils/block.js";
+import templator from "../../utils/templator.js";
+import render from "../../utils/render.js";
 
 const data: object = {
-  containerClass: 'register-block',
-  headerName: 'РЕГИСТРАЦИЯ',
-  submitButtonClass: 'submit-button submit-button__register',
-  submitButtonName: 'ЗАРЕГИСТРИРОВАТЬСЯ',
-  linkSrc: '../index.html',
-  linkText: 'Войти',
   fields: [
     {
       fieldName: 'Почта',
@@ -46,12 +41,19 @@ const data: object = {
       inputType: 'password',
       inputName: 'password_confirm'
     }
-  ],
-  errorClass: 'error-message'
+  ]
 };
 
-mountTemplate('body', template, data)
+class Register extends Block {
+  constructor(props?) {
+    super('main', props);
+  }
+  render(): string {
+    return templator(template, this.props)
+  }
+}
 
+render('body', new Register(data))
 
 const inputElements: InputElement[] = Array.from(document.querySelectorAll('.input-text'))
 const formData: FormDataType = inputElements

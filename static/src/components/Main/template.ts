@@ -2,7 +2,7 @@ export const template = `
   <main class="main-container">
     <div class="modal-overlay remove-field" id="modalOverlay"></div>
     <div class="main-left-block">
-      <a href="{{profileLink}}" class="main-left-block-profile-link">
+      <a href="profile.html" class="main-left-block-profile-link">
         Профиль &gt;
       </a>
       <input type="text" class="main-left-block-find" placeholder="Поиск">

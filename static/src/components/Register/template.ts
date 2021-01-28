@@ -1,7 +1,7 @@
 export const template = `
     <div class="login-container">
-    <div class="{{containerClass}}">
-      <h1 class="login-header">{{headerName}}</h1>
+    <div class="register-block">
+      <h1 class="login-header">РЕГИСТРАЦИЯ</h1>
       <form class="register-form" id="submit">
         {{#each fields}}
           <div class="login-input">
@@ -11,10 +11,10 @@ export const template = `
             </label>
           </div>
         {{/each}}
-        <span class="{{errorClass}}"">Пароли не совпадают</span>
-        <button type="submit" class="{{submitButtonClass}}">{{submitButtonName}}</button>
+        <span class="error-message"">Пароли не совпадают</span>
+        <button type="submit" class="submit-button submit-button__register">ЗАРЕГИСТРИРОВАТЬСЯ</button>
       </form>
-      <a href="{{linkSrc}}" class="login-href">{{linkText}}</a>
+      <a href="login.html" class="login-href">Войти</a>
     </div>
   </div>
 `

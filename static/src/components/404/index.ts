@@ -1,8 +1,16 @@
 import { template } from './template.js';
 import templator from "../../utils/templator.js";
-import mountTemplate from "../../utils/mountTemplate";
+import Block from "../../utils/block.js";
+import render from "../../utils/render.js";
 
-mountTemplate('body', template)
+class ErrorPage extends Block {
+  constructor(props?) {
+    super('div', props);
+  }
+  render(): string {
+    return templator(template)
+  }
+}
 
-const mainTag: HTMLElement = document.querySelector('body');
-mainTag.innerHTML = templator(template);
+const errorPageContent: Block = new ErrorPage();
+render('body', errorPageContent)

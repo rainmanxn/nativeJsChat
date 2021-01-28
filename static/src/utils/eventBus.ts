@@ -5,7 +5,7 @@ class EventBus {
     this.listeners = {};
   }
 
-  on(event: string, callback: void): void {
+  on(event: string, callback: (oldProps, newProps) => boolean): void {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }

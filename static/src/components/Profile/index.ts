@@ -1,7 +1,8 @@
-// @ts-ignore
 import { template } from './template.js';
 import templator from "../../utils/templator.js";
 import { InputElement } from '../../interfaces/index.js'
+import Block from "../../utils/block.js";
+import render from "../../utils/render.js";
 
 const profileData = {
   srcImg: '../img/icon-man.svg',
@@ -79,11 +80,16 @@ const profileData = {
   ]
 }
 
-const mainTag = document.querySelector('body');
-mainTag.innerHTML = templator(template, profileData);
+class Profile extends Block {
+  constructor(props?) {
+    super('main', props);
+  }
+  render(): string {
+    return templator(template, this.props)
+  }
+}
 
-
-
+render('body', new Profile(profileData))
 
 const submitForm = document.getElementById('submit');
 const editButton = document.getElementById('editButton');

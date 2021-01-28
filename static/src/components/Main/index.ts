@@ -1,8 +1,9 @@
 import { template, messagesTemplate } from './template.js';
 import templator from "../../utils/templator.js";
+import Block from "../../utils/block.js";
+import render from "../../utils/render.js";
 
 const mainData = {
-  profileLink: 'profile.html',
   chats: [
     {
       name: 'Андрей',
@@ -106,15 +107,30 @@ const messagesData = {
       time: '11:57'
     }
   ],
+};
+
+class Main extends Block {
+  constructor(props?) {
+    super('main', props);
+  }
+  render(): string {
+    return templator(template, this.props)
+  }
 }
 
-const mainTag = document.querySelector('body');
-mainTag.innerHTML = templator(template, mainData);
+class Messages extends Block {
+  constructor(props?) {
+    super('div', props);
+  }
+  render(): string {
+    return templator(messagesTemplate, this.props)
+  }
+}
 
-
+render('body', new Main(mainData));
 
 const mainRightBlockContainer = document.querySelector('.main-right-block-container');
-const mainChatMessages = document.querySelector('.main-chat-messages ');
+const mainChatMessages = document.querySelector('.main-chat-messages');
 const mainRightBlockEmptyText = document.querySelector('.main-right-block-empty-text');
 let activeItemId = '-1';
 
@@ -130,7 +146,7 @@ const chatItems = document.querySelectorAll('.chat-item-container');
     }
     activeItemId = id;
     el.classList.add('active-item');
-    mainChatMessages.innerHTML = templator(messagesTemplate, messagesData);
+    render('.main-chat-messages', new Messages(messagesData));
   })
 })
 
