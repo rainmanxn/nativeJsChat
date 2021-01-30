@@ -102,61 +102,61 @@ const data = inputElements
     .reduce((acc, el) => {
     if (el) {
         const { name, value } = el;
-        acc[name] = value;
+        name && (acc[name] = value);
         el.addEventListener('input', (event) => {
             const { value } = event.target;
-            data[name] = value;
+            name && (data[name] = value);
         });
     }
     return acc;
 }, {});
-editButton.addEventListener('click', () => {
-    profileInfoBlock.classList.add('hide-field');
+editButton && editButton.addEventListener('click', () => {
+    profileInfoBlock && profileInfoBlock.classList.add('hide-field');
     inputElements.forEach((el) => {
         if (el.type !== 'password') {
             el.readOnly = false;
         }
     });
-    saveButton.classList.remove('hide-field');
+    saveButton && saveButton.classList.remove('hide-field');
 });
-submitForm.addEventListener('submit', (event) => {
+submitForm && submitForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    profileInfoBlock.classList.remove('hide-field');
+    profileInfoBlock && profileInfoBlock.classList.remove('hide-field');
     const submitData = inputElements.reduce((acc, el) => {
         if (el.type !== 'password') {
             el.readOnly = true;
             const { name, value } = el;
-            acc[name] = value;
+            name && (acc[name] = value);
         }
         return acc;
     }, {});
-    saveButton.classList.add('hide-field');
+    saveButton && saveButton.classList.add('hide-field');
     console.log(submitData);
 });
-editPasswordButton.addEventListener('click', () => {
-    savePasswordForm.classList.remove('hide-field');
-    submitForm.classList.add('hide-field');
+editPasswordButton && editPasswordButton.addEventListener('click', () => {
+    savePasswordForm && savePasswordForm.classList.remove('hide-field');
+    submitForm && submitForm.classList.add('hide-field');
 });
-savePasswordForm.addEventListener('submit', (event) => {
+savePasswordForm && savePasswordForm.addEventListener('submit', (event) => {
     event.preventDefault();
     savePasswordForm.classList.add('hide-field');
-    submitForm.classList.remove('hide-field');
+    submitForm && submitForm.classList.remove('hide-field');
     const userPasswords = inputElements.reduce((acc, { name, value, type }) => {
         if (type === 'password') {
-            acc[name] = value;
+            name && (acc[name] = value);
         }
         return acc;
     }, {});
     console.log(userPasswords);
 });
-profileAvatarBlock.addEventListener('click', () => {
-    modal.classList.toggle("remove-field");
+profileAvatarBlock && profileAvatarBlock.addEventListener('click', () => {
+    modal && modal.classList.toggle("remove-field");
+    modalOverlay && modalOverlay.classList.toggle("remove-field");
+});
+modalOverlay && modalOverlay.addEventListener("click", function () {
+    modal && modal.classList.toggle("remove-field");
     modalOverlay.classList.toggle("remove-field");
 });
-modalOverlay.addEventListener("click", function () {
-    modal.classList.toggle("remove-field");
-    modalOverlay.classList.toggle("remove-field");
-});
-backButton.addEventListener('click', () => {
+backButton && backButton.addEventListener('click', () => {
     history.back();
 });

@@ -1,9 +1,7 @@
 import EventBus from "./eventBus.js";
 class Block {
     constructor(tagName = 'div', props) {
-        this._element = null;
-        this._meta = null;
-        this.setProps = nextProps => {
+        this.setProps = (nextProps) => {
             if (!nextProps) {
                 return;
             }
@@ -26,6 +24,7 @@ class Block {
             this._componentDidUpdate(oldProps, newProps);
         });
         eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
+        eventBus.on(Block.EVENTS.MOUNT, this._mount.bind(this));
     }
     _createResources() {
         const { tagName } = this._meta;
@@ -39,7 +38,7 @@ class Block {
         this.componentDidMount();
         this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
     }
-    componentDidMount(oldProps) { }
+    componentDidMount(_oldProps) { }
     _componentDidUpdate(oldProps, newProps) {
         const response = this.componentDidUpdate(oldProps, newProps);
         if (response) {
@@ -49,15 +48,29 @@ class Block {
         else {
             return false;
         }
+        // const response = this.componentDidUpdate(oldProps, newProps);
+        //
+        // console.log('update', { response, oldProps, newProps });
+        //
+        // if (response) {
+        //   this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
+        // }
+        //
+        // return response;
     }
-    componentDidUpdate(oldProps, newProps) {
+    componentDidUpdate(_oldProps, _newProps) {
         return true;
     }
     get element() {
         return this._element;
     }
+    mount() { }
+    _mount() {
+        this.mount();
+    }
     _render() {
         this._element.innerHTML = this.render();
+        this.eventBus.emit(Block.EVENTS.MOUNT);
     }
     render() { }
     getContent() {
@@ -65,20 +78,23 @@ class Block {
     }
     _makePropsProxy(props) {
         const self = this;
-        return new Proxy(props, {
-            get(target, prop) {
-                const value = target[prop];
-                return typeof value === "function" ? value.bind(target) : value;
-            },
-            set(target, prop, value) {
-                target[prop] = value;
-                self.eventBus.emit(Block.EVENTS.FLOW_CDU, Object.assign({}, target), target);
-                return true;
-            },
-            deleteProperty() {
-                throw new Error('Нет доступа');
-            }
-        });
+        if (props) {
+            return new Proxy(props, {
+                get(target, prop) {
+                    const value = target[prop];
+                    return typeof value === "function" ? value.bind(target) : value;
+                },
+                set(target, prop, value) {
+                    target[prop] = value;
+                    self.eventBus.emit(Block.EVENTS.FLOW_CDU, Object.assign({}, target), target);
+                    return true;
+                },
+                deleteProperty() {
+                    throw new Error('Нет доступа');
+                }
+            });
+        }
+        return this.props;
     }
     _createDocumentElement(tagName) {
         return document.createElement(tagName);
@@ -94,6 +110,7 @@ Block.EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
     FLOW_CDU: "flow:component-did-update",
-    FLOW_RENDER: "flow:render"
+    FLOW_RENDER: "flow:render",
+    MOUNT: 'mount'
 };
 export default Block;

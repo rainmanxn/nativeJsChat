@@ -124,18 +124,17 @@ class Messages extends Block {
 }
 render('body', new Main(mainData));
 const mainRightBlockContainer = document.querySelector('.main-right-block-container');
-const mainChatMessages = document.querySelector('.main-chat-messages');
 const mainRightBlockEmptyText = document.querySelector('.main-right-block-empty-text');
 let activeItemId = '-1';
 const chatItems = document.querySelectorAll('.chat-item-container');
 [...chatItems].forEach(el => {
     el.addEventListener('click', () => {
         const id = el.id;
-        mainRightBlockEmptyText.classList.add('remove-modal');
-        mainRightBlockContainer.classList.remove('remove-modal');
+        mainRightBlockEmptyText && mainRightBlockEmptyText.classList.add('remove-modal');
+        mainRightBlockContainer && mainRightBlockContainer.classList.remove('remove-modal');
         if (activeItemId !== '-1') {
             const activeItem = document.getElementById(`${activeItemId}`);
-            activeItem.classList.remove('active-item');
+            activeItem && activeItem.classList.remove('active-item');
         }
         activeItemId = id;
         el.classList.add('active-item');
@@ -156,40 +155,40 @@ const deleteUserButtonConfirm = document.querySelector('#deleteUserButtonConfirm
 const deleteUserButtonCancel = document.querySelector('#deleteUserButtonCancel');
 const addUserButton = document.querySelector('#addUserButton');
 const clipButton = document.querySelector('#clipButton');
-threeDotsDeleteUser.addEventListener('click', () => {
-    modalDeleteUser.classList.toggle("remove-modal");
-    modalOverlay.classList.toggle("remove-field");
+threeDotsDeleteUser && threeDotsDeleteUser.addEventListener('click', () => {
+    modalDeleteUser && modalDeleteUser.classList.toggle("remove-modal");
+    modalOverlay && modalOverlay.classList.toggle("remove-field");
 });
-modalOverlay.addEventListener('click', () => {
+modalOverlay && modalOverlay.addEventListener('click', () => {
     modalOverlay.classList.toggle("remove-field");
-    modalDeleteUser.classList.add("remove-modal");
-    modalAddUser.classList.add("remove-modal");
-    modalDeleteUserConfirm.classList.add("remove-modal");
+    modalDeleteUser && modalDeleteUser.classList.add("remove-modal");
+    modalAddUser && modalAddUser.classList.add("remove-modal");
+    modalDeleteUserConfirm && modalDeleteUserConfirm.classList.add("remove-modal");
 });
-threeDotsContainer.addEventListener('click', () => {
-    modalEditUser.classList.toggle("remove-modal");
+threeDotsContainer && threeDotsContainer.addEventListener('click', () => {
+    modalEditUser && modalEditUser.classList.toggle("remove-modal");
     threeDotsContainer.classList.toggle("three-dots-container-add-background");
 });
-deleteUserButton.addEventListener('click', () => {
-    modalDeleteUser.classList.add("remove-modal");
-    modalDeleteUserConfirm.classList.toggle("remove-modal");
+deleteUserButton && deleteUserButton.addEventListener('click', () => {
+    modalDeleteUser && modalDeleteUser.classList.add("remove-modal");
+    modalDeleteUserConfirm && modalDeleteUserConfirm.classList.toggle("remove-modal");
 });
-deleteUserButtonConfirm.addEventListener('click', () => {
-    modalOverlay.classList.toggle("remove-field");
-    modalDeleteUserConfirm.classList.toggle("remove-modal");
+deleteUserButtonConfirm && deleteUserButtonConfirm.addEventListener('click', () => {
+    modalOverlay && modalOverlay.classList.toggle("remove-field");
+    modalDeleteUserConfirm && modalDeleteUserConfirm.classList.toggle("remove-modal");
 });
-deleteUserButtonCancel.addEventListener('click', () => {
-    modalOverlay.classList.toggle("remove-field");
-    modalDeleteUserConfirm.classList.toggle("remove-modal");
+deleteUserButtonCancel && deleteUserButtonCancel.addEventListener('click', () => {
+    modalOverlay && modalOverlay.classList.toggle("remove-field");
+    modalDeleteUserConfirm && modalDeleteUserConfirm.classList.toggle("remove-modal");
 });
-threeDotsAddUser.addEventListener('click', () => {
-    modalOverlay.classList.toggle("remove-field");
-    modalAddUser.classList.toggle("remove-modal");
+threeDotsAddUser && threeDotsAddUser.addEventListener('click', () => {
+    modalOverlay && modalOverlay.classList.toggle("remove-field");
+    modalAddUser && modalAddUser.classList.toggle("remove-modal");
 });
-addUserButton.addEventListener('click', () => {
-    modalOverlay.classList.toggle("remove-field");
-    modalAddUser.classList.toggle("remove-modal");
+addUserButton && addUserButton.addEventListener('click', () => {
+    modalOverlay && modalOverlay.classList.toggle("remove-field");
+    modalAddUser && modalAddUser.classList.toggle("remove-modal");
 });
-clipButton.addEventListener('click', () => {
-    modalClip.classList.toggle("remove-modal");
+clipButton && clipButton.addEventListener('click', () => {
+    modalClip && modalClip.classList.toggle("remove-modal");
 });

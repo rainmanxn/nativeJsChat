@@ -3,17 +3,25 @@ export const template = `
     <div class="login-block">
       <h1 class="login-header">ВХОД</h1>
       <form class="register-form" id="submit">
-        {{#each fields}}
           <div class="login-input">
-            <span class="field-name">{{fieldName}}</span>
+            <span class="field-name">Логин</span>
             <label>
-              <input type="{{inputType}}" class="input-text" name="{{inputName}}">
+              <input type="text" class="input-text" name="login" value="{{loginValue}}">
             </label>
           </div>
-        {{/each}}
+          <span class="error-message {{loginError}}" id="loginError">Укажите валидный email</span>
+          <div class="login-input">
+            <span class="field-name">Пароль</span>
+            <label>
+              <input type="password" class="input-text" name="password"  value="{{passwordValue}}">
+            </label>
+          </div>
+          <span class="error-message {{passwordError}}" id="passwordError">Пароль должен быть не меньше 6 символов, 
+          содержать не менее 1 строчной, заглавной буквы и спецсимвол</span>
         <button type="submit" class="submit-button submit-button__login">АВТОРИЗОВАТЬСЯ</button>
       </form>
       <a href="register.html" class="login-href">Нет аккаунта?</a>
     </div>
   </div>
 `
+

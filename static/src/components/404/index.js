@@ -10,5 +10,4 @@ class ErrorPage extends Block {
         return templator(template);
     }
 }
-const errorPageContent = new ErrorPage();
-render('body', errorPageContent);
+render('body', new ErrorPage());

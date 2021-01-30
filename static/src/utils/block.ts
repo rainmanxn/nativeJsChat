@@ -6,17 +6,18 @@ class Block {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
     FLOW_CDU: "flow:component-did-update",
-    FLOW_RENDER: "flow:render"
+    FLOW_RENDER: "flow:render",
+    MOUNT: 'mount'
   };
 
-  _element: HTMLElement = null;
-  _meta = null;
+  _element: HTMLElement;
+  _meta: TemplatePropsContext
 
   eventBus: EventBus;
   props: TemplatePropsContext;
 
   constructor(tagName: string = 'div', props?: TemplatePropsContext) {
-    const eventBus = new EventBus();
+    const eventBus: EventBus = new EventBus();
     this._meta = {
       tagName,
       props
@@ -30,13 +31,14 @@ class Block {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  _registerEvents(eventBus) {
+  _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
-    eventBus.on(Block.EVENTS.FLOW_CDU, (oldProps, newProps) => {
+    eventBus.on(Block.EVENTS.FLOW_CDU, (oldProps: TemplatePropsContext, newProps: TemplatePropsContext): any => {
       this._componentDidUpdate(oldProps, newProps)
     });
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
+    eventBus.on(Block.EVENTS.MOUNT, this._mount.bind(this));
   }
 
   _createResources() {
@@ -52,39 +54,55 @@ class Block {
   _componentDidMount() {
     this.componentDidMount();
     this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
-
   }
 
-  componentDidMount(oldProps?) {}
+  componentDidMount(_oldProps?: TemplatePropsContext) {}
 
-  _componentDidUpdate(oldProps, newProps): boolean {
-    const response = this.componentDidUpdate(oldProps, newProps);
+  _componentDidUpdate(oldProps: TemplatePropsContext, newProps: TemplatePropsContext): boolean {
+    const response: boolean = this.componentDidUpdate(oldProps, newProps);
     if(response){
       this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
       return true;
     } else {
       return false;
     }
+    // const response = this.componentDidUpdate(oldProps, newProps);
+    //
+    // console.log('update', { response, oldProps, newProps });
+    //
+    // if (response) {
+    //   this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
+    // }
+    //
+    // return response;
   }
 
-  componentDidUpdate(oldProps, newProps): boolean {
+  componentDidUpdate(_oldProps?: TemplatePropsContext, _newProps?: TemplatePropsContext): boolean {
     return true;
   }
 
-  setProps = nextProps => {
+  setProps = (nextProps?: TemplatePropsContext) => {
     if (!nextProps) {
       return;
     }
 
-    Object.assign(this.props, nextProps);
+    <any>Object.assign(this.props, nextProps);
   };
 
   get element() {
     return this._element;
   }
 
+  mount() {}
+
+  _mount() {
+    this.mount();
+  }
+
   _render() {
     this._element.innerHTML = this.render();
+
+    this.eventBus.emit(Block.EVENTS.MOUNT);
   }
 
   render(): string | any {}
@@ -93,26 +111,30 @@ class Block {
     return this.element;
   }
 
-  _makePropsProxy(props) {
+  _makePropsProxy(props?: TemplatePropsContext) {
     const self = this;
 
-    return new Proxy(props, {
-      get(target, prop){
-        const value = target[prop];
-        return typeof value === "function" ? value.bind(target) : value;
-      },
-      set(target, prop, value){
-        target[prop] = value;
-        self.eventBus.emit(Block.EVENTS.FLOW_CDU, {...target}, target);
-        return true;
-      },
-      deleteProperty() {
-        throw new Error('Нет доступа');
-      }
-    })
+    if (props) {
+      return new Proxy(props, {
+        get(target: TemplatePropsContext, prop: string){
+          const value = target[prop];
+          return typeof value === "function" ? value.bind(target) : value;
+        },
+        set(target: TemplatePropsContext, prop: string, value){
+          target[prop] = value;
+          self.eventBus.emit(Block.EVENTS.FLOW_CDU, {...target}, target);
+          return true;
+        },
+        deleteProperty() {
+          throw new Error('Нет доступа');
+        }
+      })
+    }
+
+    return this.props;
   }
 
-  _createDocumentElement(tagName) {
+  _createDocumentElement(tagName: any) {
     return document.createElement(tagName);
   }
 
@@ -126,3 +148,4 @@ class Block {
 }
 
 export default Block;
+

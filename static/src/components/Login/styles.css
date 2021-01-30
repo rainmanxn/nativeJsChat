@@ -38,7 +38,7 @@
   border-image: linear-gradient(to right, rgba(118, 52, 150, 1), rgba(223, 53, 155, 1)) 99% 3%;
   display: flex;
   flex-direction: column;
-  margin-top: 16px;
+  margin-top: 0;
 }
 
 .field-name {

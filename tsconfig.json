@@ -1,34 +1,16 @@
 {
   "compilerOptions": {
-    "noImplicitAny": false,
+    "target": "es6",
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "alwaysStrict": true,
+//    "sourceMap": true,
+    "strictNullChecks": true,
     "noEmitOnError": true,
     "removeComments": false,
-//    "sourceMap": true,
-    "target": "es2015",
-//    "outDir": "dist"
-//    "target": "es6",
-//    "removeComments": true,
-//    "outDir": "ts-built",
-//    "rootDir": "static/src"
     "watch": true
   },
-//  "files": [
-//    "static/src/utils/templator.ts",
-//    "static/src/utils/mountTemplate.ts",
-//    "static/src/interfaces/index.ts",
-//    "static/src/components/404/index.ts",
-//    "static/src/components/404/template.ts",
-//    "static/src/components/500/index.ts",
-//    "static/src/components/500/template.ts",
-//    "static/src/components/Login/index.ts",
-//    "static/src/components/Login/template.ts",
-//    "static/src/components/Register/index.ts",
-//    "static/src/components/Register/template.ts",
-//    "static/src/components/Profile/index.ts",
-//    "static/src/components/Profile/template.ts",
-//    "static/src/components/Main/index.ts",
-//    "static/src/components/Main/template.ts"
-//  ],
   "include": [
     "static/src",
     "node_modules/handlebars/types/"

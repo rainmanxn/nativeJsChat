@@ -1,92 +1,43 @@
-import { InputElement, FormDataType } from '../../interfaces/index.js'
+import { InputElement } from '../../interfaces/index.js'
 import { template } from './template.js';
 import Block from "../../utils/block.js";
 import templator from "../../utils/templator.js";
 import render from "../../utils/render.js";
+import { TemplatePropsContext } from "../../types/index.js";
+import { submitRegisterFunction, validationFunction } from "../../utils/listenersFunctions.js";
 
 const data: object = {
-  fields: [
-    {
-      fieldName: 'Почта',
-      inputType: 'email',
-      inputName: 'email'
-    },
-    {
-      fieldName: 'Логин',
-      inputType: 'text',
-      inputName: 'login'
-    },
-    {
-      fieldName: 'Имя',
-      inputType: 'text',
-      inputName: 'first_name'
-    },
-    {
-      fieldName: 'Фамилия',
-      inputType: 'text',
-      inputName: 'second_name'
-    },
-    {
-      fieldName: 'Телефон',
-      inputType: 'tel',
-      inputName: 'phone'
-    },
-    {
-      fieldName: 'Пароль',
-      inputType: 'password',
-      inputName: 'password'
-    },
-    {
-      fieldName: 'Пароль (еще раз)',
-      inputType: 'password',
-      inputName: 'password_confirm'
-    }
-  ]
+  emailValue: '',
+  loginValue: '',
+  firstNameValue: '',
+  secondNameValue: '',
+  phoneValue: '',
+  passwordValue: '',
+  passwordConfirmValue: '',
+  emailError: '',
+  loginError: '',
+  firstNameError: '',
+  secondNameError: '',
+  phoneError: '',
+  passwordError: '',
+  passwordConfirmError: '',
 };
 
 class Register extends Block {
-  constructor(props?) {
+  constructor(props?: TemplatePropsContext) {
     super('main', props);
   }
+
+  mount() {
+    const inputElements: InputElement[] = Array.from(this.element.querySelectorAll('.input-text'))
+    const submitButton: HTMLElement | null = document.querySelector('form');
+    validationFunction(inputElements, this)
+    submitButton && submitRegisterFunction(submitButton, this.props)
+  }
+
   render(): string {
     return templator(template, this.props)
   }
 }
 
 render('body', new Register(data))
-
-const inputElements: InputElement[] = Array.from(document.querySelectorAll('.input-text'))
-const formData: FormDataType = inputElements
-  .reduce((acc: object, el: InputElement) => {
-    el && el.addEventListener('input', () => {
-      const { name, value } = el;
-      acc[name] = value;
-    });
-    return acc
-  }, {})
-
-const submitButton = document.querySelector('.register-form');
-const errorMessage = document.querySelector('.error-message');
-
-submitButton && submitButton.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const { password, password_confirm } = formData;
-  if (password !== password_confirm) {
-    inputElements.forEach((element: InputElement) => {
-      const { name } = element;
-      if (name === 'password' || name === 'password_confirm') {
-        element.classList.add('incorrect');
-      }
-    })
-    errorMessage && errorMessage.classList.add('error-message__show');
-  } else {
-    inputElements.forEach((element: InputElement) => {
-      const { name } = element;
-      if (name === 'password' || name === 'password_confirm') {
-        element.classList.remove('incorrect');
-      }
-    })
-    errorMessage && errorMessage.classList.remove('error-message__show');
-  }
-  console.log(formData)
-})

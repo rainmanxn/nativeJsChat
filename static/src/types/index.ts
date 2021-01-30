@@ -3,9 +3,13 @@ export interface Events {
   FLOW_CDM: string,
   FLOW_CDU: string,
   FLOW_RENDER: string,
+  MOUNT: string
 }
 
 export type TemplatePropsContext = {
-  tagName: string;
-  [key: string]: unknown;
+  [key: string]: any;
+};
+
+export type ListenerType = {
+  [key: string]: any[];
 };
