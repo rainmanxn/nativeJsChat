@@ -65,4 +65,4 @@ export const template = `
       <a href="login.html" class="login-href">Войти</a>
     </div>
   </div>
-`
+`;

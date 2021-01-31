@@ -22,5 +22,4 @@ export const template = `
       <a href="register.html" class="login-href">Нет аккаунта?</a>
     </div>
   </div>
-`
-
+`;

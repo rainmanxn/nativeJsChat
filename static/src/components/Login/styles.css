@@ -1,5 +1,5 @@
 .login-container {
-  background-image: linear-gradient(66.16deg, rgba(34, 34, 72, 0.8) 40.46%, rgba(34, 34, 72, 0) 92.42%), url('../../../img/auth-background.jpg');
+  background-image: linear-gradient(66.16deg, rgba(34, 34, 72, 0.8) 40.46%, rgba(34, 34, 72, 0) 92.42%), url('../../../dist/img/auth-background.jpg');
   width: 100%;
   height: 100vh;
 }

@@ -101,7 +101,7 @@ class Block {
 
   _render() {
     this._element.innerHTML = this.render();
-
+    // this._mount()
     this.eventBus.emit(Block.EVENTS.MOUNT);
   }
 

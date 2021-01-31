@@ -1,15 +1,18 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "outDir": "static/dist",
+    "module": "es2015",
+    "target": "es2017",
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "alwaysStrict": true,
-//    "sourceMap": true,
+    //    "sourceMap": true,
     "strictNullChecks": true,
     "noEmitOnError": true,
-    "removeComments": false,
-    "watch": true
+    "removeComments": true,
+    "watch": true,
+    "baseUrl": "src"
   },
   "include": [
     "static/src",

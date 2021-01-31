@@ -38,3 +38,8 @@
 .error-message__show {
   visibility: visible;
 }
+
+.error-profile-message {
+  position: absolute;
+  right: 150px;
+}

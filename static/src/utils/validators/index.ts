@@ -9,9 +9,12 @@ const validators: {[index: string]:any} = {
   login: validateLogin,
   firstName: validateName,
   secondName: validateName,
+  displayName: validateName,
   phone: validatePhone,
   password: validatePassword,
-  passwordConfirm: validatePassword
+  passwordConfirm: validatePassword,
+  oldPassword: validatePassword,
+  newPassword: validatePassword,
 }
 
 export default validators;

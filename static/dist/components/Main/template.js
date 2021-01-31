@@ -104,8 +104,7 @@ export const template = `
     </div>
 
   </main>
-`
-
+`;
 export const messagesTemplate = `
     <li class="main-chat-messages-date">
       19 июня
@@ -124,4 +123,4 @@ export const messagesTemplate = `
         </li>
       {{/if}}
     {{/each}} 
-`
+`;

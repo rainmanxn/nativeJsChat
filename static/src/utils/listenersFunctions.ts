@@ -9,6 +9,7 @@ export const validationFunction = (element: InputElement[], component: Block) =>
     .forEach((el: InputElement): void => {
       el && el.addEventListener('blur', () => {
         const { value, name } = el;
+        console.log(name, value)
         if (name === 'passwordConfirm') {
           if (value === component.props.passwordValue) {
             setProps(component, false, name, value)
@@ -62,6 +63,45 @@ export const submitRegisterFunction = (element: HTMLElement, props: TemplateProp
       firstNameValue,
       secondNameValue,
       phoneValue,
+      passwordValue,
+      passwordConfirmValue
+    })
+  })
+}
+
+export const submitEditFunction = (element: HTMLElement, props: TemplatePropsContext) => {
+  element.addEventListener('submit', (event: Event) => {
+    event.preventDefault();
+    const {
+      emailValue,
+      loginValue,
+      firstNameValue,
+      secondNameValue,
+      displayNameValue,
+      phoneValue,
+      oldPasswordValue,
+      passwordValue,
+      passwordConfirmValue
+    } = props;
+
+    const isValid =
+      validators.login(loginValue)
+      && validators.email(emailValue)
+      && validators.firstName(firstNameValue)
+      && validators.secondName(secondNameValue)
+      && validators.secondName(displayNameValue)
+      && validators.phone(phoneValue)
+      && validators.password(oldPasswordValue)
+      && validators.password(passwordValue)
+      && validators.passwordConfirm(passwordConfirmValue)
+    isValid && console.log({
+      emailValue,
+      loginValue,
+      firstNameValue,
+      secondNameValue,
+      displayNameValue,
+      phoneValue,
+      oldPasswordValue,
       passwordValue,
       passwordConfirmValue
     })
