@@ -5,7 +5,6 @@ export const validationFunction = (element, component) => {
         .forEach((el) => {
         el && el.addEventListener('blur', () => {
             const { value, name } = el;
-            console.log(name, value);
             if (name === 'passwordConfirm') {
                 if (value === component.props.passwordValue) {
                     setProps(component, false, name, value);

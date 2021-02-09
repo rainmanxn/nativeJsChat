@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./server.js",
-    "ts": "tsc -t es6"
+    "ts": "tsc -t es2017"
   },
   "repository": {
     "type": "git",

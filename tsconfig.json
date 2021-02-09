@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "static/dist",
-    "module": "es2015",
+    // "module": "es2017",
     "target": "es2017",
     "noImplicitAny": true,
     "noUnusedLocals": true,
@@ -15,7 +15,7 @@
     "baseUrl": "src"
   },
   "include": [
-    "static/src",
+    "src",
     "node_modules/handlebars/types/"
   ]
 }
