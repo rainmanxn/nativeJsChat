@@ -5,7 +5,7 @@ import { TemplatePropsContext } from "../../types/index.js";
 import { mainData, messagesData } from "./data.js";
 import {SEND_BUTTON} from "../../constants/buttonClasses.js";
 import {Button} from "../../components/Button/index.js";
-import Block from 'lib/block.js';
+import Block from '../../lib/block.js';
 
 const sendMessageButtonProps = {
   type: 'button',

@@ -1,12 +1,13 @@
 import { template } from './template.js';
 import templator from "../../utils/templator.js";
 import { InputElement } from '../../interfaces/index.js'
-import render from "../../utils/render.js";
-import { TemplatePropsContext } from "../../types/index.js";
+// import render from "../../utils/render.js";
+// import { TemplatePropsContext } from "../../types/index.js";
 import { submitFunction, validationFunction } from "../../utils/listenersFunctions.js";
 import { SUBMIT_BUTTON } from "../../constants/buttonClasses.js";
 import { Button } from "../../components/Button/index.js";
-import Block from 'lib/block.js';
+import Block from '../../lib/block.js';
+import {router} from "../../lib/Router/Router.js";
 
 const buttonProps = {
   type: 'submit',
@@ -25,9 +26,9 @@ const data: object = {
   buttonSignUp: SubmitButton.getContent().innerHTML
 };
 
-class Login extends Block {
-  constructor(props?: TemplatePropsContext) {
-    super('main', props);
+export class Login extends Block {
+  constructor() {
+    super('div', data);
   }
 
   mount() {
@@ -35,6 +36,11 @@ class Login extends Block {
     const submitButton: HTMLElement | null = document.querySelector('form');
     validationFunction(inputElements, this);
     submitButton && submitFunction(submitButton, this.props);
+    const linkButton: HTMLElement | null = this._element.querySelector('.login-href');
+    linkButton && linkButton.addEventListener('click', () => {
+      router.go('/register')
+    })
+    console.log('linkButton', linkButton)
     // render('#submit', SubmitButton);
   }
 
@@ -44,7 +50,7 @@ class Login extends Block {
 
 }
 
-const LoginPage = new Login(data);
+// export const LoginPage = new Login(data);
 
-render('body', LoginPage)
+// render('body', LoginPage)
 // render('#submit', SubmitButton)

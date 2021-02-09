@@ -1,12 +1,12 @@
 import { InputElement } from '../../interfaces/index.js'
 import { template } from './template.js';
 import templator from "../../utils/templator.js";
-import render from "../../utils/render.js";
-import { TemplatePropsContext } from "../../types/index.js";
+// import render from "../../utils/render.js";
+// import { TemplatePropsContext } from "../../types/index.js";
 import { submitRegisterFunction, validationFunction } from "../../utils/listenersFunctions.js";
 import { Button } from '../../components/Button/index.js';
 import { SUBMIT_BUTTON_REGISTER } from '../../constants/buttonClasses.js';
-import Block from 'lib/block.js';
+import Block from '../../lib/block.js';
 
 const buttonProps = {
   type: 'submit',
@@ -31,11 +31,12 @@ const data: object = {
   phoneError: '',
   passwordError: '',
   passwordConfirmError: '',
+  buttonSignUp: SubmitButton.getContent().innerHTML
 };
 
-class Register extends Block {
-  constructor(props?: TemplatePropsContext) {
-    super('main', props);
+export class Register extends Block {
+  constructor() {
+    super('main', data);
   }
 
   mount() {
@@ -43,7 +44,7 @@ class Register extends Block {
     const submitButton: HTMLElement | null = document.querySelector('form');
     validationFunction(inputElements, this);
     submitButton && submitRegisterFunction(submitButton, this.props);
-    render('#submit', SubmitButton);
+    // render('#submit', SubmitButton);
   }
 
   render(): string {
@@ -51,5 +52,5 @@ class Register extends Block {
   }
 }
 
-render('body', new Register(data));
-render('#submit', SubmitButton);
+// render('body', new Register(data));
+// render('#submit', SubmitButton);

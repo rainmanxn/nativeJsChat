@@ -2,7 +2,7 @@ import { template } from './template.js';
 import templator from "../../utils/templator.js";
 import render from "../../utils/render.js";
 import { TemplatePropsContext } from "../../types/index.js";
-import Block from 'lib/block.js';
+import Block from '../../lib/block.js';
 
 class ErrorPage extends Block {
   constructor(props?: TemplatePropsContext) {

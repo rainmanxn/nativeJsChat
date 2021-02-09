@@ -1,7 +1,7 @@
 import { TemplatePropsContext } from 'types/index.js';
-import isEqual from 'utils/isEqual.js'
-import render from 'utils/render.js';
-import Block from 'lib/block.js';
+import isEqual from '../../utils/isEqual.js'
+import render from '../../utils/render.js';
+import Block from '../../lib/block.js';
 
 type BlockClass = new (tag?: string, props?: TemplatePropsContext) => Block;
 type PropsType = {
@@ -41,10 +41,11 @@ export class Route {
   render(): void {
     if (!this._block) {
       this._block = new this._blockClass();
+      console.log('this._block ', this._block)
       render(this._props.rootQuery, this._block);
       return;
     }
-
+    console.log('this._block ', this._block)
     this._block.show();
   }
 }
@@ -71,6 +72,7 @@ export class Router {
 
   use(pathname: string, block: BlockClass): this {
     const route = new Route(pathname, block, { rootQuery: this._rootQuery });
+    console.log(route)
     this.routes.push(route);
     return this;
   }
@@ -84,6 +86,8 @@ export class Router {
 
   _onRoute(pathname: string): void {
     const route = this.getRoute(pathname);
+    // console.log('route', route)
+    console.log('this._currentRoute', this._currentRoute)
     if (!route) {
       return
     }

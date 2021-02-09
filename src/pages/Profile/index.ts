@@ -6,7 +6,7 @@ import { TemplatePropsContext } from "../../types/index.js";
 import { submitEditFunction, validationFunction } from "../../utils/listenersFunctions.js";
 import { EDIT_BUTTON } from "../../constants/buttonClasses.js";
 import { Button } from "../../components/Button/index.js";
-import Block from 'lib/block.js';
+import Block from '../../lib/block.js';
 
 const profileData = {
   srcImg: '../img/icon-man.svg',

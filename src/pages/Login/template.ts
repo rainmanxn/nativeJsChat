@@ -20,7 +20,7 @@ export const template = `
           содержать не менее 1 строчной, заглавной буквы и спецсимвол</span>
           {{SLOT buttonSignUp }}
       </form>
-      <a href="register.html" class="login-href">Нет аккаунта?</a>
+      <a class="login-href">Нет аккаунта?</a>
     </div>
   </div>
 `

@@ -2,7 +2,7 @@
 
 import { buttonTemplate } from './template.js';
 import templator from "../../utils/templator.js";
-import Block from 'lib/block.js';
+import Block from '../../lib/block.js';
 
 type ButtonProps = {
   type: string,

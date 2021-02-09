@@ -96,6 +96,7 @@ class Block {
   mount() { }
 
   _mount() {
+    // console.log(this._element.querySelector('.loginButton'))
     this.mount();
   }
 

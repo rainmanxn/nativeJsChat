@@ -2,7 +2,7 @@ import { InputElement } from "../interfaces/index.js";
 import validators from "./validators/index.js";
 import { TemplatePropsContext } from "../types/index.js";
 import setProps from "./setProps.js";
-import Block from "lib/block.js";
+import Block from "../lib/block.js";
 
 export const validationFunction = (element: InputElement[], component: Block) => {
   element
