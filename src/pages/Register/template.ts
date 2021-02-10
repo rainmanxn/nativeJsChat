@@ -60,9 +60,8 @@ export const template = `
             </label>
           </div>
           <span class="error-message {{passwordConfirmError}}" id="loginError">Пароли не совпадают</span>
-        
+          {{ELEMENT buttonReg}}
       </form>
-      {{ELEMENT buttonSignUp}}
       <a class="login-href">Войти</a>
     </div>
   </div>

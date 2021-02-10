@@ -1,4 +1,4 @@
-import queryStringify from "utils/myDash/queryStringify/index.js";
+import queryStringify from "../../utils/myDash/queryStringify/index.js";
 
 enum METHODS {
   GET = 'GET',
@@ -73,4 +73,6 @@ class fetchHTTP {
   };
 };
 
-export default fetchHTTP;
+const Fetch = new fetchHTTP();
+
+export default Fetch;

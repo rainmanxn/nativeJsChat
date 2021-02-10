@@ -8,6 +8,7 @@ import { Button } from '../../components/Button/index.js';
 import { SUBMIT_BUTTON_REGISTER } from '../../constants/buttonClasses.js';
 import Block from '../../lib/block.js';
 import {router} from "../../lib/Router/Router.js";
+// import validators from "../../utils/validators";
 
 const buttonProps = {
   type: 'submit',
@@ -32,7 +33,7 @@ const data: object = {
   phoneError: '',
   passwordError: '',
   passwordConfirmError: '',
-  buttonSignUp: SubmitButton.getContent().innerHTML
+  buttonReg: SubmitButton.getContent().innerHTML
 };
 
 export class Register extends Block {
@@ -42,7 +43,7 @@ export class Register extends Block {
 
   mount() {
     const inputElements: InputElement[] = Array.from(this.element.querySelectorAll('.input-text'))
-    const submitButton: HTMLElement | null = document.querySelector('form');
+    const submitButton: HTMLElement | null = this._element.querySelector('.register-form');
     validationFunction(inputElements, this);
     submitButton && submitRegisterFunction(submitButton, this.props);
     const linkButtonRegister: HTMLElement | null = this._element.querySelector('.login-href');

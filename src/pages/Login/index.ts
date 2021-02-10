@@ -34,6 +34,7 @@ export class Login extends Block {
   mount() {
     const inputElements: InputElement[] = Array.from(this.element.querySelectorAll('.input-text'))
     const submitButton: HTMLElement | null = document.querySelector('form');
+
     validationFunction(inputElements, this);
     submitButton && submitFunction(submitButton, this.props);
     const linkButton: HTMLElement | null = this._element.querySelector('.login-href');
