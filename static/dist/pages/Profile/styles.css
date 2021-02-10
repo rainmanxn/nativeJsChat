@@ -185,6 +185,8 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 10px;
+  display: block;
+  cursor: pointer;
 }
 
 .profile-info-block__submit-button {

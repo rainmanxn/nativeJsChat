@@ -2,7 +2,7 @@ export const template = `
   <main class="main-container">
     <div class="modal-overlay remove-field" id="modalOverlay"></div>
     <div class="main-left-block">
-      <a href="profile.html" class="main-left-block-profile-link">
+      <a class="main-left-block-profile-link">
         Профиль &gt;
       </a>
       <input type="text" class="main-left-block-find" placeholder="Поиск">
@@ -19,7 +19,7 @@ export const template = `
             <div class="chat-item-container-right-block">
               <div class="chat-item-container-right-block-top">
                 <div class="time">{{time}}</div>
-                <img src="../img/close.svg" class="close-button" alt="close-button">
+                <img src="./dist/img/close.svg" class="close-button" alt="close-button">
               </div>
               <div class="ellipse-count-messages">
                 <div class="ellipse-count-messages-text">{{newMessages}}</div>
@@ -40,7 +40,7 @@ export const template = `
             <div class="left-block-name">{{headerName}}</div>
           </div>
           <div class="three-dots-container">
-            <img src="../img/3dots.svg" alt="3-dots" class="three-dots">
+            <img src="./dist/img/3dots.svg" alt="3-dots" class="three-dots">
           </div>
         </nav>
         
@@ -50,9 +50,10 @@ export const template = `
         
         <div class="main-chat-footer">
           <button class="clip" id="clipButton">
-            <img src="../img/clip.svg" alt="clip">
+            <img src="./dist/img/clip.svg" alt="clip">
           </button>
           <input type="text" class="main-chat-footer-input" placeholder="Сообщение">
+          {{ELEMENT submitButton}}
         </div>
         
         {{#each removeModals}}
@@ -119,7 +120,7 @@ export const messagesTemplate = `
       {{else}}
         <li class="main-chat-messages-user-text">
           {{myMessage}}
-          <img src="../../../static/dist/img/2checks.svg" class="two-checks" alt="two-checks">
+          <img src="./dist/img/2checks.svg" class="two-checks" alt="two-checks">
           <div class="main-chat-messages-time">{{time}}</div>
         </li>
       {{/if}}

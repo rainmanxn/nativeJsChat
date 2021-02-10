@@ -62,13 +62,8 @@ export const template = `
           <span class="error-message {{passwordConfirmError}}" id="loginError">Пароли не совпадают</span>
         
       </form>
-      {{SLOT buttonSignUp }}
-<!--      <a href="login.html" class="login-href">Войти</a>-->
+      {{ELEMENT buttonSignUp}}
+      <a class="login-href">Войти</a>
     </div>
   </div>
 `
-function slot(componentName: string) {
-  return new window.Handlebars.SafeString(componentName);
-}
-
-window.Handlebars.registerHelper('SLOT', slot);

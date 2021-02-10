@@ -7,6 +7,7 @@ import { submitRegisterFunction, validationFunction } from "../../utils/listener
 import { Button } from '../../components/Button/index.js';
 import { SUBMIT_BUTTON_REGISTER } from '../../constants/buttonClasses.js';
 import Block from '../../lib/block.js';
+import {router} from "../../lib/Router/Router.js";
 
 const buttonProps = {
   type: 'submit',
@@ -44,7 +45,10 @@ export class Register extends Block {
     const submitButton: HTMLElement | null = document.querySelector('form');
     validationFunction(inputElements, this);
     submitButton && submitRegisterFunction(submitButton, this.props);
-    // render('#submit', SubmitButton);
+    const linkButtonRegister: HTMLElement | null = this._element.querySelector('.login-href');
+    linkButtonRegister && linkButtonRegister.addEventListener('click', () => {
+      router.go('/login')
+    })
   }
 
   render(): string {

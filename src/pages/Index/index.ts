@@ -11,8 +11,20 @@ export class Page extends Block {
   mount() {
     const loginButton = this._element.querySelector('.loginButton');
     loginButton && loginButton.addEventListener('click', () => {
-      router.go('/login')
-    })
+      router.go('/login');
+    });
+    const registerButton = this._element.querySelector('.registerButton');
+    registerButton && registerButton.addEventListener('click', () => {
+      router.go('/register');
+    });
+    const profileButton = this._element.querySelector('.profileButton');
+    profileButton && profileButton.addEventListener('click', () => {
+      router.go('/profile');
+    });
+    const mainButton = this._element.querySelector('.mainButton');
+    mainButton && mainButton.addEventListener('click', () => {
+      router.go('/main');
+    });
   }
 
   render(): string {

@@ -78,6 +78,7 @@
   text-align: center;
   color: #FFFFFF;
   outline: none;
+  cursor: pointer;
 }
 
 .submit-button__login {
@@ -93,4 +94,5 @@
   line-height: 11px;
   color: #FFFFFF;
   margin-top: 14px;
+  cursor: pointer;
 }

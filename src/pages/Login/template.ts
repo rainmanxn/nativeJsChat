@@ -18,22 +18,9 @@ export const template = `
           </div>
           <span class="error-message {{passwordError}}" id="passwordError">Пароль должен быть не меньше 6 символов, 
           содержать не менее 1 строчной, заглавной буквы и спецсимвол</span>
-          {{SLOT buttonSignUp }}
+          {{ELEMENT buttonSignUp}}
       </form>
       <a class="login-href">Нет аккаунта?</a>
     </div>
   </div>
 `
-
-// function createSlot(name: string): string {
-//   const $slot = document.createElement('div');
-//   $slot.setAttribute('data-slot', name);
-//   return $slot.outerHTML;
-// }
-
-function slot(componentName: string) {
-  return new window.Handlebars.SafeString(componentName);
-}
-
-window.Handlebars.registerHelper('SLOT', slot);
-

@@ -1,4 +1,15 @@
+import {SEND_BUTTON} from "../../constants/buttonClasses.js";
+import { Button } from "../../components/Button/index.js";
+
+const sendMessageButtonProps = {
+  type: 'button',
+  className: SEND_BUTTON,
+};
+
+const SendMessageButton = new Button(sendMessageButtonProps);
+
 export const mainData = {
+  submitButton: SendMessageButton.getContent().innerHTML,
   chats: [
     {
       name: 'Андрей',
@@ -60,29 +71,29 @@ export const mainData = {
     {
       modalId: 'threeDotsAddUser',
       buttonName: 'Добавить пользователя',
-      iconSrc: '../img/iconadd.svg'
+      iconSrc: './dist/img/iconadd.svg'
     },
     {
       modalId: 'threeDotsDeleteUser',
       buttonName: 'Удалить пользователя',
-      iconSrc: '../img/icon-delete.svg'
+      iconSrc: './dist/img/icon-delete.svg'
     }
   ],
   clipModals: [
     {
       modalId: 'photoSend',
       buttonName: 'Фото или Видео',
-      iconSrc: '../img/photo-icon.svg'
+      iconSrc: './dist/img/photo-icon.svg'
     },
     {
       modalId: 'fileSend',
       buttonName: 'Файл',
-      iconSrc: '../img/file-icon.svg'
+      iconSrc: './dist/img/file-icon.svg'
     },
     {
       modalId: 'locationSend',
       buttonName: 'Файл',
-      iconSrc: '../img/location-icon.svg'
+      iconSrc: './dist/img/location-icon.svg'
     }
   ]
 };

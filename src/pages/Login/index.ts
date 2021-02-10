@@ -40,8 +40,6 @@ export class Login extends Block {
     linkButton && linkButton.addEventListener('click', () => {
       router.go('/register')
     })
-    console.log('linkButton', linkButton)
-    // render('#submit', SubmitButton);
   }
 
   render(): string {

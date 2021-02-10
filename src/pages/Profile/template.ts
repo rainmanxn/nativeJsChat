@@ -103,7 +103,10 @@ export const template = `
             </div>
 
           <div class="profile-info-block">
-            <div id="editBlock"></div>
+            <div id="editBlock">
+              {{ELEMENT editButton}}
+              {{ELEMENT exitButton}}
+            </div>
           </div>
         </form>
       </div>
