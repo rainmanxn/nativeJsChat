@@ -25,6 +25,14 @@ export class Page extends Block {
     mainButton && mainButton.addEventListener('click', () => {
       router.go('/main');
     });
+    const error404Button = this._element.querySelector('.error-404-Button');
+    error404Button && error404Button.addEventListener('click', () => {
+      router.go('/404');
+    });
+    const error500Button = this._element.querySelector('.error-500-Button');
+    error500Button && error500Button.addEventListener('click', () => {
+      router.go('/500');
+    });
   }
 
   render(): string {

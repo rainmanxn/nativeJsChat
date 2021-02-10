@@ -95,8 +95,6 @@ export class Main extends Block {
     clipButton && clipButton.addEventListener('click', () => {
       modalClip && modalClip.classList.toggle("remove-modal");
     })
-
-    // render('.main-chat-footer', SendMessageButton);
   }
 
   render(): string {

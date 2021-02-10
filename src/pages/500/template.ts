@@ -6,7 +6,7 @@ export const template = `
       <a href="./main.html" class="main-404-left-block-link">Назад к чатам</a>
     </div>
     <div class="main-404-right-block">
-      <img src="../img/cow500.png" class="main-500-right-block-img" alt="ufo-in-bathroom">
+      <img src="./dist/img/cow500.png" class="main-500-right-block-img" alt="ufo-in-bathroom">
     </div>
   </main>
 `
