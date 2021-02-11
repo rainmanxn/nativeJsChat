@@ -42,7 +42,11 @@ class fetchHTTP {
   };
 
   request = (url: string, options: Options, timeout = 5000) => {
-    const { headers, body, method } = options;
+    const { headers: currentHeaders, body, method } = options;
+    const headers: HeadersType = {
+      'content-type': 'application/json',
+      ...currentHeaders
+    }
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
@@ -53,6 +57,7 @@ class fetchHTTP {
         xhr.setRequestHeader(key, headers[key]);
       });
 
+      xhr.withCredentials = true
       xhr.timeout = timeout;
 
       xhr.onload = function () {

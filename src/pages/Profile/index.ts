@@ -6,6 +6,8 @@ import { EDIT_BUTTON } from "../../constants/buttonClasses.js";
 import { Button } from "../../components/Button/index.js";
 import Block from '../../lib/block.js';
 import {router} from "../../lib/Router/Router.js";
+import {getUserData, logOut} from "../../api/authorization.js";
+// import { profileData } from "./data.js";
 
 const editButtonProps = {
   type: 'submit',
@@ -26,14 +28,14 @@ const ExitButton = new Button(exitButtonProps);
 
 const profileData = {
   srcImg: './dist/img/icon-man.svg',
-  userName: 'Иван',
-  emailValue: 'pochta@yandex.ru',
-  loginValue: 'ivanivanov',
-  firstNameValue: 'Иван',
-  secondNameValue: 'Иванов',
-  displayNameValue: 'Иваныч',
-  phoneValue: '+7 (909) 967 30 30',
-  oldPasswordValue: 'zzzXXX22##',
+  userName: '',
+  emailValue: '',
+  loginValue: '',
+  firstNameValue: '',
+  secondNameValue: '',
+  displayNameValue: '',
+  phoneValue: '',
+  oldPasswordValue: '',
   passwordValue: '',
   passwordConfirmValue: '',
   emailError: '',
@@ -54,14 +56,37 @@ export class Profile extends Block {
     super('main', profileData);
   }
 
+  componentDidMount() {
+    getUserData().then((resp: any) => {
+      const result = JSON.parse(resp.response)
+      const {id, first_name, second_name, display_name, login, avatar, email, phone } = result;
+      console.log(id, first_name, second_name, display_name, login, avatar, email, phone)
+      this.setProps({
+        emailValue: email,
+        firstNameValue: first_name,
+        secondNameValue: second_name,
+        loginValue: login,
+        phoneValue: phone,
+        displayNameValue: display_name
+      })
+    })
+  }
+
   mount() {
     const inputElements: InputElement[] = Array.from(this.element.querySelectorAll('.profile-info-field-input'))
     const submitButton: HTMLElement | null = document.querySelector('#submit');
     validationFunction(inputElements, this);
     submitButton && submitEditFunction(submitButton, this.props);
+    submitButton && submitButton.addEventListener('submit', () => {
+      console.log('4342')
+    })
     const linkButton: HTMLElement | null = this._element.querySelector('.back-button');
     linkButton && linkButton.addEventListener('click', () => {
       router.back()
+    })
+    const exitButton: HTMLElement | null = this._element.querySelector('#exitButton');
+    exitButton && exitButton.addEventListener('click', () => {
+      logOut()
     })
   }
 

@@ -66,15 +66,6 @@ class Block {
     } else {
       return false;
     }
-    // const response = this.componentDidUpdate(oldProps, newProps);
-    //
-    // console.log('update', { response, oldProps, newProps });
-    //
-    // if (response) {
-    //   this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
-    // }
-    //
-    // return response;
   }
 
   componentDidUpdate(_oldProps?: TemplatePropsContext, _newProps?: TemplatePropsContext): boolean {

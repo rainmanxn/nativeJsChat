@@ -14,3 +14,5 @@ export interface FormDataType {
   password?: string,
   password_confirm?: string
 }
+
+export type KeyValueType = {[key: string]: string};

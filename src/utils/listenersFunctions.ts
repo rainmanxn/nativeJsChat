@@ -3,8 +3,8 @@ import validators from "./validators/index.js";
 import { TemplatePropsContext } from "../types/index.js";
 import setProps from "./setProps.js";
 import Block from "../lib/block.js";
-import Fetch from "../lib/HTTP/index.js";
-import { BASE_URL } from "../constants/baseUrl.js";
+import {signIn, signUp} from "../api/authorization.js";
+import { changeUserInfo } from "../api/userProfile.js";
 
 export const validationFunction = (element: InputElement[], component: Block) => {
   element
@@ -33,7 +33,12 @@ export const submitFunction = (element: HTMLElement, props: TemplatePropsContext
     event.preventDefault();
     const { loginValue, passwordValue } = props;
     const isValid = validators.login(loginValue) && validators.password(passwordValue)
-    isValid && console.log({ loginValue, passwordValue })
+    isValid && signIn(
+      {
+        login: loginValue,
+        password: passwordValue,
+      }
+    )
   })
 }
 
@@ -47,46 +52,27 @@ export const submitRegisterFunction = (element: HTMLElement, props: TemplateProp
       secondNameValue,
       phoneValue,
       passwordValue,
-      // passwordConfirmValue
+      passwordConfirmValue
     } = props;
 
-    const options = {
-      first_name: firstNameValue,
-      second_name: secondNameValue,
-      login: loginValue,
-      email: emailValue,
-      password: passwordValue,
-      phone: phoneValue,
-    }
-    console.log('JSON.stringify(options)', JSON.stringify(options))
+    const isValid =
+      validators.login(loginValue)
+      && validators.email(emailValue)
+      && validators.firstName(firstNameValue)
+      && validators.secondName(secondNameValue)
+      && validators.phone(phoneValue)
+      && validators.password(passwordValue)
+      && validators.passwordConfirm(passwordConfirmValue);
 
-    // const isValid =
-    //   validators.login(loginValue)
-    //   && validators.email(emailValue)
-    //   && validators.firstName(firstNameValue)
-    //   && validators.secondName(secondNameValue)
-    //   && validators.phone(phoneValue)
-    //   && validators.password(passwordValue)
-    //   && validators.passwordConfirm(passwordConfirmValue)
-    // isValid && console.log({
-    //   ...options,
-    //   passwordConfirmValue
-    // })
-    // isValid && Fetch.post(`${BASE_URL}/auth/signup`, { body: JSON.stringify(options) })
-    Fetch.post(`${BASE_URL}/auth/signup`, {
-      body: JSON.stringify({
+    isValid && signUp({
         first_name: firstNameValue,
         second_name: secondNameValue,
         login: loginValue,
         email: emailValue,
         password: passwordValue,
         phone: phoneValue,
-      }),
-      headers: {
-        'content-type': 'application/json',
-      },
+      })
     })
-  })
 }
 
 export const submitEditFunction = (element: HTMLElement, props: TemplatePropsContext) => {
@@ -111,10 +97,19 @@ export const submitEditFunction = (element: HTMLElement, props: TemplatePropsCon
       && validators.secondName(secondNameValue)
       && validators.secondName(displayNameValue)
       && validators.phone(phoneValue)
-      && validators.password(oldPasswordValue)
-      && validators.password(passwordValue)
-      && validators.passwordConfirm(passwordConfirmValue)
-    isValid && console.log({
+      // && validators.password(oldPasswordValue)
+      // && validators.password(passwordValue)
+      // && validators.passwordConfirm(passwordConfirmValue)
+    isValid && changeUserInfo({
+      first_name: firstNameValue,
+      second_name: secondNameValue,
+      display_name: displayNameValue,
+      login: loginValue,
+      email: emailValue,
+      phone: phoneValue,
+    })
+
+    console.log({
       emailValue,
       loginValue,
       firstNameValue,

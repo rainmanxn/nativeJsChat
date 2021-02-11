@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "module": "esnext",
     "outDir": "static/dist",
     // "module": "es2017",
     "target": "es2017",
