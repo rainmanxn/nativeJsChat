@@ -15,8 +15,9 @@ class Block {
 
   eventBus: EventBus;
   props: TemplatePropsContext;
+  parent: Block | null
 
-  constructor(tagName: string = 'div', props?: TemplatePropsContext) {
+  constructor(tagName: string = 'div', props?: TemplatePropsContext, comp?: Block) {
     const eventBus: EventBus = new EventBus();
     this._meta = {
       tagName,
@@ -24,7 +25,7 @@ class Block {
     };
 
     this.props = this._makePropsProxy(props);
-
+    this.parent = comp || null;
     this.eventBus = (() => eventBus)();
 
     this._registerEvents(eventBus);
@@ -66,6 +67,10 @@ class Block {
     } else {
       return false;
     }
+  }
+
+  setParent(component: Block) {
+    this.parent = component
   }
 
   componentDidUpdate(_oldProps?: TemplatePropsContext, _newProps?: TemplatePropsContext): boolean {

@@ -119,6 +119,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
 }
 
 .profile-user-name {
@@ -134,7 +137,16 @@
 .profile-info-block {
   position: relative;
   width: 100%;
-  margin-top: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.chat {
+  width: 80%;
+  margin-top: 0;
+  margin-bottom: 0;
+  display: flex;
+  margin-left: 30px;
 }
 
 .profile-info-item {
@@ -187,6 +199,10 @@
   margin-bottom: 10px;
   display: block;
   cursor: pointer;
+}
+
+.addChat_button {
+  margin-left: 10px;
 }
 
 .profile-info-block__submit-button {
@@ -253,7 +269,12 @@
   text-align: center;
   text-decoration-line: underline;
   color: #BCBAD8;
-  margin-top: 53px;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+.modal-link-file {
+  visibility: hidden;
 }
 
 .submit-button__modal-overlay {

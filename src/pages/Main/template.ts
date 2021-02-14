@@ -5,25 +5,35 @@ export const template = `
       <a class="main-left-block-profile-link">
         Профиль &gt;
       </a>
+        <form id="addChat" class="profile-info-block chat">
+            <button class="profile-edit-item addChat_button">Добавить</button>
+            <div class="profile-info-item">
+              <span class="profile-info-field-name">Имя</span>
+              <label>
+                <input type="text" class="profile-info-field-input" name="addChat" id="addChatInput">
+              </label>
+            </div>
+        </form>
       <input type="text" class="main-left-block-find" placeholder="Поиск">
       <ul id="list">
         {{#each chats}}
-          <li class="chat-item-container" id="{{itemId}}">
+          <li class="chat-item-container" id="if{{id}}">
             <div class="chat-item-container-left-block">
-              <div class="chat-item-container-left-block-avatar"></div>
+              <div class="chat-item-container-left-block-avatar">
+                <img src="https://ya-praktikum.tech/api/v2/uploads/15b5a35d-cb86-4789-b453-024860407521/111.jpeg" class="chat-item-container-left-block-avatar" alt="profile-avatar-icon">
+              </div>
               <div class="chat-item-container-left-block-info">
-                <h3 class="chat-item-container-left-block-info-name">{{name}}</h3>
-                <div class="chat-item-container-left-block-info-text">{{message}}</div>
+                <h3 class="chat-item-container-left-block-info-name">{{title}}</h3>
               </div>
             </div>
             <div class="chat-item-container-right-block">
               <div class="chat-item-container-right-block-top">
-                <div class="time">{{time}}</div>
+<!--                <div class="time">{{time}}</div>-->
                 <img src="./dist/img/close.svg" class="close-button" alt="close-button">
               </div>
-              <div class="ellipse-count-messages">
-                <div class="ellipse-count-messages-text">{{newMessages}}</div>
-              </div>
+<!--              <div class="ellipse-count-messages">-->
+<!--                <div class="ellipse-count-messages-text">{{newMessages}}</div>-->
+<!--              </div>-->
             </div>
           </li>
         {{/each}}

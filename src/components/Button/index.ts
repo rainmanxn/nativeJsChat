@@ -1,5 +1,3 @@
-// ToDo переписать шаблонизатор на safeString для удобной вставки компонентов в шаблон
-
 import { buttonTemplate } from './template.js';
 import templator from "../../utils/templator.js";
 import Block from '../../lib/block.js';

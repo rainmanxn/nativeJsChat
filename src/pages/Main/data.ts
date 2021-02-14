@@ -10,42 +10,43 @@ const SendMessageButton = new Button(sendMessageButtonProps);
 
 export const mainData = {
   submitButton: SendMessageButton.getContent().innerHTML,
+  activeItemId: '-1',
   chats: [
-    {
-      name: 'Андрей',
-      message: 'Изображение',
-      time: '10:49',
-      newMessages: 2,
-      itemId: 0
-    },
-    {
-      name: 'Киноклуб',
-      message: 'Вы: Стикер',
-      time: '10:49',
-      newMessages: 0,
-      itemId: 1
-    },
-    {
-      name: 'Илья',
-      message: 'Друзья, у меня для вас особенный выпуск новостей!...',
-      time: '10:49',
-      newMessages: 4,
-      itemId: 2
-    },
-    {
-      name: 'Вадим',
-      message: 'Круто',
-      time: '10:49',
-      newMessages: 0,
-      itemId: 3
-    },
-    {
-      name: 'тет-а-теты',
-      message: 'И Human Interface Guidelines и Material Design рекомендуют...',
-      time: '10:49',
-      newMessages: 0,
-      itemId: 4
-    },
+    // {
+    //   title: 'Андрей',
+    //   message: 'Изображение',
+    //   time: '10:49',
+    //   newMessages: 2,
+    //   itemId: 0
+    // },
+    // {
+    //   title: 'Киноклуб',
+    //   message: 'Вы: Стикер',
+    //   time: '10:49',
+    //   newMessages: 0,
+    //   itemId: 1
+    // },
+    // {
+    //   title: 'Илья',
+    //   message: 'Друзья, у меня для вас особенный выпуск новостей!...',
+    //   time: '10:49',
+    //   newMessages: 4,
+    //   itemId: 2
+    // },
+    // {
+    //   title: 'Вадим',
+    //   message: 'Круто',
+    //   time: '10:49',
+    //   newMessages: 0,
+    //   itemId: 3
+    // },
+    // {
+    //   title: 'тет-а-теты',
+    //   message: 'И Human Interface Guidelines и Material Design рекомендуют...',
+    //   time: '10:49',
+    //   newMessages: 0,
+    //   itemId: 4
+    // },
   ],
   headerName: 'Вадим',
   removeModals: [

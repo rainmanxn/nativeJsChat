@@ -44,7 +44,6 @@ class fetchHTTP {
   request = (url: string, options: Options, timeout = 5000) => {
     const { headers: currentHeaders, body, method } = options;
     const headers: HeadersType = {
-      'content-type': 'application/json',
       ...currentHeaders
     }
 

@@ -1,10 +1,13 @@
 export const template = `
-  <div class="modal-overlay remove-field" id="modalOverlay"></div>
-  <div class="modal remove-field" id="modal">
-    <div class="modal-header">Загрузите файл</div>
-    <a href="#" class="modal-link">Выбрать файл на компьютере</a>
-    <button class="submit-button submit-button__modal-overlay">ПОМЕНЯТЬ</button>
+  <div class="change-avatar-modal  remove-field">
+      <div class="modal-overlay" id="modalOverlay"></div>
+      <div class="modal" id="modal">
+        <div class="modal-header">Загрузите файл</div>
+        <a href="#" class="modal-link">Выбрать файл на компьютере</a>
+        <button class="submit-button submit-button__modal-overlay">ПОМЕНЯТЬ</button>
+      </div>  
   </div>
+
   
   <div class="profile-container">
     <div class="profile-left-side">
@@ -77,7 +80,14 @@ export const template = `
                 <input type="tel" class="profile-info-field-input" name="phone" value="{{phoneValue}}">
               </label>
             </div>
-            
+
+          <div class="profile-info-block">
+            <div id="editBlock">
+              {{ELEMENT editButton}}
+            </div>
+          </div>
+        </form>
+        <form id="changePassword" class="profile-info-block">
             <div class="profile-info-item">
               <span class="profile-info-field-name">Старый пароль</span>
               <span class="error-message error-profile-message {{oldPasswordError}}" id="loginError">Укажите валидное значение</span>
@@ -101,10 +111,10 @@ export const template = `
                 <input type="password" class="profile-info-field-input" name="passwordConfirm" value="{{passwordConfirmValue}}">
               </label>
             </div>
-
-          <div class="profile-info-block">
+            
+            <div class="profile-info-block">
             <div id="editBlock">
-              {{ELEMENT editButton}}
+              {{ELEMENT changePasswordButton}}
               {{ELEMENT exitButton}}
             </div>
           </div>

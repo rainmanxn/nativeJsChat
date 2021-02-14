@@ -1,7 +1,7 @@
 import validators from "./validators/index.js";
 import setProps from "./setProps.js";
 import { signIn, signUp } from "../api/authorization.js";
-import { changeUserInfo } from "../api/userProfile.js";
+import { changeUserInfo, changeUserPassword } from "../api/userProfile.js";
 export const validationFunction = (element, component) => {
     element
         .forEach((el) => {
@@ -61,7 +61,7 @@ export const submitRegisterFunction = (element, props) => {
 export const submitEditFunction = (element, props) => {
     element.addEventListener('submit', (event) => {
         event.preventDefault();
-        const { emailValue, loginValue, firstNameValue, secondNameValue, displayNameValue, phoneValue, oldPasswordValue, passwordValue, passwordConfirmValue } = props;
+        const { emailValue, loginValue, firstNameValue, secondNameValue, displayNameValue, phoneValue, } = props;
         const isValid = validators.login(loginValue)
             && validators.email(emailValue)
             && validators.firstName(firstNameValue)
@@ -76,13 +76,20 @@ export const submitEditFunction = (element, props) => {
             email: emailValue,
             phone: phoneValue,
         });
+    });
+};
+export const submitChangePasswordFunction = (element, props) => {
+    element.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const { oldPasswordValue, passwordValue, passwordConfirmValue } = props;
+        const isValid = validators.password(oldPasswordValue)
+            && validators.password(passwordValue)
+            && validators.passwordConfirm(passwordConfirmValue);
+        isValid && changeUserPassword({
+            oldPassword: oldPasswordValue,
+            newPassword: passwordValue,
+        });
         console.log({
-            emailValue,
-            loginValue,
-            firstNameValue,
-            secondNameValue,
-            displayNameValue,
-            phoneValue,
             oldPasswordValue,
             passwordValue,
             passwordConfirmValue

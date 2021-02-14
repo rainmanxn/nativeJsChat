@@ -3,8 +3,8 @@ import validators from "./validators/index.js";
 import { TemplatePropsContext } from "../types/index.js";
 import setProps from "./setProps.js";
 import Block from "../lib/block.js";
-import {signIn, signUp} from "../api/authorization.js";
-import { changeUserInfo } from "../api/userProfile.js";
+import { signIn, signUp } from "../api/authorization.js";
+import { changeUserInfo, changeUserPassword } from "../api/userProfile.js";
 
 export const validationFunction = (element: InputElement[], component: Block) => {
   element
@@ -85,9 +85,6 @@ export const submitEditFunction = (element: HTMLElement, props: TemplatePropsCon
       secondNameValue,
       displayNameValue,
       phoneValue,
-      oldPasswordValue,
-      passwordValue,
-      passwordConfirmValue
     } = props;
 
     const isValid =
@@ -97,9 +94,6 @@ export const submitEditFunction = (element: HTMLElement, props: TemplatePropsCon
       && validators.secondName(secondNameValue)
       && validators.secondName(displayNameValue)
       && validators.phone(phoneValue)
-      // && validators.password(oldPasswordValue)
-      // && validators.password(passwordValue)
-      // && validators.passwordConfirm(passwordConfirmValue)
     isValid && changeUserInfo({
       first_name: firstNameValue,
       second_name: secondNameValue,
@@ -108,14 +102,28 @@ export const submitEditFunction = (element: HTMLElement, props: TemplatePropsCon
       email: emailValue,
       phone: phoneValue,
     })
+  })
+}
+
+export const submitChangePasswordFunction = (element: HTMLElement, props: TemplatePropsContext) => {
+  element.addEventListener('submit', (event: Event) => {
+    event.preventDefault();
+    const {
+      oldPasswordValue,
+      passwordValue,
+      passwordConfirmValue
+    } = props;
+
+    const isValid =
+    validators.password(oldPasswordValue)
+    && validators.password(passwordValue)
+    && validators.passwordConfirm(passwordConfirmValue)
+    isValid && changeUserPassword({
+      oldPassword: oldPasswordValue,
+      newPassword: passwordValue,
+    })
 
     console.log({
-      emailValue,
-      loginValue,
-      firstNameValue,
-      secondNameValue,
-      displayNameValue,
-      phoneValue,
       oldPasswordValue,
       passwordValue,
       passwordConfirmValue
