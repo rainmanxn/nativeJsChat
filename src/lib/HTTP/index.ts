@@ -16,14 +16,6 @@ type Options = {
   timeout?: number
 }
 
-// function queryStringify(body) {
-//   return Object
-//     .entries(body)
-//     .reduce((acc, [key, value]) => {
-//       return `${acc}${key}=${value}&`
-//     }, '?').slice(0, -1)
-// }
-
 class fetchHTTP {
   get = (url: string, options: Options = {}) => {
     return this.request(url, { ...options, method: METHODS.GET }, options.timeout);

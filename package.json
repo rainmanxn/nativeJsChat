@@ -4,9 +4,9 @@
   "description": "messenger app for yandex praktikum",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./server.js",
-    "ts": "tsc -t es2017"
+    "ts": "tsc -t es2017",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -26,14 +26,26 @@
     "node": ">=12.0.0"
   },
   "dependencies": {
+    "@babel/preset-typescript": "^7.12.16",
     "express": "4.17.1",
-    "handlebars": "^4.7.6"
+    "handlebars": "^4.7.6",
+    "jsdom": "^16.4.0",
+    "jsdom-global": "^3.0.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.16",
+    "@babel/core": "^7.12.16",
+    "@babel/node": "^7.12.16",
+    "@babel/preset-env": "^7.12.16",
+    "@babel/register": "^7.12.13",
+    "chai": "^4.3.0",
     "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-prettier": "^3.3.1",
     "lint-staged": "^10.5.3",
+    "mocha": "^8.3.0",
+    "mocha-jsdom": "^2.0.0",
     "prettier": "^2.2.1",
+    "sinon": "^9.2.4",
     "typescript": "^4.1.3"
   }
 }
