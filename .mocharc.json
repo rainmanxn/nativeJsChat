@@ -1,5 +1,5 @@
 {
   "extension": ["ts"],
-  "spec": "src/test/**/*.spec.js",
+  "spec": "src/**/*.spec.ts",
   "require": "src/test/babel-root.js"
 }
