@@ -7,9 +7,10 @@ import { submitRegisterFunction, validationFunction } from "../../utils/listener
 import { Button } from '../../components/Button/index.js';
 import { SUBMIT_BUTTON_REGISTER } from '../../constants/buttonClasses.js';
 import Block from '../../lib/block.js';
-import {router} from "../../lib/Router/Router.js";
+import { Router } from "../../lib/Router/Router.js";
 // import validators from "../../utils/validators";
 
+const router = new Router(".app");
 const buttonProps = {
   type: 'submit',
   className: SUBMIT_BUTTON_REGISTER,

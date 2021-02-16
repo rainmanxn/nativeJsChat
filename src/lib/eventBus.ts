@@ -1,13 +1,11 @@
-import { TemplatePropsContext, ListenerType } from "../types/index.js"
-
 class EventBus {
-  listeners: ListenerType;
+  listeners: Record<string, Function[]>;
 
   constructor() {
     this.listeners = {};
   }
 
-  on(event: string, callback: (oldProps: TemplatePropsContext, newProps: TemplatePropsContext) => boolean): void {
+  on(event: string, callback: Function): void {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
@@ -15,7 +13,7 @@ class EventBus {
     this.listeners[event].push(callback);
   }
 
-  off(event: string, callback: void): void {
+  off(event: string, callback: Function): void {
     if (!this.listeners[event]) {
       throw new Error(`Нет события: ${event}`);
     }

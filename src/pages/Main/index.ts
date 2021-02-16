@@ -4,9 +4,10 @@ import render from "../../utils/render.js";
 import { TemplatePropsContext } from "../../types/index.js";
 import { mainData, messagesData } from "./data.js";
 import Block from '../../lib/block.js';
-import {router} from "../../lib/Router/Router.js";
+import { Router } from "../../lib/Router/Router.js";
 import { addUserToChat, createChat, getChats, removeUserFromChat } from "../../api/chats.js";
 
+const router = new Router(".app");
 export class Main extends Block {
   constructor() {
     super('main', mainData);

@@ -116,6 +116,7 @@ export const template = `
             <div id="editBlock">
               {{ELEMENT changePasswordButton}}
               {{ELEMENT exitButton}}
+              <div class="error-message {{handleError}}" id="loginError">{{errorMessage}}</div>
             </div>
           </div>
         </form>

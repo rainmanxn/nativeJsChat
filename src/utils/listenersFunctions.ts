@@ -3,7 +3,7 @@ import validators from "./validators/index.js";
 import { TemplatePropsContext } from "../types/index.js";
 import setProps from "./setProps.js";
 import Block from "../lib/block.js";
-import { signIn, signUp } from "../api/authorization.js";
+import { signUp } from "../api/authorization.js";
 import { changeUserInfo, changeUserPassword } from "../api/userProfile.js";
 
 export const validationFunction = (element: InputElement[], component: Block) => {
@@ -28,19 +28,28 @@ export const validationFunction = (element: InputElement[], component: Block) =>
     })
 }
 
-export const submitFunction = (element: HTMLElement, props: TemplatePropsContext) => {
-  element.addEventListener('submit', (event: Event) => {
-    event.preventDefault();
+export const submitFunction = (props: TemplatePropsContext) => {
     const { loginValue, passwordValue } = props;
-    const isValid = validators.login(loginValue) && validators.password(passwordValue)
-    isValid && signIn(
-      {
-        login: loginValue,
-        password: passwordValue,
-      }
-    )
-  })
-}
+    const isValid: boolean | null = validators.login(loginValue) && validators.password(passwordValue);
+    return {
+      isValid,
+      login: loginValue,
+      password: passwordValue,
+    }
+  }
+
+// export const submitFunction = (element: HTMLElement, props: TemplatePropsContext) => {
+//   element.addEventListener('submit', (event: Event) => {
+//     event.preventDefault();
+//     const { loginValue, passwordValue } = props;
+//     const isValid: boolean | null = validators.login(loginValue) && validators.password(passwordValue);
+//     return {
+//       isValid,
+//       login: loginValue,
+//       password: passwordValue,
+//     }
+//   })
+// }
 
 export const submitRegisterFunction = (element: HTMLElement, props: TemplatePropsContext) => {
   element.addEventListener('submit', (event: Event) => {

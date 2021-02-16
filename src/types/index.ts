@@ -10,6 +10,5 @@ export type TemplatePropsContext = {
   [key: string]: any;
 };
 
-export type ListenerType = {
-  [key: string]: any[];
-};
+type Callback = (T: any[]) => void;
+export type ListenerType = Record<string, Callback[]>;

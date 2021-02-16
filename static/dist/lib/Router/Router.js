@@ -30,6 +30,7 @@ export class Route {
         this._block.show();
     }
 }
+Route.routes = [];
 export class Router {
     constructor(rootQuery) {
         if (Router.__instance) {
@@ -74,10 +75,12 @@ export class Router {
         this.history.forward();
     }
     getRoute(pathname) {
-        return this.routes.find(route => route.match(pathname));
+        return this.routes.find((route) => {
+            const pattern = new RegExp(`^${route._pathname}$`, 'g');
+            return pathname.match(pattern);
+        });
     }
     destruct() {
         Router.__instance = null;
     }
 }
-export const router = new Router(".app");

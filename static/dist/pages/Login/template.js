@@ -19,6 +19,7 @@ export const template = `
           <span class="error-message {{passwordError}}" id="passwordError">Пароль должен быть не меньше 6 символов, 
           содержать не менее 1 строчной, заглавной буквы и спецсимвол</span>
           {{ELEMENT buttonSignUp}}
+          <div class="error-message {{handleError}}" id="loginError">{{errorMessage}}</div>
       </form>
       <a class="login-href">Нет аккаунта?</a>
     </div>

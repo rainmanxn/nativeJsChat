@@ -1,6 +1,6 @@
 import EventBus from "./eventBus.js";
 class Block {
-    constructor(tagName = 'div', props, comp) {
+    constructor(tagName = 'div', props) {
         this.setProps = (nextProps) => {
             if (!nextProps) {
                 return;
@@ -13,7 +13,6 @@ class Block {
             props
         };
         this.props = this._makePropsProxy(props);
-        this.parent = comp || null;
         this.eventBus = (() => eventBus)();
         this._registerEvents(eventBus);
         eventBus.emit(Block.EVENTS.INIT);
@@ -49,9 +48,6 @@ class Block {
         else {
             return false;
         }
-    }
-    setParent(component) {
-        this.parent = component;
     }
     componentDidUpdate(_oldProps, _newProps) {
         return true;

@@ -6,12 +6,12 @@ import {submitChangePasswordFunction, submitEditFunction, validationFunction} fr
 import { EDIT_BUTTON } from "../../constants/buttonClasses.js";
 import { Button } from "../../components/Button/index.js";
 import Block from '../../lib/block.js';
-import {router} from "../../lib/Router/Router.js";
+import { Router } from "../../lib/Router/Router.js";
 import {getUserData, logOut} from "../../api/authorization.js";
 import { ModalAvatar } from "../../components/ModalAvatar/index.js";
 import render from '../../utils/render.js';
-// import { profileData } from "./data.js";
 
+const router = new Router(".app");
 const editButtonProps = {
   type: 'submit',
   className: EDIT_BUTTON,
@@ -61,7 +61,9 @@ const profileData = {
   newPasswordConfirmError: '',
   editButton: EditButton.getContent().innerHTML,
   exitButton: ExitButton.getContent().innerHTML,
-  changePasswordButton: changePasswordButton.getContent().innerHTML
+  changePasswordButton: changePasswordButton.getContent().innerHTML,
+  handleError: '',
+  errorMessage: '',
 }
 
 export class Profile extends Block {
@@ -107,7 +109,16 @@ export class Profile extends Block {
     })
     const exitButton: HTMLElement | null = this._element.querySelector('#exitButton');
     exitButton && exitButton.addEventListener('click', () => {
-      logOut()
+      logOut().then((response) => {
+        if (response.response === 'OK') {
+          router.go('/login')
+        } else {
+          this.setProps({
+            handleError: 'error-message__show',
+            errorMessage: 'Неизвестная ошибка',
+          });
+        }
+      });
     })
   }
 

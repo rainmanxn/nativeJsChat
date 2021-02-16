@@ -1,7 +1,8 @@
 import { template } from './template.js';
 import templator from "../../utils/templator.js";
 import Block from '../../lib/block.js';
-import { router } from '../../lib/Router/Router.js';
+import { Router } from '../../lib/Router/Router.js';
+const router = new Router(".app");
 export class Page extends Block {
     constructor() {
         super('div');

@@ -15,4 +15,4 @@ export interface FormDataType {
   password_confirm?: string
 }
 
-export type KeyValueType = {[key: string]: string};
+export type KeyValueType = Record<string, string>;

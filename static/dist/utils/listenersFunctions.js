@@ -1,6 +1,6 @@
 import validators from "./validators/index.js";
 import setProps from "./setProps.js";
-import { signIn, signUp } from "../api/authorization.js";
+import { signUp } from "../api/authorization.js";
 import { changeUserInfo, changeUserPassword } from "../api/userProfile.js";
 export const validationFunction = (element, component) => {
     element
@@ -26,16 +26,14 @@ export const validationFunction = (element, component) => {
         });
     });
 };
-export const submitFunction = (element, props) => {
-    element.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const { loginValue, passwordValue } = props;
-        const isValid = validators.login(loginValue) && validators.password(passwordValue);
-        isValid && signIn({
-            login: loginValue,
-            password: passwordValue,
-        });
-    });
+export const submitFunction = (props) => {
+    const { loginValue, passwordValue } = props;
+    const isValid = validators.login(loginValue) && validators.password(passwordValue);
+    return {
+        isValid,
+        login: loginValue,
+        password: passwordValue,
+    };
 };
 export const submitRegisterFunction = (element, props) => {
     element.addEventListener('submit', (event) => {

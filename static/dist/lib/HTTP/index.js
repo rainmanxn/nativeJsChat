@@ -1,4 +1,5 @@
 import queryStringify from "../../utils/myDash/queryStringify/index.js";
+const BASE_URL = 'https://ya-praktikum.tech/api/v2';
 var METHODS;
 (function (METHODS) {
     METHODS["GET"] = "GET";
@@ -6,8 +7,8 @@ var METHODS;
     METHODS["PUT"] = "PUT";
     METHODS["DELETE"] = "DELETE";
 })(METHODS || (METHODS = {}));
-class fetchHTTP {
-    constructor() {
+class FetchHTTP {
+    constructor(baseUrl) {
         this.get = (url, options = {}) => {
             return this.request(url, Object.assign(Object.assign({}, options), { method: METHODS.GET }), options.timeout);
         };
@@ -25,11 +26,13 @@ class fetchHTTP {
             const headers = Object.assign({}, currentHeaders);
             return new Promise((resolve, reject) => {
                 const xhr = new XMLHttpRequest();
+                const requestUrl = this.baseUrl + url;
                 const isGet = method === METHODS.GET;
-                method && xhr.open(method, isGet && !!body ? `${url}${queryStringify(body)}` : url);
+                method && xhr.open(method, isGet && !!body ? `${requestUrl}${queryStringify(body)}` : requestUrl);
                 headers && Object.keys(headers).forEach((key) => {
                     xhr.setRequestHeader(key, headers[key]);
                 });
+                xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.withCredentials = true;
                 xhr.timeout = timeout;
                 xhr.onload = function () {
@@ -46,8 +49,9 @@ class fetchHTTP {
                 }
             });
         };
+        this.baseUrl = baseUrl;
     }
 }
 ;
-const Fetch = new fetchHTTP();
+const Fetch = new FetchHTTP(BASE_URL);
 export default Fetch;

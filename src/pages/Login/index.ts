@@ -1,14 +1,15 @@
 import { template } from './template.js';
 import templator from "../../utils/templator.js";
 import { InputElement } from '../../interfaces/index.js'
-// import render from "../../utils/render.js";
-// import { TemplatePropsContext } from "../../types/index.js";
+
 import { submitFunction, validationFunction } from "../../utils/listenersFunctions.js";
 import { SUBMIT_BUTTON } from "../../constants/buttonClasses.js";
 import { Button } from "../../components/Button/index.js";
 import Block from '../../lib/block.js';
-import {router} from "../../lib/Router/Router.js";
+import {Router} from "../../lib/Router/Router.js";
+import { signIn } from "../../api/authorization.js";
 
+const router = new Router(".app");
 const buttonProps = {
   type: 'submit',
   className: SUBMIT_BUTTON,
@@ -23,6 +24,8 @@ const data: object = {
   passwordValue: '',
   loginError: '',
   passwordError: '',
+  handleError: '',
+  errorMessage: '',
   buttonSignUp: SubmitButton.getContent().innerHTML
 };
 
@@ -36,7 +39,25 @@ export class Login extends Block {
     const submitButton: HTMLElement | null = document.querySelector('form');
 
     validationFunction(inputElements, this);
-    submitButton && submitFunction(submitButton, this.props);
+    submitButton?.addEventListener('submit', (event: Event) => {
+      event.preventDefault();
+      const { isValid, login, password } = submitButton && submitFunction(this.props);
+      isValid && signIn(
+        {
+          login,
+          password
+        }
+      ).then((response) => {
+        if (response.response === 'OK') {
+          router.go('/main')
+        } else {
+            this.setProps({
+              handleError: 'error-message__show',
+              errorMessage: (JSON.parse(response.response)).reason
+            });
+          }
+      })
+  })
     const linkButton: HTMLElement | null = this._element.querySelector('.login-href');
     linkButton && linkButton.addEventListener('click', () => {
       router.go('/register')
@@ -48,8 +69,3 @@ export class Login extends Block {
   }
 
 }
-
-// export const LoginPage = new Login(data);
-
-// render('body', LoginPage)
-// render('#submit', SubmitButton)

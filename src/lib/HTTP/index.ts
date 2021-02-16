@@ -1,5 +1,7 @@
 import queryStringify from "../../utils/myDash/queryStringify/index.js";
 
+const BASE_URL = 'https://ya-praktikum.tech/api/v2';
+
 enum METHODS {
   GET = 'GET',
   POST = 'POST',
@@ -13,10 +15,22 @@ type Options = {
   headers?: HeadersType,
   body?: any,
   method?: METHODS,
-  timeout?: number
+  timeout?: number,
+  credentials?: string;
 }
 
-class fetchHTTP {
+type RequestOptions = {
+  method: METHODS,
+  headers?: HeadersType,
+  body?: any
+}
+
+class FetchHTTP {
+  private baseUrl: string;
+
+  constructor(baseUrl: string) {
+    this.baseUrl = baseUrl;
+  }
   get = (url: string, options: Options = {}) => {
     return this.request(url, { ...options, method: METHODS.GET }, options.timeout);
   };
@@ -33,21 +47,22 @@ class fetchHTTP {
     return this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
   };
 
-  request = (url: string, options: Options, timeout = 5000) => {
+  request = (url: string, options: RequestOptions, timeout = 5000) => {
     const { headers: currentHeaders, body, method } = options;
     const headers: HeadersType = {
       ...currentHeaders
     }
 
-    return new Promise((resolve, reject) => {
+    return new Promise<XMLHttpRequest>((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-
+      const requestUrl = this.baseUrl + url;
       const isGet = method === METHODS.GET;
-      method && xhr.open(method, isGet && !!body ? `${url}${queryStringify(body)}` : url);
+      method && xhr.open(method, isGet && !!body ? `${requestUrl}${queryStringify(body)}` : requestUrl);
       headers && Object.keys(headers).forEach((key) => {
         xhr.setRequestHeader(key, headers[key]);
       });
 
+      xhr.setRequestHeader('Content-Type', 'application/json')
       xhr.withCredentials = true
       xhr.timeout = timeout;
 
@@ -69,6 +84,6 @@ class fetchHTTP {
   };
 };
 
-const Fetch = new fetchHTTP();
+const Fetch = new FetchHTTP(BASE_URL);
 
 export default Fetch;
