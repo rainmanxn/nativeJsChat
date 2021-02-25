@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { assert } from 'chai'
-import { Router } from '../../../static/dist/lib/Router/Router.js'
-import Block from "../../../static/dist/lib/Block/index.js";
+import { Router } from '../../../static/dist/lib/Router/Router'
+import Block from "../../../static/dist/lib/Block/index";
 
 const getRouter = () => {
   const router = new Router('.app')

@@ -1,4 +1,4 @@
-import Fetch from "../lib/HTTP/index.js";
+import Fetch from "../lib/HTTP/index";
 const BASE_CHATS_URL = `/chats`;
 const USER_CHAT = `${BASE_CHATS_URL}/users`;
 export const getChats = () => Fetch.get(BASE_CHATS_URL);

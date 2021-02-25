@@ -1,7 +1,7 @@
-import { template } from './template.js';
-import templator from "../../utils/templator.js";
-import Block from '../../lib/block.js';
-import { Router } from '../../lib/Router/Router.js';
+import { template } from './template';
+import templator from "../../utils/templator";
+import Block from '../../lib/block';
+import { Router } from '../../lib/Router/Router';
 const router = new Router(".app");
 export class Page extends Block {
     constructor() {

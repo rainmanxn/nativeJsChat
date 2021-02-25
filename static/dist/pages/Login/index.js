@@ -1,11 +1,12 @@
-import { template } from './template.js';
-import templator from "../../utils/templator.js";
-import { submitFunction, validationFunction } from "../../utils/listenersFunctions.js";
-import { SUBMIT_BUTTON } from "../../constants/buttonClasses.js";
-import { Button } from "../../components/Button/index.js";
-import Block from '../../lib/block.js';
-import { Router } from "../../lib/Router/Router.js";
-import { signIn } from "../../api/authorization.js";
+import { template } from './template';
+import templator from "../../utils/templator";
+import { submitFunction, validationFunction } from "../../utils/listenersFunctions";
+import { SUBMIT_BUTTON } from "../../constants/buttonClasses";
+import { Button } from "../../components/Button/index";
+import Block from '../../lib/block';
+import { Router } from "../../lib/Router/Router";
+import { signIn } from "../../api/authorization";
+import '../../styles.scss';
 const router = new Router(".app");
 const buttonProps = {
     type: 'submit',

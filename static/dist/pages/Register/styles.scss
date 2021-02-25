@@ -1,0 +1,45 @@
+.register-block {
+  width: 340px;
+  height: 655px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(29.56deg, rgba(33, 32, 63, 0.5) 2.24%, rgba(75, 85, 115, 0.5) 96.45%);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-form {
+  margin-left: 30px;
+}
+
+.submit-button__register {
+  margin-top: 35px;
+}
+
+.incorrect {
+  color: #FF0065;
+}
+
+.error-message {
+  visibility: hidden;
+  margin-top: 7px;
+  font-family: Inter, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 8px;
+  line-height: 8px;
+  color: #FF0065;
+}
+
+.error-message__show {
+  visibility: visible;
+}
+
+.error-profile-message {
+  position: absolute;
+  right: 150px;
+}

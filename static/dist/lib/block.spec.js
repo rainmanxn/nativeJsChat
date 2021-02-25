@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { JSDOM } from 'jsdom';
 import { fake } from 'sinon';
-import Block from "../../static/dist/lib/block.js";
+import Block from "../../static/dist/lib/block";
 let testElement;
 describe('Component', () => {
     before(() => {

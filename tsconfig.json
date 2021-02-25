@@ -12,6 +12,8 @@
     "strictNullChecks": true,
     "noEmitOnError": true,
     "removeComments": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
     "watch": true,
     "baseUrl": "src"
   },

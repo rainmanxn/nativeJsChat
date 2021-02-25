@@ -1,5 +1,5 @@
-import {SEND_BUTTON} from "../../constants/buttonClasses.js";
-import { Button } from "../../components/Button/index.js";
+import {SEND_BUTTON} from "../../constants/buttonClasses";
+import { Button } from "../../components/Button/index";
 
 const sendMessageButtonProps = {
   type: 'button',

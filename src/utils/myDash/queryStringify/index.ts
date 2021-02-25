@@ -1,4 +1,4 @@
-import isPlainObject from '../isPlainObject/index.js'
+import isPlainObject from '../isPlainObject/index'
 
 type StringIndexed = Record<string, any>;
 

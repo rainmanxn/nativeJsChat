@@ -1,5 +1,5 @@
-import EventBus from "./eventBus.js";
-import { Events, TemplatePropsContext } from "../types/index.js"
+import EventBus from "./eventBus";
+import { Events, TemplatePropsContext } from "../types/index"
 
 class Block {
   static EVENTS: Events = {

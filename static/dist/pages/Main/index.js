@@ -1,10 +1,10 @@
-import { template, messagesTemplate } from './template.js';
-import templator from "../../utils/templator.js";
-import render from "../../utils/render.js";
-import { mainData, messagesData } from "./data.js";
-import Block from '../../lib/block.js';
-import { Router } from "../../lib/Router/Router.js";
-import { addUserToChat, createChat, getChats, removeUserFromChat } from "../../api/chats.js";
+import { template, messagesTemplate } from './template';
+import templator from "../../utils/templator";
+import render from "../../utils/render";
+import { mainData, messagesData } from "./data";
+import Block from '../../lib/block';
+import { Router } from "../../lib/Router/Router";
+import { addUserToChat, createChat, getChats, removeUserFromChat } from "../../api/chats";
 const router = new Router(".app");
 export class Main extends Block {
     constructor() {

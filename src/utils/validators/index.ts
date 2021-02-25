@@ -1,8 +1,8 @@
-import validateEmail from './validateEmail.js';
-import validatePassword from './validatePassword.js';
-import validateLogin from './validateLogin.js';
-import validateName from './validateName.js';
-import validatePhone from './validatePhone.js';
+import validateEmail from './validateEmail';
+import validatePassword from './validatePassword';
+import validateLogin from './validateLogin';
+import validateName from './validateName';
+import validatePhone from './validatePhone';
 
 const validators: {[index: string]:any} = {
   email: validateEmail,

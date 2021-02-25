@@ -1,10 +1,10 @@
-import { InputElement } from "../interfaces/index.js";
-import validators from "./validators/index.js";
-import { TemplatePropsContext } from "../types/index.js";
-import setProps from "./setProps.js";
-import Block from "../lib/block.js";
-import { signUp } from "../api/authorization.js";
-import { changeUserInfo, changeUserPassword } from "../api/userProfile.js";
+import { InputElement } from "../interfaces/index";
+import validators from "./validators/index";
+import { TemplatePropsContext } from "../types/index";
+import setProps from "./setProps";
+import Block from "../lib/block";
+import { signUp } from "../api/authorization";
+import { changeUserInfo, changeUserPassword } from "../api/userProfile";
 
 export const validationFunction = (element: InputElement[], component: Block) => {
   element

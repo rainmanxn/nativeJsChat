@@ -1,5 +1,5 @@
-import Fetch from "../lib/HTTP/index.js";
-import { Router } from "../lib/Router/Router.js";
+import Fetch from "../lib/HTTP/index";
+import { Router } from "../lib/Router/Router";
 const BASE_AUTH_URL = `/auth`;
 const SIGN_UP_URL = `${BASE_AUTH_URL}/signup`;
 const SIGN_IN_URL = `${BASE_AUTH_URL}/signin`;

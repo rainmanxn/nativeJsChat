@@ -1,6 +1,6 @@
-import Fetch from "../lib/HTTP/index.js";
-import { KeyValueType } from "../interfaces/index.js";
-import { Router } from "../lib/Router/Router.js";
+import Fetch from "../lib/HTTP/index";
+import { KeyValueType } from "../interfaces/index";
+import { Router } from "../lib/Router/Router";
 
 const BASE_USER_URL = `/user`;
 const PUT_USER_PROFILE = `${BASE_USER_URL}/profile`;

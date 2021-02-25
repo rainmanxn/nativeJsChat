@@ -1,5 +1,5 @@
-import isEqual from '../../utils/isEqual.js';
-import render from '../../utils/render.js';
+import isEqual from '../../utils/isEqual';
+import render from '../../utils/render';
 export class Route {
     constructor(pathname, view, props) {
         this._pathname = pathname;

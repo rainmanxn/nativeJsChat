@@ -1,13 +1,13 @@
-import { InputElement } from '../../interfaces/index.js'
-import { template } from './template.js';
-import templator from "../../utils/templator.js";
-// import render from "../../utils/render.js";
-// import { TemplatePropsContext } from "../../types/index.js";
-import { submitRegisterFunction, validationFunction } from "../../utils/listenersFunctions.js";
-import { Button } from '../../components/Button/index.js';
-import { SUBMIT_BUTTON_REGISTER } from '../../constants/buttonClasses.js';
-import Block from '../../lib/block.js';
-import { Router } from "../../lib/Router/Router.js";
+import { InputElement } from '../../interfaces/index'
+import { template } from './template';
+import templator from "../../utils/templator";
+// import render from "../../utils/render";
+// import { TemplatePropsContext } from "../../types/index";
+import { submitRegisterFunction, validationFunction } from "../../utils/listenersFunctions";
+import { Button } from '../../components/Button/index';
+import { SUBMIT_BUTTON_REGISTER } from '../../constants/buttonClasses';
+import Block from '../../lib/block';
+import { Router } from "../../lib/Router/Router";
 // import validators from "../../utils/validators";
 
 const router = new Router(".app");

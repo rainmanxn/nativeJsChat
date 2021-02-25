@@ -1,4 +1,4 @@
-import queryStringify from "../../utils/myDash/queryStringify/index.js";
+import queryStringify from "../../utils/myDash/queryStringify/index";
 
 const BASE_URL = 'https://ya-praktikum.tech/api/v2';
 

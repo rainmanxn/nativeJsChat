@@ -1,8 +1,8 @@
 // @ts-nocheck
 import { afterEach, beforeEach, describe, it } from 'mocha'
 import { assert } from 'chai'
-import isEqual from '../../../static/dist/utils/isEqual.js'
-import Fetch from "../../../static/dist/lib/HTTP/index.js";
+import isEqual from '../../../static/dist/utils/isEqual'
+import Fetch from "../../../static/dist/lib/HTTP/index";
 
 const sinon = require('sinon')
 const url = 'https://fake.com/'

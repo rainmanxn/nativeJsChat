@@ -1,4 +1,4 @@
-import Block from "../lib/block.js";
+import Block from "../lib/block";
 
 const setProps = (component: Block, isError: boolean, name: string | undefined, value: string | undefined) => {
   if (isError) {

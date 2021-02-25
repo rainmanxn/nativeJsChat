@@ -1,6 +1,6 @@
-import { template } from './template.js';
-import templator from "../../utils/templator.js";
-import Block from '../../lib/block.js';
+import { template } from './template';
+import templator from "../../utils/templator";
+import Block from '../../lib/block';
 export class Error404Page extends Block {
     constructor() {
         super('div');

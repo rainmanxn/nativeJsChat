@@ -1,6 +1,6 @@
-// import { EDIT_BUTTON } from "../../constants/buttonClasses.js";
-// import { Button } from "../../components/Button/index.js";
-// import { getUserData } from "../../api/authorization.js";
+// import { EDIT_BUTTON } from "../../constants/buttonClasses";
+// import { Button } from "../../components/Button/index";
+// import { getUserData } from "../../api/authorization";
 //
 // const editButtonProps = {
 //   type: 'submit',

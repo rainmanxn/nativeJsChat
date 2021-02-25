@@ -1,6 +1,5 @@
-export const { compile } = window.Handlebars;
 export default (template, context) => {
-    return compile(template)(context);
+    return Handlebars.compile(template)(context);
 };
 function putElement(componentName) {
     return new window.Handlebars.SafeString(componentName);

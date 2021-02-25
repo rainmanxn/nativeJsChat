@@ -1,15 +1,15 @@
 //ToDo сделать очистку полей пароля после обновления
-import { template } from './template.js';
-import templator from "../../utils/templator.js";
-import { InputElement } from '../../interfaces/index.js'
-import {submitChangePasswordFunction, submitEditFunction, validationFunction} from "../../utils/listenersFunctions.js";
-import { EDIT_BUTTON } from "../../constants/buttonClasses.js";
-import { Button } from "../../components/Button/index.js";
-import Block from '../../lib/block.js';
-import { Router } from "../../lib/Router/Router.js";
-import {getUserData, logOut} from "../../api/authorization.js";
-import { ModalAvatar } from "../../components/ModalAvatar/index.js";
-import render from '../../utils/render.js';
+import { template } from './template';
+import templator from "../../utils/templator";
+import { InputElement } from '../../interfaces/index'
+import {submitChangePasswordFunction, submitEditFunction, validationFunction} from "../../utils/listenersFunctions";
+import { EDIT_BUTTON } from "../../constants/buttonClasses";
+import { Button } from "../../components/Button/index";
+import Block from '../../lib/block';
+import { Router } from "../../lib/Router/Router";
+import {getUserData, logOut} from "../../api/authorization";
+import { ModalAvatar } from "../../components/ModalAvatar/index";
+import render from '../../utils/render';
 
 const router = new Router(".app");
 const editButtonProps = {

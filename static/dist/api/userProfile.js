@@ -1,5 +1,5 @@
-import Fetch from "../lib/HTTP/index.js";
-import { Router } from "../lib/Router/Router.js";
+import Fetch from "../lib/HTTP/index";
+import { Router } from "../lib/Router/Router";
 const BASE_USER_URL = `/user`;
 const PUT_USER_PROFILE = `${BASE_USER_URL}/profile`;
 const PUT_USER_PASSWORD = `${BASE_USER_URL}/password`;

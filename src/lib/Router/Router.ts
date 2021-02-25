@@ -1,7 +1,7 @@
-import { TemplatePropsContext } from 'types/index.js';
-import isEqual from '../../utils/isEqual.js'
-import render from '../../utils/render.js';
-import Block from '../../lib/block.js';
+import { TemplatePropsContext } from '../../types';
+import isEqual from '../../utils/isEqual'
+import render from '../../utils/render';
+import Block from '../../lib/block';
 
 type BlockClass = new (tag?: string, props?: TemplatePropsContext) => Block;
 type PropsType = {

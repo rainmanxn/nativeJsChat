@@ -1,4 +1,4 @@
-import isPlainObject from '../isPlainObject/index.js';
+import isPlainObject from '../isPlainObject/index';
 const objToStr = (obj, keyParent, str = '') => {
     const currentObj = Object.entries(obj);
     return currentObj.reduce((acc, [key, val]) => {

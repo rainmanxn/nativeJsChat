@@ -1,6 +1,6 @@
-import Fetch from "../lib/HTTP/index.js";
-import { Router } from "../lib/Router/Router.js";
-import { KeyValueType } from "../interfaces/index.js";
+import Fetch from "../lib/HTTP/index";
+import { Router } from "../lib/Router/Router";
+import { KeyValueType } from "../interfaces/index";
 
 const BASE_AUTH_URL = `/auth`;
 const SIGN_UP_URL = `${BASE_AUTH_URL}/signup`;

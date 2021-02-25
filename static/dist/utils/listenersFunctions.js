@@ -1,7 +1,7 @@
-import validators from "./validators/index.js";
-import setProps from "./setProps.js";
-import { signUp } from "../api/authorization.js";
-import { changeUserInfo, changeUserPassword } from "../api/userProfile.js";
+import validators from "./validators/index";
+import setProps from "./setProps";
+import { signUp } from "../api/authorization";
+import { changeUserInfo, changeUserPassword } from "../api/userProfile";
 export const validationFunction = (element, component) => {
     element
         .forEach((el) => {

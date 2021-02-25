@@ -1,4 +1,4 @@
-import EventBus from "./eventBus.js";
+import EventBus from "./eventBus";
 class Block {
     constructor(tagName = 'div', props) {
         this.setProps = (nextProps) => {

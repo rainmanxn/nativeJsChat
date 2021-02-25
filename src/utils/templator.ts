@@ -1,7 +1,8 @@
-export const { compile } = window.Handlebars;
+// import { compile } from 'handlebars';
+// export const { compile } = Handlebars;
 
 export default (template: string, context?: any): string => {
-  return compile(template)(context);
+  return Handlebars.compile(template)(context);
 };
 
 function putElement(componentName: string) {

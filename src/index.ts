@@ -1,11 +1,12 @@
-import { Router } from './lib/Router/Router.js';
-import { Login } from './pages/Login/index.js';
-import { Page } from './pages/Index/index.js';
-import { Register } from './pages/Register/index.js';
-import { Profile } from './pages/Profile/index.js';
-import { Main } from './pages/Main/index.js';
-import { Error404Page } from './pages/404/index.js';
-import { Error500Page } from "./pages/500/index.js";
+import { Router } from './lib/Router/Router';
+import { Login } from './pages/Login';
+import { Page } from './pages/Index';
+import { Register } from './pages/Register';
+import { Profile } from './pages/Profile';
+import { Main } from './pages/Main';
+import { Error404Page } from './pages/404';
+import { Error500Page } from "./pages/500";
+import './styles.scss'
 
 const router = new Router(".app");
 
