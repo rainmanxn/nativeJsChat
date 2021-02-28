@@ -67,12 +67,12 @@ module.exports = {
     ],
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 4000,
-    hot: true,
-    writeToDisk: true,
+    contentBase: 'static',
+    public: 'chat-ya-rain.herokuapp.com',
     historyApiFallback: true,
+    host: '0.0.0.0',
+    compress: true,
+    port: process.env.PORT || 4000,
   },
   plugins: [
     new HtmlWebpackPlugin({
