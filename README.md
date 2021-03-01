@@ -1,5 +1,6 @@
 Ссылка на figma - https://www.figma.com/file/l64d73nhUQGDX4uC1kAWCg/%D0%A7%D0%90%D0%A2?node-id=0%3A1
 Ссылка на netlify - https://amazing-leavitt-73b4aa.netlify.app/
+Ссылка на heroku - https://chat-ya-rain.herokuapp.com/
 
 ## Описание
 
