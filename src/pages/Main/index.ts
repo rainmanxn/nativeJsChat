@@ -198,43 +198,10 @@ export class Main extends Block {
     clipButton?.addEventListener('click', () => {
       modalClip?.classList.toggle('remove-modal');
     });
-
-/// ///////////////////////////////////
-//     this._element.querySelectorAll<HTMLElement>('.chat-item-container')?.forEach(el =>
-//       el.addEventListener('click', () => {
-//         const currentChat = this.props.chatItems
-//           .find((chat: any) => `${chat.id}` === el.dataset.chatItemId)!;
-//         this.setProps({
-//           ...this.props,
-//           currentChat
-//         });
-//
-//         const onMessage = (data: ChatMessage) => {
-//           if (data.type === 'message') {
-//             const formattedMessage = {...data, time: new Date(data.time).toLocaleString()};
-//             this.setProps({...this.props, chatMessages: [...this.props.chatMessages, formattedMessage]});
-//           }
-//
-//           if (Array.isArray(data)) {
-//             const formattedMessages =
-//               data.map(message => ({...message,
-//                 userId: message.user_id,
-//                 time: new Date(message.time).toLocaleString()}))
-//                 .reverse();
-//             this.setProps({...this.props, chatMessages: formattedMessages});
-//           }
-//         };
-//
-//         getChatToken(currentChat.id).then(({token}) =>
-//           initChat(currentChat.id, this.props.authUser.id, token, onMessage));
-//       })
-//     );
-//     const sendMessageButton = this._element?.querySelector('#send-message');
     const sendMessageButton = this._element?.querySelector(`.${SEND_BUTTON}`);
     sendMessageButton?.addEventListener('click', () => {
       const messageInput: HTMLInputElement | null = this._element?.querySelector('.main-chat-footer-input');
       if (messageInput) {
-        console.log('fdsfds', messageInput.value);
         sendMessage(messageInput.value);
         messageInput.value = '';
       }
