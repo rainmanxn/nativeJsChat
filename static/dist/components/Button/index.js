@@ -1,5 +1,5 @@
 import { buttonTemplate } from './template';
-import templator from "../../utils/templator";
+import templator from '../../utils/templator';
 import Block from '../../lib/block';
 export class Button extends Block {
     constructor(props) {

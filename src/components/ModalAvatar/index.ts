@@ -1,11 +1,11 @@
-//toDo Обработать отправку пустого файла
+// toDo Обработать отправку пустого файла
 
 import { modalAvatarTemplate } from './template';
-import templator from "../../utils/templator";
+import templator from '../../utils/templator';
 import Block from '../../lib/block';
-import { SUBMIT_BUTTON_MODAL_AVATAR } from "../../constants/buttonClasses";
-import {Button} from "../Button/index";
-import { changeUserAvatar } from "../../api/userProfile";
+import { SUBMIT_BUTTON_MODAL_AVATAR } from '../../constants/buttonClasses';
+import { Button } from '../Button/index';
+import { changeUserAvatar } from '../../api/userProfile';
 
 const sumbitButtonProps = {
   type: 'submit',
@@ -18,7 +18,7 @@ const SubmitButton = new Button(sumbitButtonProps);
 
 const modalData = {
   submitButton: SubmitButton.getContent().innerHTML
-}
+};
 
 export class ModalAvatar extends Block {
   constructor() {
@@ -29,20 +29,18 @@ export class ModalAvatar extends Block {
     const modalButton: HTMLFormElement | null = this._element.querySelector('#modalForm');
     const modalOverlay: HTMLElement | null = this._element.querySelector('#modalOverlay');
     modalButton && modalButton.addEventListener('submit', (e) => {
-      e.preventDefault()
+      e.preventDefault();
       const formData = modalButton && new FormData(modalButton);
       changeUserAvatar(formData);
       this.hide();
-
-    })
+    });
     modalOverlay && modalOverlay.addEventListener('click', (e) => {
       e.preventDefault();
       this.hide();
-    })
-
+    });
   }
 
   render(): string {
-    return templator(modalAvatarTemplate, this.props)
+    return templator(modalAvatarTemplate, this.props);
   }
 }

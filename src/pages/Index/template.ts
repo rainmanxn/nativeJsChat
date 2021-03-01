@@ -5,4 +5,4 @@ export const template = `
     <button class="mainButton">Chat</button>
     <button class="error-404-Button">404</button>
     <button class="error-500-Button">500</button>
-  `
+  `;

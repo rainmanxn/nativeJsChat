@@ -5,9 +5,9 @@ import { Register } from './pages/Register';
 import { Profile } from './pages/Profile';
 import { Main } from './pages/Main';
 import { Error404Page } from './pages/404';
-import { Error500Page } from "./pages/500";
+import { Error500Page } from './pages/500';
 import './styles.scss';
-const router = new Router(".app");
+const router = new Router('.app');
 router
     .use('/', Page)
     .use('/register', Register)
@@ -16,5 +16,5 @@ router
     .use('/main', Main)
     .use('/404', Error404Page)
     .use('/500', Error500Page)
-    .use(`/.*`, Error404Page)
+    .use('/.*', Error404Page)
     .start();

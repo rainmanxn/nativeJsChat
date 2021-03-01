@@ -1,14 +1,14 @@
 import { template } from './template';
-import templator from "../../utils/templator";
-import { submitChangePasswordFunction, submitEditFunction, validationFunction } from "../../utils/listenersFunctions";
-import { EDIT_BUTTON } from "../../constants/buttonClasses";
-import { Button } from "../../components/Button/index";
+import templator from '../../utils/templator';
+import { submitChangePasswordFunction, submitEditFunction, validationFunction } from '../../utils/listenersFunctions';
+import { EDIT_BUTTON } from '../../constants/buttonClasses';
+import { Button } from '../../components/Button/index';
 import Block from '../../lib/block';
-import { Router } from "../../lib/Router/Router";
-import { getUserData, logOut } from "../../api/authorization";
-import { ModalAvatar } from "../../components/ModalAvatar/index";
+import { Router } from '../../lib/Router/Router';
+import { getUserData, logOut } from '../../api/authorization';
+import { ModalAvatar } from '../../components/ModalAvatar/index';
 import render from '../../utils/render';
-const router = new Router(".app");
+const router = new Router('.app');
 const editButtonProps = {
     type: 'submit',
     className: EDIT_BUTTON,
@@ -32,7 +32,7 @@ const ExitButton = new Button(exitButtonProps);
 const changePasswordButton = new Button(changePasswordButtonProps);
 const ModalAvatarComponent = new ModalAvatar();
 const profileData = {
-    srcImg: './dist/img/icon-man.svg',
+    srcImg: '../img/iconman.png',
     userName: '',
     emailValue: '',
     loginValue: '',
@@ -56,7 +56,7 @@ const profileData = {
     exitButton: ExitButton.getContent().innerHTML,
     changePasswordButton: changePasswordButton.getContent().innerHTML,
     handleError: '',
-    errorMessage: '',
+    errorMessage: ''
 };
 export class Profile extends Block {
     constructor() {
@@ -65,8 +65,8 @@ export class Profile extends Block {
     componentDidMount() {
         getUserData().then((resp) => {
             const result = JSON.parse(resp.response);
-            const { id, first_name, second_name, display_name, login, avatar, email, phone } = result;
-            console.log(id);
+            const { first_name, second_name, display_name, login, avatar, email, phone } = result;
+            const srcImg = avatar ? `https://ya-praktikum.tech/${avatar}` : '../img/iconman.png';
             this.setProps({
                 emailValue: email,
                 firstNameValue: first_name,
@@ -74,7 +74,7 @@ export class Profile extends Block {
                 loginValue: login,
                 phoneValue: phone,
                 displayNameValue: display_name,
-                srcImg: `https://ya-praktikum.tech/${avatar}`
+                srcImg
             });
         });
     }
@@ -88,24 +88,24 @@ export class Profile extends Block {
         validationFunction(inputElements, this);
         submitButton && submitEditFunction(submitButton, this.props);
         changePasswordButton && submitChangePasswordFunction(changePasswordButton, this.props);
-        avatarButton && avatarButton.addEventListener('click', (e) => {
+        avatarButton === null || avatarButton === void 0 ? void 0 : avatarButton.addEventListener('click', e => {
             e.preventDefault();
             ModalAvatarComponent.show();
         });
         const linkButton = this._element.querySelector('.back-button');
-        linkButton && linkButton.addEventListener('click', () => {
+        linkButton === null || linkButton === void 0 ? void 0 : linkButton.addEventListener('click', () => {
             router.back();
         });
         const exitButton = this._element.querySelector('#exitButton');
-        exitButton && exitButton.addEventListener('click', () => {
-            logOut().then((response) => {
+        exitButton === null || exitButton === void 0 ? void 0 : exitButton.addEventListener('click', () => {
+            logOut().then(response => {
                 if (response.response === 'OK') {
                     router.go('/login');
                 }
                 else {
                     this.setProps({
                         handleError: 'error-message__show',
-                        errorMessage: 'Неизвестная ошибка',
+                        errorMessage: 'Неизвестная ошибка'
                     });
                 }
             });

@@ -1,22 +1,24 @@
-import EventBus from "./eventBus";
-import { Events, TemplatePropsContext } from "../types/index"
+import EventBus from './eventBus';
+import { Events, TemplatePropsContext } from '../types/index';
 
 class Block {
   static EVENTS: Events = {
-    INIT: "init",
-    FLOW_CDM: "flow:component-did-mount",
-    FLOW_CDU: "flow:component-did-update",
-    FLOW_RENDER: "flow:render",
+    INIT: 'init',
+    FLOW_CDM: 'flow:component-did-mount',
+    FLOW_CDU: 'flow:component-did-update',
+    FLOW_RENDER: 'flow:render',
     MOUNT: 'mount'
   };
 
   _element: HTMLElement;
+
   _meta: TemplatePropsContext
 
   eventBus: EventBus;
+
   props: TemplatePropsContext;
 
-  constructor(tagName: string = 'div', props?: TemplatePropsContext) {
+  constructor(tagName = 'div', props?: TemplatePropsContext) {
     const eventBus: EventBus = new EventBus();
     this._meta = {
       tagName,
@@ -34,7 +36,7 @@ class Block {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, (oldProps: TemplatePropsContext, newProps: TemplatePropsContext): any => {
-      this._componentDidUpdate(oldProps, newProps)
+      this._componentDidUpdate(oldProps, newProps);
     });
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
     eventBus.on(Block.EVENTS.MOUNT, this._mount.bind(this));
@@ -62,9 +64,8 @@ class Block {
     if (response) {
       this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
       return true;
-    } else {
-      return false;
     }
+    return false;
   }
 
   componentDidUpdate(_oldProps?: TemplatePropsContext, _newProps?: TemplatePropsContext): boolean {
@@ -109,7 +110,7 @@ class Block {
       return new Proxy(props, {
         get(target: TemplatePropsContext, prop: string) {
           const value = target[prop];
-          return typeof value === "function" ? value.bind(target) : value;
+          return typeof value === 'function' ? value.bind(target) : value;
         },
         set(target: TemplatePropsContext, prop: string, value) {
           target[prop] = value;
@@ -119,7 +120,7 @@ class Block {
         deleteProperty() {
           throw new Error('Нет доступа');
         }
-      })
+      });
     }
 
     return this.props;
@@ -130,13 +131,12 @@ class Block {
   }
 
   show(): void {
-    this.getContent().style.display = 'block'
+    this.getContent().style.display = 'block';
   }
 
   hide(): void {
-    this.getContent().style.display = 'none'
+    this.getContent().style.display = 'none';
   }
 }
 
 export default Block;
-

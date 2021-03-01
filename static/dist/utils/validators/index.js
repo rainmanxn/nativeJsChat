@@ -13,6 +13,6 @@ const validators = {
     password: validatePassword,
     passwordConfirm: validatePassword,
     oldPassword: validatePassword,
-    newPassword: validatePassword,
+    newPassword: validatePassword
 };
 export default validators;

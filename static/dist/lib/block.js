@@ -1,4 +1,4 @@
-import EventBus from "./eventBus";
+import EventBus from './eventBus';
 class Block {
     constructor(tagName = 'div', props) {
         this.setProps = (nextProps) => {
@@ -45,9 +45,7 @@ class Block {
             this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
             return true;
         }
-        else {
-            return false;
-        }
+        return false;
     }
     componentDidUpdate(_oldProps, _newProps) {
         return true;
@@ -73,7 +71,7 @@ class Block {
             return new Proxy(props, {
                 get(target, prop) {
                     const value = target[prop];
-                    return typeof value === "function" ? value.bind(target) : value;
+                    return typeof value === 'function' ? value.bind(target) : value;
                 },
                 set(target, prop, value) {
                     target[prop] = value;
@@ -98,10 +96,10 @@ class Block {
     }
 }
 Block.EVENTS = {
-    INIT: "init",
-    FLOW_CDM: "flow:component-did-mount",
-    FLOW_CDU: "flow:component-did-update",
-    FLOW_RENDER: "flow:render",
+    INIT: 'init',
+    FLOW_CDM: 'flow:component-did-mount',
+    FLOW_CDU: 'flow:component-did-update',
+    FLOW_RENDER: 'flow:render',
     MOUNT: 'mount'
 };
 export default Block;

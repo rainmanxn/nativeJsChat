@@ -6,18 +6,18 @@ export const template = `
         Профиль &gt;
       </a>
         <form id="addChat" class="profile-info-block chat">
-            <button class="profile-edit-item addChat_button">Добавить</button>
             <div class="profile-info-item">
               <span class="profile-info-field-name">Имя</span>
               <label>
                 <input type="text" class="profile-info-field-input" name="addChat" id="addChatInput">
               </label>
             </div>
+            <button class="profile-edit-item addChat_button">Добавить</button>
         </form>
       <input type="text" class="main-left-block-find" placeholder="Поиск">
       <ul id="list">
         {{#each chats}}
-          <li class="chat-item-container" id="if{{id}}">
+          <li class="chat-item-container" id="{{id}}">
             <div class="chat-item-container-left-block">
               <div class="chat-item-container-left-block-avatar">
                 <img src="https://ya-praktikum.tech/api/v2/uploads/15b5a35d-cb86-4789-b453-024860407521/111.jpeg" class="chat-item-container-left-block-avatar" alt="profile-avatar-icon">
@@ -55,7 +55,22 @@ export const template = `
         </nav>
 
         <div class="main-chat-container">
-          <ul class="main-chat-messages"></ul>
+          <ul class="main-chat-messages">
+            {{#each messages}}
+              {{#if opponentMessage}}
+                <li class="main-chat-messages-opponent-text">
+                  {{opponentMessage}}
+                  <div class="main-chat-messages-time">{{time}}</div>
+                </li>
+              {{else}}
+                <li class="main-chat-messages-user-text">
+                  {{myMessage}}
+                  <div class="main-chat-messages-time">{{time}}</div>
+                  <img src="../../img/2checks.svg" class="two-checks" alt="two-checks">
+                </li>
+              {{/if}}
+            {{/each}}
+          </ul>
         </div>
 
         <div class="main-chat-footer">
@@ -115,24 +130,4 @@ export const template = `
     </div>
 
   </main>
-`
-
-export const messagesTemplate = `
-    <li class="main-chat-messages-date">
-      19 июня
-    </li>
-    {{#each messages}}
-      {{#if opponentMessage}}
-        <li class="main-chat-messages-opponent-text">
-          {{opponentMessage}}
-          <div class="main-chat-messages-time">{{time}}</div>
-        </li>
-      {{else}}
-        <li class="main-chat-messages-user-text">
-          {{myMessage}}
-          <img src="../../img/2checks.svg" class="two-checks" alt="two-checks">
-          <div class="main-chat-messages-time">{{time}}</div>
-        </li>
-      {{/if}}
-    {{/each}}
-`
+`;

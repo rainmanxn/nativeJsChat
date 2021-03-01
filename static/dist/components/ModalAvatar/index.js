@@ -1,9 +1,9 @@
 import { modalAvatarTemplate } from './template';
-import templator from "../../utils/templator";
+import templator from '../../utils/templator';
 import Block from '../../lib/block';
-import { SUBMIT_BUTTON_MODAL_AVATAR } from "../../constants/buttonClasses";
-import { Button } from "../Button/index";
-import { changeUserAvatar } from "../../api/userProfile";
+import { SUBMIT_BUTTON_MODAL_AVATAR } from '../../constants/buttonClasses';
+import { Button } from '../Button/index';
+import { changeUserAvatar } from '../../api/userProfile';
 const sumbitButtonProps = {
     type: 'submit',
     className: SUBMIT_BUTTON_MODAL_AVATAR,

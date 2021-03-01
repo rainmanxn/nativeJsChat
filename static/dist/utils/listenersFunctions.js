@@ -1,7 +1,7 @@
-import validators from "./validators/index";
-import setProps from "./setProps";
-import { signUp } from "../api/authorization";
-import { changeUserInfo, changeUserPassword } from "../api/userProfile";
+import validators from './validators/index';
+import setProps from './setProps';
+import { signUp } from '../api/authorization';
+import { changeUserInfo, changeUserPassword } from '../api/userProfile';
 export const validationFunction = (element, component) => {
     element
         .forEach((el) => {
@@ -15,13 +15,11 @@ export const validationFunction = (element, component) => {
                     setProps(component, true, name, value);
                 }
             }
+            else if (name && validators[name](value)) {
+                setProps(component, false, name, value);
+            }
             else {
-                if (name && validators[name](value)) {
-                    setProps(component, false, name, value);
-                }
-                else {
-                    setProps(component, true, name, value);
-                }
+                setProps(component, true, name, value);
             }
         });
     });
@@ -32,7 +30,7 @@ export const submitFunction = (props) => {
     return {
         isValid,
         login: loginValue,
-        password: passwordValue,
+        password: passwordValue
     };
 };
 export const submitRegisterFunction = (element, props) => {
@@ -52,14 +50,14 @@ export const submitRegisterFunction = (element, props) => {
             login: loginValue,
             email: emailValue,
             password: passwordValue,
-            phone: phoneValue,
+            phone: phoneValue
         });
     });
 };
 export const submitEditFunction = (element, props) => {
     element.addEventListener('submit', (event) => {
         event.preventDefault();
-        const { emailValue, loginValue, firstNameValue, secondNameValue, displayNameValue, phoneValue, } = props;
+        const { emailValue, loginValue, firstNameValue, secondNameValue, displayNameValue, phoneValue } = props;
         const isValid = validators.login(loginValue)
             && validators.email(emailValue)
             && validators.firstName(firstNameValue)
@@ -72,7 +70,7 @@ export const submitEditFunction = (element, props) => {
             display_name: displayNameValue,
             login: loginValue,
             email: emailValue,
-            phone: phoneValue,
+            phone: phoneValue
         });
     });
 };
@@ -85,7 +83,7 @@ export const submitChangePasswordFunction = (element, props) => {
             && validators.passwordConfirm(passwordConfirmValue);
         isValid && changeUserPassword({
             oldPassword: oldPasswordValue,
-            newPassword: passwordValue,
+            newPassword: passwordValue
         });
         console.log({
             oldPasswordValue,

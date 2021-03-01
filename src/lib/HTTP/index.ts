@@ -1,4 +1,4 @@
-import queryStringify from "../../utils/myDash/queryStringify/index";
+import queryStringify from '../../utils/myDash/queryStringify/index';
 
 const BASE_URL = 'https://ya-praktikum.tech/api/v2';
 
@@ -31,6 +31,7 @@ class FetchHTTP {
   constructor(baseUrl: string) {
     this.baseUrl = baseUrl;
   }
+
   get = (url: string, options: Options = {}) => {
     return this.request(url, { ...options, method: METHODS.GET }, options.timeout);
   };
@@ -51,7 +52,7 @@ class FetchHTTP {
     const { headers: currentHeaders, body, method } = options;
     const headers: HeadersType = {
       ...currentHeaders
-    }
+    };
 
     return new Promise<XMLHttpRequest>((resolve, reject) => {
       const xhr = new XMLHttpRequest();
@@ -62,8 +63,8 @@ class FetchHTTP {
         xhr.setRequestHeader(key, headers[key]);
       });
 
-      xhr.setRequestHeader('Content-Type', 'application/json')
-      xhr.withCredentials = true
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.withCredentials = true;
       xhr.timeout = timeout;
 
       xhr.onload = function () {
@@ -79,10 +80,9 @@ class FetchHTTP {
       } else {
         xhr.send(body);
       }
-
-    })
+    });
   };
-};
+}
 
 const Fetch = new FetchHTTP(BASE_URL);
 

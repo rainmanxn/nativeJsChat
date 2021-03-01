@@ -14,7 +14,7 @@ const validators: {[index: string]:any} = {
   password: validatePassword,
   passwordConfirm: validatePassword,
   oldPassword: validatePassword,
-  newPassword: validatePassword,
-}
+  newPassword: validatePassword
+};
 
 export default validators;

@@ -1,11 +1,11 @@
-import Fetch from "../lib/HTTP/index";
-import { Router } from "../lib/Router/Router";
-const BASE_AUTH_URL = `/auth`;
+import Fetch from '../lib/HTTP/index';
+import { Router } from '../lib/Router/Router';
+const BASE_AUTH_URL = '/auth';
 const SIGN_UP_URL = `${BASE_AUTH_URL}/signup`;
 const SIGN_IN_URL = `${BASE_AUTH_URL}/signin`;
 const LOG_OUT_URL = `${BASE_AUTH_URL}/logout`;
 const GET_USER_DATA_URL = `${BASE_AUTH_URL}/user`;
-export const router = new Router(".app");
+export const router = new Router('.app');
 export const signUp = (data) => Fetch.post(SIGN_UP_URL, {
     body: JSON.stringify(data)
 }).then((response) => {

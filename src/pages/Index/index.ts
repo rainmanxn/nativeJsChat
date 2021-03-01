@@ -1,9 +1,9 @@
 import { template } from './template';
-import templator from "../../utils/templator";
+import templator from '../../utils/templator';
 import Block from '../../lib/block';
 import { Router } from '../../lib/Router/Router';
 
-const router = new Router(".app");
+const router = new Router('.app');
 
 export class Page extends Block {
   constructor() {
@@ -38,6 +38,6 @@ export class Page extends Block {
   }
 
   render(): string {
-    return templator(template, this.props)
+    return templator(template, this.props);
   }
 }

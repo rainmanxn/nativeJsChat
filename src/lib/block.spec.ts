@@ -2,7 +2,7 @@
 import { expect } from 'chai';
 import { JSDOM } from 'jsdom';
 import { fake } from 'sinon';
-import Block from "../../static/dist/lib/block";
+import Block from '../../static/dist/lib/block';
 
 let testElement;
 
@@ -15,7 +15,7 @@ describe('Component', () => {
     global.compile = window.Handlebars;
 
     testElement = document.createElement('div');
-    testElement.textContent = 'Hello'
+    testElement.textContent = 'Hello';
     global.queueMicrotask = fake((fn) => fn());
   });
 
@@ -24,7 +24,7 @@ describe('Component', () => {
       render() {
         return testElement.innerHTML;
       }
-    };
+    }();
     expect(component.getContent().innerHTML).to.equal(testElement.innerHTML);
   });
 
@@ -35,8 +35,8 @@ describe('Component', () => {
     const component = new class MyComponent extends Block {
       componentDidMount() {
         fakeFn();
-      };
-    };
+      }
+    }();
     component.getContent();
     expect(fakeFn.callCount).to.equal(1);
   });

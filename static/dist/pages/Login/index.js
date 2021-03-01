@@ -1,13 +1,13 @@
 import { template } from './template';
-import templator from "../../utils/templator";
-import { submitFunction, validationFunction } from "../../utils/listenersFunctions";
-import { SUBMIT_BUTTON } from "../../constants/buttonClasses";
-import { Button } from "../../components/Button/index";
+import templator from '../../utils/templator';
+import { submitFunction, validationFunction } from '../../utils/listenersFunctions';
+import { SUBMIT_BUTTON } from '../../constants/buttonClasses';
+import { Button } from '../../components/Button/index';
 import Block from '../../lib/block';
-import { Router } from "../../lib/Router/Router";
-import { signIn } from "../../api/authorization";
+import { Router } from '../../lib/Router/Router';
+import { signIn } from '../../api/authorization';
 import '../../styles.scss';
-const router = new Router(".app");
+const router = new Router('.app');
 const buttonProps = {
     type: 'submit',
     className: SUBMIT_BUTTON,

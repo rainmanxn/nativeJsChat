@@ -9,4 +9,4 @@ export const template = `
       <img src="../../img/ufo404.png" class="main-404-right-block-img" alt="ufo-in-bathroom">
     </div>
   </main>
-`
+`;

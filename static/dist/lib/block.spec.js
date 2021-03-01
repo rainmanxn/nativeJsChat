@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { JSDOM } from 'jsdom';
 import { fake } from 'sinon';
-import Block from "../../static/dist/lib/block";
+import Block from '../../static/dist/lib/block';
 let testElement;
 describe('Component', () => {
     before(() => {
@@ -18,7 +18,7 @@ describe('Component', () => {
             render() {
                 return testElement.innerHTML;
             }
-        };
+        }();
         expect(component.getContent().innerHTML).to.equal(testElement.innerHTML);
     });
     it('checking componentDidMount', () => {
@@ -28,8 +28,7 @@ describe('Component', () => {
             componentDidMount() {
                 fakeFn();
             }
-            ;
-        };
+        }();
         component.getContent();
         expect(fakeFn.callCount).to.equal(1);
     });

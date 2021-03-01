@@ -1,4 +1,4 @@
-import queryStringify from "../../utils/myDash/queryStringify/index";
+import queryStringify from '../../utils/myDash/queryStringify/index';
 const BASE_URL = 'https://ya-praktikum.tech/api/v2';
 var METHODS;
 (function (METHODS) {
@@ -52,6 +52,5 @@ class FetchHTTP {
         this.baseUrl = baseUrl;
     }
 }
-;
 const Fetch = new FetchHTTP(BASE_URL);
 export default Fetch;

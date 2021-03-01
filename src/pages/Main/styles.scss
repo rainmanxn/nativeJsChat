@@ -321,6 +321,8 @@
   color: #FFFFFF;
   margin-bottom: 10px;
   position: relative;
+  min-height: 30px;
+  min-width: 150px;
 }
 
 .main-chat-messages-user-text {
@@ -338,11 +340,14 @@
   margin-bottom: 10px;
   margin-left: auto;
   position: relative;
+  min-height: 20px;
+  min-width: 150px;
+  text-align: right;
 }
 
 .main-chat-messages-time {
   position: absolute;
-  right: 11px;
+  right: 20px;
   bottom: 5px;
   font-family: Inter, serif;
   font-style: normal;
@@ -355,7 +360,7 @@
 
 .two-checks {
   position: absolute;
-  right: 36px;
+  right: 6px;
   bottom: 6px;
 }
 

@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { Router } from '../../../static/dist/lib/Router/Router';
-import Block from "../../../static/dist/lib/Block/index";
+import Block from '../../../static/dist/lib/Block/index';
 const getRouter = () => {
     const router = new Router('.app')
         .use('/', getEmptyComponent())
@@ -26,7 +26,7 @@ const getEmptyComponent = () => {
 };
 describe('Router', function () {
     it('router is singleton. should return first instance domSelector', (done) => {
-        let router = createRouter('.new');
+        const router = createRouter('.new');
         assert.equal(router._rootQuery, '.app');
         done();
     });

@@ -24,4 +24,4 @@ export const template = `
       <a class="login-href">Нет аккаунта?</a>
     </div>
   </div>
-`
+`;

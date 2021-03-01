@@ -1,5 +1,5 @@
 import { buttonTemplate } from './template';
-import templator from "../../utils/templator";
+import templator from '../../utils/templator';
 import Block from '../../lib/block';
 
 type ButtonProps = {
@@ -13,7 +13,8 @@ export class Button extends Block {
   constructor(props?: ButtonProps) {
     super('div', props);
   }
+
   render(): string {
-    return templator(buttonTemplate, this.props)
+    return templator(buttonTemplate, this.props);
   }
 }

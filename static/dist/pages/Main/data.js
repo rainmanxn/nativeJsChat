@@ -1,14 +1,13 @@
-import { SEND_BUTTON } from "../../constants/buttonClasses";
-import { Button } from "../../components/Button/index";
+import { SEND_BUTTON } from '../../constants/buttonClasses';
+import { Button } from '../../components/Button/index';
 const sendMessageButtonProps = {
     type: 'button',
-    className: SEND_BUTTON,
+    className: SEND_BUTTON
 };
 const SendMessageButton = new Button(sendMessageButtonProps);
 export const mainData = {
     submitButton: SendMessageButton.getContent().innerHTML,
     activeItemId: '-1',
-    chats: [],
     headerName: 'Вадим',
     removeModals: [
         {
@@ -58,20 +57,4 @@ export const mainData = {
             iconSrc: './dist/img/location-icon.svg'
         }
     ]
-};
-export const messagesData = {
-    messages: [
-        { opponentMessage: 'Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то\n' +
-                'момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все\n' +
-                'знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все\n' +
-                'еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.\n' +
-                'Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда\n' +
-                'и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.',
-            time: '11:56'
-        },
-        { myMessage: 'Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент ' +
-                'попросила Хассельблад адаптировать модель SWC для полетов на Луну.',
-            time: '11:57'
-        }
-    ],
 };

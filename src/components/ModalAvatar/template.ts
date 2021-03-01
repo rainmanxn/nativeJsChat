@@ -8,4 +8,4 @@ export const modalAvatarTemplate = `
       {{ELEMENT submitButton}}
     </form>  
   </div>
-`
+`;

@@ -1,7 +1,9 @@
 import Fetch from '../lib/HTTP/index';
+import { WebSocketUtil } from '../lib/WebSocketUtil';
 
 const BASE_CHATS_URL = '/chats';
 const USER_CHAT = `${BASE_CHATS_URL}/users`;
+const CHAT_TOKEN_ENDPOINT = `${BASE_CHATS_URL}/token`;
 
 export const getChats = () => Fetch.get(BASE_CHATS_URL);
 
@@ -28,3 +30,13 @@ export const removeUserFromChat = (data: number, chatId: number) => Fetch.delete
     chatId
   })
 });
+
+export const getChatToken = (chatId: number): Promise<unknown> =>
+  Fetch.post(`${CHAT_TOKEN_ENDPOINT}/${chatId}`);
+
+export const initChat = (chatId: number, userId: number, token: string, onMessage: (data: any) => void): void => {
+  WebSocketUtil.instance = new WebSocketUtil({chatId, userId, token, onMessage });
+  WebSocketUtil.instance.init();
+};
+
+export const sendMessage = (content: string) => WebSocketUtil.instance?.sendMessage({content, type: 'message'});

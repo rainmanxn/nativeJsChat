@@ -5,9 +5,7 @@ const objToStr = (obj, keyParent, str = '') => {
         if (!isPlainObject(val)) {
             return str ? `${acc}&${keyParent}[${str}][${key}]=${val}` : `${acc}&${keyParent}[${key}]=${val}`;
         }
-        else {
-            return acc + objToStr(val, keyParent, key);
-        }
+        return acc + objToStr(val, keyParent, key);
     }, '');
 };
 function queryStringify(data) {
@@ -23,9 +21,7 @@ function queryStringify(data) {
                 if (!isPlainObject(el)) {
                     return `${acc}&${key}[${i}]=${el}`;
                 }
-                else {
-                    return acc + objToStr(el, key);
-                }
+                return acc + objToStr(el, key);
             }, '');
             return `${acc}${str}`;
         }

@@ -1,17 +1,16 @@
-//ToDo сделать очистку полей пароля после обновления
 import { template } from './template';
-import templator from "../../utils/templator";
-import { InputElement } from '../../interfaces/index'
-import {submitChangePasswordFunction, submitEditFunction, validationFunction} from "../../utils/listenersFunctions";
-import { EDIT_BUTTON } from "../../constants/buttonClasses";
-import { Button } from "../../components/Button/index";
+import templator from '../../utils/templator';
+import { InputElement } from '../../interfaces/index';
+import { submitChangePasswordFunction, submitEditFunction, validationFunction } from '../../utils/listenersFunctions';
+import { EDIT_BUTTON } from '../../constants/buttonClasses';
+import { Button } from '../../components/Button/index';
 import Block from '../../lib/block';
-import { Router } from "../../lib/Router/Router";
-import {getUserData, logOut} from "../../api/authorization";
-import { ModalAvatar } from "../../components/ModalAvatar/index";
+import { Router } from '../../lib/Router/Router';
+import { getUserData, logOut } from '../../api/authorization';
+import { ModalAvatar } from '../../components/ModalAvatar/index';
 import render from '../../utils/render';
 
-const router = new Router(".app");
+const router = new Router('.app');
 const editButtonProps = {
   type: 'submit',
   className: EDIT_BUTTON,
@@ -39,7 +38,7 @@ const changePasswordButton = new Button(changePasswordButtonProps);
 const ModalAvatarComponent = new ModalAvatar();
 
 const profileData = {
-  srcImg: './dist/img/icon-man.svg',
+  srcImg: '../img/iconman.png',
   userName: '',
   emailValue: '',
   loginValue: '',
@@ -63,8 +62,8 @@ const profileData = {
   exitButton: ExitButton.getContent().innerHTML,
   changePasswordButton: changePasswordButton.getContent().innerHTML,
   handleError: '',
-  errorMessage: '',
-}
+  errorMessage: ''
+};
 
 export class Profile extends Block {
   constructor() {
@@ -73,9 +72,11 @@ export class Profile extends Block {
 
   componentDidMount() {
     getUserData().then((resp: any) => {
-      const result = JSON.parse(resp.response)
-      const {id, first_name, second_name, display_name, login, avatar, email, phone } = result;
-      console.log(id)
+      const result = JSON.parse(resp.response);
+      const {
+        first_name, second_name, display_name, login, avatar, email, phone
+      } = result;
+      const srcImg = avatar ? `https://ya-praktikum.tech/${avatar}` : '../img/iconman.png';
       this.setProps({
         emailValue: email,
         firstNameValue: first_name,
@@ -83,46 +84,46 @@ export class Profile extends Block {
         loginValue: login,
         phoneValue: phone,
         displayNameValue: display_name,
-        srcImg: `https://ya-praktikum.tech/${avatar}`
-      })
-    })
+        srcImg
+      });
+    });
   }
 
   mount() {
-    const inputElements: InputElement[] = Array.from(this.element.querySelectorAll('.profile-info-field-input'))
+    const inputElements: InputElement[] = Array.from(this.element.querySelectorAll('.profile-info-field-input'));
     const submitButton: HTMLElement | null = document.querySelector('#submit');
     const changePasswordButton: HTMLElement | null = document.querySelector('#changePassword');
     const avatarButton: HTMLElement | null = document.querySelector('.profile-avatar');
     render('main', ModalAvatarComponent);
-    ModalAvatarComponent.hide()
+    ModalAvatarComponent.hide();
     validationFunction(inputElements, this);
     submitButton && submitEditFunction(submitButton, this.props);
     changePasswordButton && submitChangePasswordFunction(changePasswordButton, this.props);
-    avatarButton && avatarButton.addEventListener('click', (e) => {
-      e.preventDefault()
-      ModalAvatarComponent.show()
-    })
+    avatarButton?.addEventListener('click', e => {
+      e.preventDefault();
+      ModalAvatarComponent.show();
+    });
 
     const linkButton: HTMLElement | null = this._element.querySelector('.back-button');
-    linkButton && linkButton.addEventListener('click', () => {
-      router.back()
-    })
+    linkButton?.addEventListener('click', () => {
+      router.back();
+    });
     const exitButton: HTMLElement | null = this._element.querySelector('#exitButton');
-    exitButton && exitButton.addEventListener('click', () => {
-      logOut().then((response) => {
+    exitButton?.addEventListener('click', () => {
+      logOut().then(response => {
         if (response.response === 'OK') {
-          router.go('/login')
+          router.go('/login');
         } else {
           this.setProps({
             handleError: 'error-message__show',
-            errorMessage: 'Неизвестная ошибка',
+            errorMessage: 'Неизвестная ошибка'
           });
         }
       });
-    })
+    });
   }
 
   render(): string {
-    return templator(template, this.props)
+    return templator(template, this.props);
   }
 }

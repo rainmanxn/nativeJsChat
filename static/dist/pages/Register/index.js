@@ -1,11 +1,11 @@
 import { template } from './template';
-import templator from "../../utils/templator";
-import { submitRegisterFunction, validationFunction } from "../../utils/listenersFunctions";
+import templator from '../../utils/templator';
+import { submitRegisterFunction, validationFunction } from '../../utils/listenersFunctions';
 import { Button } from '../../components/Button/index';
 import { SUBMIT_BUTTON_REGISTER } from '../../constants/buttonClasses';
 import Block from '../../lib/block';
-import { Router } from "../../lib/Router/Router";
-const router = new Router(".app");
+import { Router } from '../../lib/Router/Router';
+const router = new Router('.app');
 const buttonProps = {
     type: 'submit',
     className: SUBMIT_BUTTON_REGISTER,

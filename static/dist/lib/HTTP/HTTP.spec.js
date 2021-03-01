@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, it } from 'mocha';
 import { assert } from 'chai';
 import isEqual from '../../../static/dist/utils/isEqual';
-import Fetch from "../../../static/dist/lib/HTTP/index";
+import Fetch from '../../../static/dist/lib/HTTP/index';
 const sinon = require('sinon');
 const url = 'https://fake.com/';
 const data = { id: 1, data: 'Hello' };

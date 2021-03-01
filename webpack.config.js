@@ -1,4 +1,4 @@
-// webpack.config.js
+// Webpack.config.js
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
@@ -23,13 +23,13 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: '',
-            },
+              publicPath: ''
+            }
           },
-          'css-loader', // translates CSS into CommonJS
-          'postcss-loader', // parse CSS and add vendor prefixes to CSS rules
-          'sass-loader', // compiles Sass to CSS, using Node Sass by default
-        ],
+          'css-loader', // Translates CSS into CommonJS
+          'postcss-loader', // Parse CSS and add vendor prefixes to CSS rules
+          'sass-loader' // Compiles Sass to CSS, using Node Sass by default
+        ]
       },
       {
         test: /\.svg$/i,
@@ -48,32 +48,25 @@ module.exports = {
         test: /\.(png|jpg|gif)$/i,
         loader: 'file-loader',
         options: {
-          name: '[path][name].[ext]',
-        },
+          name: '[path][name].[ext]'
+        }
       },
-      // {
-      //   test: /\.(svg|png|jpg|jpeg|webp)$/,
-      //   use: [
-      //     {
-      //       loader: 'file-loader?name=./static/[name].[ext]'
-      //     },
-      //   ]
-      // },
       {
       test: /\.ts$/,
       loader: 'ts-loader',
-      exclude: /node_modules/,
+      exclude: /node_modules/
     }
-    ],
+    ]
   },
   devServer: {
-    contentBase: 'static',
-    public: 'chat-ya-rain.herokuapp.com',
-    historyApiFallback: true,
-    host: '0.0.0.0',
+    contentBase: path.join(__dirname, 'dist'),
     compress: true,
-    port: process.env.PORT || 4000,
+    port: 4000,
+    hot: true,
+    writeToDisk: true,
+    historyApiFallback: true
   },
+
   plugins: [
     new HtmlWebpackPlugin({
     template: 'src/index.html'
@@ -81,17 +74,17 @@ module.exports = {
     // Кладем стили в отдельный файлик
     new MiniCssExtractPlugin({
       filename: '[name].css',
-      chunkFilename: '[id].css',
+      chunkFilename: '[id].css'
     }),
     // Копируем картинки
     new CopyPlugin({
       patterns: [
         {
           from: './src/img',
-          to: 'img',
+          to: 'img'
         }
-      ],
-    }),
-  ],
+      ]
+    })
+  ]
 
 };

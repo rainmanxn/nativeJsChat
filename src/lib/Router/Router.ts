@@ -1,5 +1,5 @@
 import { TemplatePropsContext } from '../../types';
-import isEqual from '../../utils/isEqual'
+import isEqual from '../../utils/isEqual';
 import render from '../../utils/render';
 import Block from '../../lib/block';
 
@@ -10,9 +10,13 @@ type PropsType = {
 
 export class Route {
   _pathname: string;
+
   _blockClass: BlockClass;
+
   _block: Block | null;
+
   _props: PropsType;
+
   static routes: Route[] = []
 
   constructor(pathname: string, view: BlockClass, props: PropsType) {
@@ -51,9 +55,13 @@ export class Route {
 
 export class Router {
   routes: Route[];
+
   history: History;
+
   _currentRoute: Route | null;
+
   _rootQuery: string;
+
   static __instance: Router | null;
 
   constructor(rootQuery: string) {
@@ -77,15 +85,15 @@ export class Router {
 
   start(): void {
     window.onpopstate = (event: any): void => {
-      this._onRoute(event.currentTarget.location.pathname)
-    }
-    this._onRoute(window.location.pathname)
+      this._onRoute(event.currentTarget.location.pathname);
+    };
+    this._onRoute(window.location.pathname);
   }
 
   _onRoute(pathname: string): void {
     const route = this.getRoute(pathname);
     if (!route) {
-      return
+      return;
     }
 
     if (this._currentRoute) {
@@ -97,8 +105,8 @@ export class Router {
   }
 
   go(pathname: string): void {
-    this.history.pushState({}, "", pathname);
-    this._onRoute(pathname)
+    this.history.pushState({}, '', pathname);
+    this._onRoute(pathname);
   }
 
   back(): void {
@@ -111,11 +119,12 @@ export class Router {
 
   getRoute(pathname: string): Route | undefined {
     return this.routes.find((route) => {
-      const pattern = new RegExp(`^${route._pathname}$`, 'g')
-      return pathname.match(pattern)
-    })
+      const pattern = new RegExp(`^${route._pathname}$`, 'g');
+      return pathname.match(pattern);
+    });
   }
+
   destruct() {
-    Router.__instance = null
+    Router.__instance = null;
   }
 }
