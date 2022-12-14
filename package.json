@@ -37,7 +37,7 @@
   "dependencies": {
     "@babel/preset-typescript": "^7.12.16",
     "eslint-config-airbnb-base": "^14.2.1",
-    "express": "4.17.1",
+    "express": "4.17.3",
     "handlebars": "^4.7.6",
     "jsdom": "^16.4.0",
     "jsdom-global": "^3.0.2",
